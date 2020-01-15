@@ -18,13 +18,13 @@
     "validator": "^12.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "start-sw": "http-server ./build"
+    "start": "http-server ./build"
   },
   "eslintConfig": {
     "extends": "react-app"
