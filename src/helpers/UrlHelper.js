@@ -54,7 +54,7 @@ export const buildServiceUrl = (endpoint = '', params = {}) => {
  * @param {string} autoStartToken
  */
 export const buildBankIdClientUrl = autoStartToken => {
-  const params = `?autostarttoken=${autoStartToken}&redirect=${process.env.REACT_APP_APP_SCHEME}://`;
+  const params = `?autostarttoken=${autoStartToken}&redirect=${process.env.REACT_APP_SCHEME}://`;
   const androidUrl = 'bankid:///';
   const iosUrl = 'https://app.bankid.com/';
 

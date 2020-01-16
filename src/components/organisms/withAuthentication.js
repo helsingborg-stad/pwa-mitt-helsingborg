@@ -51,7 +51,7 @@ const withAuthentication = WrappedComponent =>
         // TODO: Safe to keep in production?
         if (
           personalNumber === FAKE_PERSONAL_NUMBER &&
-          process.env.REACT_APP_APP_ENV === 'development'
+          process.env.REACT_APP_ENV === 'development'
         ) {
           return await this._fakeLogin(personalNumber);
         }
