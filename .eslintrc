@@ -117,7 +117,7 @@
       {
         "trailingComma": "es5",
         "singleQuote": true,
-        "printWidth": 80,
+        "printWidth": 100,
       }
     ],
     "jsx-a11y/href-no-hash": "off",
@@ -133,7 +133,7 @@
     "react-hooks/exhaustive-deps": "warn"
   },
   "plugins": [
-    "html",
+    //"html", <-- Currenly not working
     "prettier",
     "react-hooks"
   ]
