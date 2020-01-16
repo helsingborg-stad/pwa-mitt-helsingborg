@@ -22,5 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# dotenv environment variables file
+# Local environment files
 .env
+
+# Storybook static
+/storybook-static
