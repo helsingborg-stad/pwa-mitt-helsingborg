@@ -1,5 +1,3 @@
-// import { Linking } from 'react-native';
-// import { NetworkInfo } from 'react-native-network-info';
 import { canOpenUrl, buildServiceUrl, buildBankIdClientUrl } from '../helpers/UrlHelper';
 import StorageService, { TEMP_TOKEN_KEY, ORDER_KEY } from './StorageService';
 import { remove, post } from '../helpers/ApiRequest';
