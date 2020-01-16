@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Local environment files
+.env
+
+# Storybook static
+/storybook-static
