@@ -111,25 +111,25 @@ jobs:
       - store_artifacts:
           path: test-results/unit
 
-  build:
-    executor: docker-publisher
-    steps:
-      - checkout
-      - setup_remote_docker
+  # build:
+  #   executor: docker-publisher
+  #   steps:
+  #     - checkout
+  #     - setup_remote_docker
 
-      - run:
-          name: Build Docker image
-          command: |
-            docker build -t $CIRCLE_PROJECT_REPONAME:latest .
+  #     - run:
+  #         name: Build Docker image
+  #         command: |
+  #           docker build -t $CIRCLE_PROJECT_REPONAME:latest .
 
-      - run:
-          name: Archive Docker image
-          command: docker save -o image.tar $CIRCLE_PROJECT_REPONAME
+  #     - run:
+  #         name: Archive Docker image
+  #         command: docker save -o image.tar $CIRCLE_PROJECT_REPONAME
 
-      - persist_to_workspace:
-          root: .
-          paths:
-            - ./image.tar
+  #     - persist_to_workspace:
+  #         root: .
+  #         paths:
+  #           - ./image.tar
 
   set_pkg_number_release:
     working_directory: ~/application
@@ -169,13 +169,13 @@ workflows:
   version: 2
   build-master:
     jobs:
-      - build:
-          filters:
-            branches:
-              only:
-                - master
-                - develop
-                - /feature.*/
+      # - build:
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
+      #           - develop
+      #           - /feature.*/
       - unit:
           filters:
             branches:
@@ -198,4 +198,4 @@ workflows:
           requires:
             # - lint
             - unit
-            - build
+            # - build
