@@ -1,0 +1,135 @@
+import React from 'react';
+import styled, { css, withTheme } from 'styled-components';
+import PropTypes from 'prop-types';
+import Text from '../Text';
+import Heading from '../Heading';
+import shadow from '../../../styles/shadow';
+
+const CSS = {};
+
+CSS.left = css`
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  margin-right: 96px;
+`;
+CSS.right = css`
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+  margin-left: 96px;
+`;
+
+const Bubble = styled.div`
+  margin-top: 6px;
+  margin-bottom: 6px;
+  margin-left: 16px;
+  margin-right: 16px;
+  padding: 14px 18px 12px 18px;
+  background-color: gray;
+  border-radius: 17.5px;
+  align-self: flex-start;
+  background-color: ${props => props.theme.chatBubble[props.colorTheme].background};
+
+  ${props => (props.alignment && CSS[props.alignment] ? CSS[props.alignment] : null)}
+  ${props => shadow[props.z]}
+`;
+
+const BubbleHeading = styled(Heading)`
+  color: ${props => props.theme.chatBubble[props.colorTheme].text};
+`;
+
+const BubbleText = styled(Text)`
+  color: ${props => props.theme.chatBubble[props.colorTheme].text};
+  font-size: 16px;
+`;
+
+const ContentWrapper = styled.div`
+  flex-direction: row;
+  width: 100%;
+`;
+
+const Aside = styled.div`
+  flex-basis: 42px;
+  border-left-width: 1px;
+  border-left-color: ${props => props.theme.border.default};
+  align-items: flex-end;
+  margin-left: 16px;
+`;
+
+// TODO: Port Button Component.
+
+// const IconButton = styled(Button)`
+//   padding: 0;
+//   padding-top: 0;
+//   padding-bottom: 0;
+//   min-height: auto;
+// `;
+
+const ChatBubble = props => {
+  const { content, modifiers, style, iconRight, onClickIconRight, theme, z, ...other } = props;
+
+  const avalibleColorModifiers = ['automated', 'human', 'user'];
+  let colorTheme = modifiers
+    ? modifiers.find(modifier => avalibleColorModifiers.includes(modifier))
+    : undefined;
+  colorTheme = colorTheme || 'user'; // Default theme
+
+  const alignment = colorTheme === 'user' ? 'right' : 'left';
+
+  /** Override child components */
+  const children = React.Children.map(other.children, (child, index) => {
+    /** Heading */
+    if (child.type === Heading) {
+      return React.createElement(BubbleHeading, {
+        ...child.props,
+        colorTheme,
+      });
+    }
+
+    /** Text */
+    if (child.type === Text) {
+      return React.createElement(BubbleText, {
+        ...child.props,
+        colorTheme,
+      });
+    }
+
+    return child;
+  });
+
+  return (
+    <Bubble alignment={alignment} colorTheme={colorTheme} style={style} z={z}>
+      <ContentWrapper>
+        <div>
+          {children ||
+            (content ? <BubbleText colorTheme={colorTheme}>{content}</BubbleText> : null)}
+        </div>
+        {/*
+          TODO: Implement Atom Icon Component
+          {iconRight && onClickIconRight ? (
+          <Aside>
+            <IconButton onClick={onClickIconRight} z={0}>
+              <Icon color={theme.chatBubble[colorTheme].asideIcon} name={iconRight} />
+            </IconButton>
+          </Aside>
+        ) : null} */}
+      </ContentWrapper>
+    </Bubble>
+  );
+};
+
+ChatBubble.propTypes = {
+  modifiers: PropTypes.arrayOf(PropTypes.oneOf(['automated', 'human', 'user'])),
+  content: PropTypes.string,
+  onClickIconRight: PropTypes.func,
+  iconRight: PropTypes.string,
+  z: PropTypes.number,
+  style: PropTypes.shape({}),
+};
+
+ChatBubble.defaultProps = {
+  modifiers: ['user'],
+  iconRight: 'help-outline',
+  z: 1,
+};
+
+export default withTheme(ChatBubble);
