@@ -1,1 +1,1 @@
-export {default} from './ChatBody'
+export { default } from './ChatBody';
