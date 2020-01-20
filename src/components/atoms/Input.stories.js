@@ -35,3 +35,9 @@ export const PhonePad = () => (
     {/* <InputWithForm placeholder="Type some number using phone pad" keyboardType="phone-pad" /> */}
   </StoryWrapper>
 );
+
+export const Text = () => (
+  <StoryWrapper>
+    <Input type="text" />
+  </StoryWrapper>
+);
