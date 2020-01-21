@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import { Alert, Keyboard, Linking } from 'react-native';
 import styled from 'styled-components';
+import { isMobile } from 'react-device-detect';
 import HbgLogo from '../../assets/slides/stadsvapen.png';
 import { sanitizePin, validatePin } from '../../helpers/ValidationHelper';
 // import Button from '../atoms/Button';
@@ -47,16 +48,20 @@ class LoginScreen extends Component {
   submitHandler = () => {
     const { personalNumberInput } = this.state;
 
-    if (personalNumberInput.length <= 0) {
-      return;
+    if (!isMobile) {
+      if (personalNumberInput.length <= 0) {
+        return;
+      }
+
+      if (!validatePin(personalNumberInput)) {
+        alert('Felaktigt personnummer. Ange format ÅÅÅÅMMDDXXXX.');
+        return;
+      }
+
+      this.authenticateUser(personalNumberInput);
     }
 
-    if (!validatePin(personalNumberInput)) {
-      // Alert.alert('Felaktigt personnummer. Ange format ÅÅÅÅMMDDXXXX.');
-      return;
-    }
-
-    this.authenticateUser(personalNumberInput);
+    this.authenticateUser();
   };
 
   /**
@@ -89,8 +94,16 @@ class LoginScreen extends Component {
     if (isLoading) {
       return (
         <LoginScreenWrapper>
-          {/* <AuthLoading cancelLogin={cancelLogin} isBankidInstalled={isBankidInstalled} /> */}
-          <p>Loading...</p>
+          <p>(show spinner here)</p>
+          {isMobile ? (
+            <p>Söker efter BankID säkerhetsprogram</p>
+          ) : (
+            <p>Väntar på att BankID ska startas på en annan enhet</p>
+          )}
+
+          <button type="button" color="purpleLight" onClick={() => cancelLogin()}>
+            <Text>Avbryt</Text>
+          </button>
         </LoginScreenWrapper>
       );
     }
@@ -109,17 +122,20 @@ class LoginScreen extends Component {
               <LoginFormHeader>
                 <h2>Logga in</h2>
               </LoginFormHeader>
-              <LoginFormField>
-                <input
-                  placeholder="ÅÅÅÅMMDDXXXX"
-                  value={personalNumberInput}
-                  onChange={this.changeHandler}
-                  maxLength={12}
-                />
-              </LoginFormField>
+
+              {!isMobile && (
+                <LoginFormField>
+                  <input
+                    placeholder="ÅÅÅÅMMDDXXXX"
+                    value={personalNumberInput}
+                    onChange={this.changeHandler}
+                    maxLength={12}
+                  />
+                </LoginFormField>
+              )}
 
               <LoginFormField>
-                <button color="purpleLight" onClick={this.submitHandler}>
+                <button type="button" color="purpleLight" onClick={this.submitHandler}>
                   <Text>Logga in med mobilt BankID</Text>
                 </button>
               </LoginFormField>

@@ -1,4 +1,6 @@
-import { canOpenUrl, buildServiceUrl, buildBankIdClientUrl } from '../helpers/UrlHelper';
+import ip from 'ip';
+import { isMobile } from 'react-device-detect';
+import { buildBankIdClientUrl } from '../helpers/UrlHelper';
 import StorageService, { TEMP_TOKEN_KEY, ORDER_KEY } from './StorageService';
 import { remove, post } from '../helpers/ApiRequest';
 
@@ -11,22 +13,22 @@ export const resetCancel = () => {
   cancelled = false;
 };
 
-// TODO: Fix Launch bankid app and test if app is installed
 // /**
 //  * Launch BankID app
 //  * @param {string} bankIdClientUrl
 //  */
-// launchBankIdApp = async autoStartToken => {
+// const launchBankIdApp = async autoStartToken => {
 //   const bankIdClientUrl = buildBankIdClientUrl(autoStartToken);
-
-//   return this.openURL(bankIdClientUrl);
+//   console.log('bankIdClientUrl', bankIdClientUrl);
+//   window.location = bankIdClientUrl;
 // };
 
+// TODO: Fix Launch bankid app and test if app is installed
 // /**
 //  * Open requested URL
 //  * @param {string} url
 //  */
-// openURL = url =>
+// const openURL = url =>
 //   Linking.openURL(url)
 //     .then(() => true)
 //     .catch(() => false);
@@ -37,14 +39,15 @@ export const resetCancel = () => {
  */
 export const authorize = personalNumber =>
   new Promise(async (resolve, reject) => {
-    // TODO: Get user IP
-    // const endUserIp = await NetworkInfo.getIPAddress(ip => ip);
-    const endUserIp = '0.0.0.0';
+    const endUserIp = ip.address();
     let responseJson;
 
     // Make initial auth request to retrieve user details and access token
     try {
-      responseJson = await post('auth/bankid', { personalNumber, endUserIp });
+      responseJson = await post('auth/bankid', {
+        personalNumber: personalNumber || undefined,
+        endUserIp,
+      });
       responseJson = responseJson.data.data.attributes;
     } catch (error) {
       console.log('Auth error', error);
@@ -61,11 +64,11 @@ export const authorize = personalNumber =>
     StorageService.saveData(ORDER_KEY, order_ref);
     StorageService.saveData(TEMP_TOKEN_KEY, token);
 
-    // Launch BankID app if it's installed on this machine
-    const launchNativeApp = await canOpenUrl('bankid:///');
-    if (launchNativeApp) {
-      // TODO: Launch bankid app
-      // this.launchBankIdApp(auto_start_token);
+    // Launch BankID App
+    if (isMobile) {
+      const bankIdClientUrl = buildBankIdClientUrl(auto_start_token);
+      console.log('bankIdClientUrl', bankIdClientUrl);
+      window.location = bankIdClientUrl;
     }
 
     // Poll /collect/ endpoint every 2nd second until auth either success or fails
@@ -120,9 +123,7 @@ export const authorize = personalNumber =>
  */
 export const sign = (personalNumber, userVisibleData) =>
   new Promise(async (resolve, reject) => {
-    // TODO: Get user IP
-    // const endUserIp = await NetworkInfo.getIPAddress(ip => ip);
-    const endUserIp = '0.0.0.0';
+    const endUserIp = ip.address();
     const reqBody = {
       personalNumber,
       endUserIp,
@@ -149,11 +150,9 @@ export const sign = (personalNumber, userVisibleData) =>
     StorageService.saveData(ORDER_KEY, order_ref);
 
     // Launch BankID app if it's installed on this machine
-    const launchNativeApp = await canOpenUrl('bankid:///');
-    if (launchNativeApp) {
-      // TODO: Launch bankid app
-      // this.launchBankIdApp(autoStartToken);
-    }
+    // if (canOpenBankIdApp()) {
+    //   launchBankIdApp(auto_start_token);
+    // }
 
     // Poll /collect/ endpoint every 2nd second until auth either success or fails
     const interval = setInterval(async () => {
