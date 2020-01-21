@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import Auth from '../../helpers/AuthHelper';
-import { canOpenUrl } from '../../helpers/UrlHelper';
 import StorageService, { USER_KEY } from '../../services/StorageService';
 import {
   authorize,
@@ -40,7 +39,7 @@ const withAuthentication = WrappedComponent =>
     componentDidMount() {
       this._ismounted = true;
       // this._setUserAsync();
-      this._isBankidInstalled();
+      // this._isBankidInstalled();
     }
 
     componentWillUnmount() {
@@ -52,7 +51,9 @@ const withAuthentication = WrappedComponent =>
      */
     loginUser = async personalNumber => {
       try {
-        this.setState({ isLoading: true });
+        this.setState({
+          isLoading: true,
+        });
         // TODO: Safe to keep in production?
         if (
           personalNumber === FAKE_PERSONAL_NUMBER &&
@@ -77,10 +78,11 @@ const withAuthentication = WrappedComponent =>
       } catch (error) {
         // TODO: Add dynamic error messages
         console.log('Authentication error: ', error);
-
         throw error;
       } finally {
-        this.setState({ isLoading: false });
+        this.setState({
+          isLoading: false,
+        });
         // Reset cancel variable when done
         resetCancel();
       }
@@ -98,7 +100,9 @@ const withAuthentication = WrappedComponent =>
       } finally {
         // Clears access token and reset state
         Auth.logOut();
-        this.setState({ isLoading: false });
+        this.setState({
+          isLoading: false,
+        });
       }
     };
 
@@ -106,7 +110,9 @@ const withAuthentication = WrappedComponent =>
      * Remove user from state, to be able to login as another user
      */
     resetUser = async () => {
-      this.setState({ user: {} });
+      this.setState({
+        user: {},
+      });
     };
 
     /**
@@ -124,7 +130,10 @@ const withAuthentication = WrappedComponent =>
           // throw "Login failed";
         }
 
-        return { user, FAKE_TOKEN };
+        return {
+          user,
+          FAKE_TOKEN,
+        };
       } catch (e) {
         throw e;
       }
@@ -150,8 +159,11 @@ const withAuthentication = WrappedComponent =>
     /**
      * Check if BankID app is installed on this machine
      */
-    _isBankidInstalled = async () => {
-      const isBankidInstalled = await canOpenUrl('bankid:///');
+    // _isBankidInstalled = async () => {
+    //   this.setState({
+    //     isBankidInstalled: canOpenBankIdApp(),
+    //   });
+    // };
 
       if (isBankidInstalled && this._ismounted) {
         this.setState({ isBankidInstalled: true });
@@ -160,10 +172,24 @@ const withAuthentication = WrappedComponent =>
 
     render() {
       const { state, props, loginUser, cancelLogin, resetUser } = this;
-      const instanceMethods = { loginUser, cancelLogin, resetUser };
-      const injectProps = { ...instanceMethods, ...state };
+      const instanceMethods = {
+        loginUser,
+        cancelLogin,
+        resetUser,
+      };
+      const injectProps = {
+        ...instanceMethods,
+        ...state,
+      };
 
-      return <WrappedComponent authentication={{ ...injectProps }} {...props} />;
+      return (
+        <WrappedComponent
+          authentication={{
+            ...injectProps,
+          }}
+          {...props}
+        />
+      );
     }
   };
 
