@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { isMobile } from 'react-device-detect';
 import styled from 'styled-components';
 import { sanitizePin, validatePin } from '../../helpers/ValidationHelper';
 import Button from '../atoms/Button';
@@ -8,6 +7,7 @@ import Input from '../atoms/Input';
 import Text from '../atoms/Text';
 import ScreenWrapper from '../molecules/ScreenWrapper';
 import withAuthentication from '../organisms/withAuthentication';
+import AuthLoading from '../molecules/AuthLoading';
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -88,16 +88,7 @@ class LoginScreen extends Component {
     if (isLoading) {
       return (
         <LoginScreenWrapper>
-          <p>(show spinner here)</p>
-          {isMobile ? (
-            <p>Söker efter BankID säkerhetsprogram</p>
-          ) : (
-            <p>Väntar på att BankID ska startas på en annan enhet</p>
-          )}
-
-          <Button color="purple" block onClick={() => cancelLogin()}>
-            <Text>Avbryt</Text>
-          </Button>
+          <AuthLoading cancelLogin={cancelLogin} />
         </LoginScreenWrapper>
       );
     }
@@ -125,12 +116,12 @@ class LoginScreen extends Component {
               </LoginFormField>
 
               <LoginFormField>
-                <Button type="button" color="purpleLight" onClick={this.submitHandler}>
+                <Button block color="purpleLight" onClick={this.submitHandler}>
                   <Text>Logga in med mobilt BankID</Text>
                 </Button>
               </LoginFormField>
 
-              <div>
+              <LoginFormFooter>
                 <Link
                   as="a"
                   href="https://support.bankid.com/sv/bankid/mobilt-bankid"
@@ -138,7 +129,7 @@ class LoginScreen extends Component {
                 >
                   Läs mer om hur du skaffar mobilt BankID
                 </Link>
-              </div>
+              </LoginFormFooter>
             </LoginForm>
           </LoginBody>
         </LoginKeyboardAvoidingView>
@@ -156,12 +147,17 @@ const LoginScreenWrapper = styled(ScreenWrapper)`
   background-color: #f5f5f5;
 `;
 
+const LoginFormFooter = styled.div`
+  text-align: center;
+`;
+
 const Link = styled.button`
   text-decoration: underline;
   font-size: 16px;
   text-align: center;
   margin-top: 16px;
   margin-bottom: 8px;
+  text-align: center;
 `;
 
 const LoginKeyboardAvoidingView = styled.div`
@@ -187,6 +183,7 @@ const LoginForm = styled.div`
 const LoginFormField = styled.div`
   margin-bottom: 16px;
 `;
+
 const LoginFormHeader = styled.div`
   margin-bottom: 32px;
 `;
