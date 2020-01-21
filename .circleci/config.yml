@@ -95,7 +95,6 @@ jobs:
           name: Run application tests (jest)
           command: |
             mkdir -p test-results/unit
-            npm run storybook
             CI=true npm test
 
       # Persist temporary files (stored up to 30 days).
