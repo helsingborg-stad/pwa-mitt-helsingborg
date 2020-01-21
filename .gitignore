@@ -29,7 +29,7 @@ yarn-error.log*
 /storybook-static
 
 # testing
-/__snapshots__
+/src/__snapshots__
 
 ### VisualStudioCode ###
 .vscode/*
