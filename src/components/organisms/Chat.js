@@ -15,7 +15,7 @@ import ChatFooter from '../atoms/ChatFooter';
 
 import EventHandler, { EVENT_USER_MESSAGE } from '../../helpers/EventHandler';
 
-// import ChatUserInput from '../molecules/ChatUserInput';
+import ChatUserInput from '../molecules/ChatUserInput';
 import StoreContext from '../../helpers/StoreContext';
 
 class Chat extends Component {

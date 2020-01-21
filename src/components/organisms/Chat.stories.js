@@ -60,6 +60,9 @@ class ExampleAgent extends Component {
 
 export const Default = () => (
   <StoryWrapper>
-    <Chat ChatAgent={ExampleAgent} />
+    <Chat
+      ChatAgent={ExampleAgent}
+      inputComponents={{ type: 'text', placeholder: 'Skriv något...', autoFocus: false }}
+    />
   </StoryWrapper>
 );
