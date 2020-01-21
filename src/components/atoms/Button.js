@@ -103,7 +103,8 @@ const ButtonBase = styled.button`
   ${({ rounded }) => rounded && CSS.buttonRounded}
   ${({ pill }) => pill && CSS.buttonPill}
   ${({ sharp }) => sharp && CSS.buttonSharp}
-  
+  ${({ block }) => block && CSS.buttonBlock}
+
   ${({ buttonSize }) => buttonSize === 'small' && CSS.buttonSmall}
 
   ${({ z }) => CSS.z[z]}
@@ -129,6 +130,10 @@ CSS.buttonSmall = css`
   padding: 10px 12px;
   min-height: 36px;
   min-width: 74px;
+`;
+
+CSS.buttonBlock = css`
+  width: 100%;
 `;
 
 /** Button child component overrides */
