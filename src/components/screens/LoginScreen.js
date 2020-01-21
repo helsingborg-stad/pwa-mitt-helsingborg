@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { sanitizePin, validatePin } from '../../helpers/ValidationHelper';
 import Button from '../atoms/Button';
 import Heading from '../atoms/Heading/Heading';
-// import Input from '../atoms/Input';
+import Input from '../atoms/Input';
 import Text from '../atoms/Text';
 import ScreenWrapper from '../molecules/ScreenWrapper';
 import withAuthentication from '../organisms/withAuthentication';
@@ -116,7 +116,7 @@ class LoginScreen extends Component {
               </LoginFormHeader>
 
               <LoginFormField>
-                <input
+                <Input
                   placeholder="ÅÅÅÅMMDDXXXX"
                   value={personalNumberInput}
                   onChange={this.changeHandler}
