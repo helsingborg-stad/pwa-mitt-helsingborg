@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-// import { Alert, Keyboard, Linking } from 'react-native';
-import styled from 'styled-components';
 import { isMobile } from 'react-device-detect';
-import HbgLogo from '../../assets/slides/stadsvapen.png';
+import styled from 'styled-components';
 import { sanitizePin, validatePin } from '../../helpers/ValidationHelper';
-// import Button from '../atoms/Button';
-// import Heading from '../atoms/Heading';
+import Button from '../atoms/Button';
+import Heading from '../atoms/Heading/Heading';
 // import Input from '../atoms/Input';
 import Text from '../atoms/Text';
 import ScreenWrapper from '../molecules/ScreenWrapper';
@@ -48,20 +46,16 @@ class LoginScreen extends Component {
   submitHandler = () => {
     const { personalNumberInput } = this.state;
 
-    if (!isMobile) {
-      if (personalNumberInput.length <= 0) {
-        return;
-      }
-
-      if (!validatePin(personalNumberInput)) {
-        alert('Felaktigt personnummer. Ange format ÅÅÅÅMMDDXXXX.');
-        return;
-      }
-
-      this.authenticateUser(personalNumberInput);
+    if (personalNumberInput.length <= 0) {
+      return;
     }
 
-    this.authenticateUser();
+    if (!validatePin(personalNumberInput)) {
+      alert('Felaktigt personnummer. Ange format ÅÅÅÅMMDDXXXX.');
+      return;
+    }
+
+    this.authenticateUser(personalNumberInput);
   };
 
   /**
@@ -101,9 +95,9 @@ class LoginScreen extends Component {
             <p>Väntar på att BankID ska startas på en annan enhet</p>
           )}
 
-          <button type="button" color="purpleLight" onClick={() => cancelLogin()}>
+          <Button color="purple" block onClick={() => cancelLogin()}>
             <Text>Avbryt</Text>
-          </button>
+          </Button>
         </LoginScreenWrapper>
       );
     }
@@ -112,10 +106,8 @@ class LoginScreen extends Component {
       <LoginScreenWrapper>
         <LoginKeyboardAvoidingView behavior="padding" enabled>
           <LoginHeader>
-            {hideLogo ? null : (
-              // <Logo source={HbgLogo} resizeMode={'contain'} />
-              <p>(Logo here)</p>
-            )}
+            {/* TODO: Hack to import image because import crashes  */}
+            <Logo src={require('../../assets/slides/stadsvapen.png')} alt="Logo" />
           </LoginHeader>
           <LoginBody>
             <LoginForm>
@@ -123,21 +115,19 @@ class LoginScreen extends Component {
                 <h2>Logga in</h2>
               </LoginFormHeader>
 
-              {!isMobile && (
-                <LoginFormField>
-                  <input
-                    placeholder="ÅÅÅÅMMDDXXXX"
-                    value={personalNumberInput}
-                    onChange={this.changeHandler}
-                    maxLength={12}
-                  />
-                </LoginFormField>
-              )}
+              <LoginFormField>
+                <input
+                  placeholder="ÅÅÅÅMMDDXXXX"
+                  value={personalNumberInput}
+                  onChange={this.changeHandler}
+                  maxLength={12}
+                />
+              </LoginFormField>
 
               <LoginFormField>
-                <button type="button" color="purpleLight" onClick={this.submitHandler}>
+                <Button type="button" color="purpleLight" onClick={this.submitHandler}>
                   <Text>Logga in med mobilt BankID</Text>
-                </button>
+                </Button>
               </LoginFormField>
 
               <div>
@@ -172,11 +162,6 @@ const Link = styled.button`
   text-align: center;
   margin-top: 16px;
   margin-bottom: 8px;
-`;
-
-const Label = styled(Text)`
-  margin-bottom: 8px;
-  font-size: 16px;
 `;
 
 const LoginKeyboardAvoidingView = styled.div`
