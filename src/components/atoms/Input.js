@@ -1,6 +1,7 @@
 // import { TextInput } from 'react-native';
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { PropTypes } from 'prop-types';
 
 const input = css`
   background-color: ${({ theme }) => theme.input.background};
@@ -18,7 +19,9 @@ const Input = styled(TextInput)`
   ${input}
 `;
 
-Input.propTypes = {};
+Input.propTypes = {
+  theme: PropTypes.object,
+};
 
 Input.defaultProps = {
   theme: {
