@@ -6,11 +6,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-// import ChatMessages from '../molecules/ChatMessages';
+import ChatMessages from '../molecules/ChatMessages';
 // import Modal from '../molecules/Modal';
 
-// import ChatBody from '../atoms/ChatBody';
-// import ChatWrapper from '../atoms/ChatWrapper';
+import ChatBody from '../atoms/ChatBody';
+import ChatWrapper from '../atoms/ChatWrapper';
 import ChatFooter from '../atoms/ChatFooter';
 
 import EventHandler, { EVENT_USER_MESSAGE } from '../../helpers/EventHandler';
@@ -180,13 +180,11 @@ class Chat extends Component {
     return (
       <StoreContext.Consumer>
         {({ setBadgeCount }) => (
-          //   TODO: Replace <></> with ChatWrapper
-          <>
-            {/* <ChatWrapper keyboardVerticalOffset={keyboardVerticalOffset}> */}
+          <ChatWrapper keyboardVerticalOffset={keyboardVerticalOffset}>
             {ChatAgent ? (
               <ChatAgent chat={{ ...instanceMethods, ...this.state, setBadgeCount }} />
             ) : null}
-            {/* <ChatBody>
+            <ChatBody>
               <ChatMessages messages={messages} chat={{ ...instanceMethods, ...this.state }} />
             </ChatBody>
             <ChatFooter>
@@ -197,9 +195,8 @@ class Chat extends Component {
                 />
               ) : null}
             </ChatFooter>
-            <Modal {...modal} changeModal={visible => this.changeModal(visible)} /> */}
-            {/* </ChatWrapper> */}
-          </>
+            {/* <Modal {...modal} changeModal={visible => this.changeModal(visible)} /> */}
+          </ChatWrapper>
         )}
       </StoreContext.Consumer>
     );
