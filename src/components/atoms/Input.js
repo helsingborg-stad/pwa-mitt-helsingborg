@@ -13,17 +13,17 @@ const input = css`
   width: 100%;
 `;
 
-const TextInput = () => <input type="text" />;
-
-const Input = styled(TextInput)`
+const Input = styled.input`
   ${input}
 `;
 
 Input.propTypes = {
+  type: PropTypes.string,
   theme: PropTypes.object,
 };
 
 Input.defaultProps = {
+  type: 'text',
   theme: {
     input: {
       background: '#ffffff',
