@@ -38,8 +38,13 @@ const withAuthentication = WrappedComponent =>
     }
 
     componentDidMount() {
+      this._ismounted = true;
       // this._setUserAsync();
       this._isBankidInstalled();
+    }
+
+    componentWillUnmount() {
+      this._ismounted = false;
     }
 
     /**
@@ -148,7 +153,7 @@ const withAuthentication = WrappedComponent =>
     _isBankidInstalled = async () => {
       const isBankidInstalled = await canOpenUrl('bankid:///');
 
-      if (isBankidInstalled) {
+      if (isBankidInstalled && this._ismounted) {
         this.setState({ isBankidInstalled: true });
       }
     };
