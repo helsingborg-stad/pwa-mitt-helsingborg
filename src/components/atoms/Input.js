@@ -1,4 +1,5 @@
 // import { TextInput } from 'react-native';
+import React from 'react';
 import styled, { css } from 'styled-components';
 
 const input = css`
@@ -11,7 +12,9 @@ const input = css`
   width: 100%;
 `;
 
-const Input = styled.input`
+const TextInput = () => <input type="text" />;
+
+const Input = styled(TextInput)`
   ${input}
 `;
 

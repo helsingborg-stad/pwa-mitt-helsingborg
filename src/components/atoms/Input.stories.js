@@ -36,8 +36,8 @@ export const PhonePad = () => (
   </StoryWrapper>
 );
 
-export const Text = () => (
+export const WithOutForm = () => (
   <StoryWrapper>
-    <Input type="text" />
+    <Input />
   </StoryWrapper>
 );
