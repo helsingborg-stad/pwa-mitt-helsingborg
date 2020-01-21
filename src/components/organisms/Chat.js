@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/default-props-match-prop-types */
 /* eslint-disable react/no-unused-state */
