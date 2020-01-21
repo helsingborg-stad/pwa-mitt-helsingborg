@@ -1,13 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Md3DRotation } from 'react-icons/md';
+import { IconContext } from 'react-icons';
+import * as MIcons from 'react-icons/md';
 
-// eslint-disable-next-line no-unused-vars
-const Icon = ({ name, size }) => <Md3DRotation />;
+const MIcon = ({ name, size }) => {
+  const IconComponent = MIcons[name];
 
-Icon.propTypes = {
-  name: PropTypes.string.isRequired,
-  size: PropTypes.oneOf([16, 24, 32, 48]).isRequired,
+  return (
+    <IconContext.Provider value={{ color: '#000000', size, className: 'react-icons' }}>
+      <IconComponent />
+    </IconContext.Provider>
+  );
 };
 
-export default Icon;
+MIcon.propTypes = {
+  name: PropTypes.string.isRequired,
+  size: PropTypes.oneOf([16, 24, 32, 48]),
+};
+
+MIcon.defaultProps = {
+  size: 24,
+};
+
+export default MIcon;
