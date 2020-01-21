@@ -20,21 +20,21 @@ export default {
   component: Input,
 };
 
-export const Default = () => (
-  <StoryWrapper>{/* <InputWithForm placeholder="Type something" /> */}</StoryWrapper>
-);
+// export const Default = () => (
+//   <StoryWrapper>{/* <InputWithForm placeholder="Type something" /> */}</StoryWrapper>
+// );
 
-export const Numeric = () => (
-  <StoryWrapper>
-    {/* <InputWithForm placeholder="Type some numbers" keyboardType="numeric" /> */}
-  </StoryWrapper>
-);
+// export const Numeric = () => (
+//   <StoryWrapper>
+//     {/* <InputWithForm placeholder="Type some numbers" keyboardType="numeric" /> */}
+//   </StoryWrapper>
+// );
 
-export const PhonePad = () => (
-  <StoryWrapper>
-    {/* <InputWithForm placeholder="Type some number using phone pad" keyboardType="phone-pad" /> */}
-  </StoryWrapper>
-);
+// export const PhonePad = () => (
+//   <StoryWrapper>
+//     {/* <InputWithForm placeholder="Type some number using phone pad" keyboardType="phone-pad" /> */}
+//   </StoryWrapper>
+// );
 
 export const WithOutForm = () => (
   <StoryWrapper>
