@@ -1,10 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ROUTES, { RenderRoutes } from './routes';
 
 function App() {
   return (
     <div className="App">
+      <RenderRoutes routes={ROUTES} />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
