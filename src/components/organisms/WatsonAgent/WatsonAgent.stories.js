@@ -1,22 +1,26 @@
 import React from 'react';
-// import env from 'react-native-config';
 import styled from 'styled-components';
 
-import withChatForm from './withChatForm';
-import Chat from './Chat';
+import StoryWrapper from '../../molecules/StoryWrapper';
+import WatsonAgent from './WatsonAgent';
+import withChatForm from '../withChatForm';
+import Chat from '../Chat';
+import InputForm from '../../molecules/InputForm';
 
-import StoryWrapper from '../molecules/StoryWrapper';
-import InputForm from '../molecules/InputForm';
-
-import ParrotAgent from './ParrotAgent';
+import DarthVaderAgent from './DarthVaderAgent';
 
 const ModifiedStoryWrapper = styled(StoryWrapper)`
   padding-left: 0;
   padding-right: 0;
 `;
 
-storiesOf('Chat', module).add('Watson agent', () => (
+export default {
+  title: 'WatsonAgent',
+  component: WatsonAgent,
+};
+
+export const Default = () => (
   <ModifiedStoryWrapper>
-    <Chat ChatAgent={ParrotAgent} ChatUserInput={withChatForm(InputForm)} />
+    <Chat ChatAgent={DarthVaderAgent} ChatUserInput={withChatForm(InputForm)} />
   </ModifiedStoryWrapper>
-));
+);
