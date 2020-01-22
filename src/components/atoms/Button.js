@@ -8,39 +8,39 @@ import styled, { css } from 'styled-components';
 import z from '../../styles/shadow';
 
 import Text from './Text';
-// import Icon from './Icon';
+import Icon from './Icon';
 
 const ButtonNew = props => {
   const { value, onClick, style, color, block, rounded, pill, sharp, icon, z, size } = props;
 
   const childrenTotal = React.Children.count(props.children);
 
-  const iconComponentsTotal = 0;
+  let iconComponentsTotal = 0;
   let textComponentsTotal = 0;
 
   /** Override child components */
   const children = React.Children.map(props.children, (child, index) => {
     // TODO: implement Icon component
     /** Icon */
-    // if (child.type === Icon) {
-    //   iconComponentsTotal++;
+    if (child.type === Icon) {
+      iconComponentsTotal++;
 
-    //   let ButtonComponent = ButtonIcon;
+      let ButtonComponent = ButtonIcon;
 
-    //   if (childrenTotal > 1 && index > 0) {
-    //     ButtonComponent = RightButtonIcon;
-    //   }
+      if (childrenTotal > 1 && index > 0) {
+        ButtonComponent = RightButtonIcon;
+      }
 
-    //   if (childrenTotal > 1 && index === 0) {
-    //     ButtonComponent = LeftButtonIcon;
-    //   }
+      if (childrenTotal > 1 && index === 0) {
+        ButtonComponent = LeftButtonIcon;
+      }
 
-    //   return React.createElement(ButtonComponent, {
-    //     ...child.props,
-    //     size: 32,
-    //     buttonTheme: color,
-    //   });
-    // }
+      return React.createElement(ButtonComponent, {
+        ...child.props,
+        size: 32,
+        buttonTheme: color,
+      });
+    }
 
     /** Text */
     if (child.type === Text) {
@@ -143,26 +143,25 @@ const ButtonText = styled(Text)`
   ${({ buttonSize }) => buttonSize === 'small' && 'font-weight: bold;'};
 `;
 
-// TODO: implement Icon component
-// const ButtonIcon = styled(Icon)`
-//   color: ${props => (props.color ? props.color : props.theme.button[props.buttonTheme].icon)};
-//   font-size: 26px;
-//   height: 26px;
-//   width: 26px;
-//   line-height: 26px;
-// `;
+const ButtonIcon = styled(Icon)`
+  color: ${props => (props.color ? props.color : props.theme.button[props.buttonTheme].icon)};
+  font-size: 26px;
+  height: 26px;
+  width: 26px;
+  line-height: 26px;
+`;
 
-// const LeftButtonIcon = styled(ButtonIcon)`
-//   margin-right: 16px;
-//   ${props => (props.push ? 'margin-right: auto;' : null)}
-// `;
+const LeftButtonIcon = styled(ButtonIcon)`
+  margin-right: 16px;
+  ${props => (props.push ? 'margin-right: auto;' : null)}
+`;
 
-// const RightButtonIcon = styled(ButtonIcon)`
-//     margin-left: 16px;
-//     ${props => (props.push ? 'margin-left: auto;' : null)}
+const RightButtonIcon = styled(ButtonIcon)`
+    margin-left: 16px;
+    ${props => (props.push ? 'margin-left: auto;' : null)}
 
-//     color: ${props => props.theme.button[props.buttonTheme].iconRight};
-// `;
+    color: ${props => props.theme.button[props.buttonTheme].iconRight};
+`;
 
 /** Button utils */
 const ButtonWrapper = styled.div`
