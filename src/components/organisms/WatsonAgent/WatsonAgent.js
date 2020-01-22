@@ -1,12 +1,22 @@
+/* eslint-disable react/no-unused-state */
+/* eslint-disable no-case-declarations */
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-useless-escape */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/sort-comp */
+/* eslint-disable react/state-in-constructor */
 import React, { Component } from 'react';
 // import env from 'react-native-config';
 // import { Alert } from 'react-native';
-import EventHandler, { EVENT_USER_MESSAGE } from '../../helpers/EventHandler';
-import { sendChatMsg } from '../../services/ChatFormService';
-import ChatBubble from '../atoms/ChatBubble';
-import ButtonStack from '../molecules/ButtonStack';
-import StorageService, { COMPLETED_FORMS_KEY, USER_KEY } from '../../services/StorageService';
-// import MarkdownConstructor from '../../helpers/MarkdownConstructor';
+import EventHandler, { EVENT_USER_MESSAGE } from '../../../helpers/EventHandler';
+import { sendChatMsg } from '../../../services/ChatFormService';
+import ChatBubble from '../../atoms/ChatBubble';
+import ChatDivider from '../../atoms/ChatDivider';
+import ButtonStack from '../../molecules/ButtonStack';
+import StorageService, { COMPLETED_FORMS_KEY, USER_KEY } from '../../../services/StorageService';
+import MarkdownConstructor from '../../../helpers/MarkdownConstructor';
 
 let context;
 
@@ -21,7 +31,6 @@ export default class WatsonAgent extends Component {
 
   componentDidMount() {
     const { chat, initialMessages } = this.props;
-
     if (initialMessages !== undefined && Array.isArray(initialMessages)) {
       initialMessages.forEach(message => {
         chat.addMessages({
@@ -44,7 +53,6 @@ export default class WatsonAgent extends Component {
             modifiers: ['automated'],
           },
         });
-
         chat.addMessages({
           Component: ChatBubble,
           componentProps: {
@@ -52,7 +60,6 @@ export default class WatsonAgent extends Component {
             modifiers: ['automated'],
           },
         });
-
         chat.addMessages({
           Component: props => <ButtonStack {...props} chat={chat} />,
           componentProps: {
@@ -70,7 +77,6 @@ export default class WatsonAgent extends Component {
         });
       });
     }
-
     EventHandler.subscribe(EVENT_USER_MESSAGE, message => this.handleHumanChatMessage(message));
   }
 
@@ -86,9 +92,7 @@ export default class WatsonAgent extends Component {
    */
   onFormEnd = async ({ form, answers }) => {
     const { chat } = this.props;
-
     const user = await StorageService.getData(USER_KEY);
-
     const formData = {
       id: +new Date(),
       userId: user.personalNumber,
@@ -98,7 +102,6 @@ export default class WatsonAgent extends Component {
       status: 'completed',
       data: answers,
     };
-
     try {
       await StorageService.putData(COMPLETED_FORMS_KEY, formData).then(() => {
         StorageService.getData(COMPLETED_FORMS_KEY).then(value => {
@@ -108,7 +111,6 @@ export default class WatsonAgent extends Component {
     } catch (error) {
       console.log('Save form error', error);
     }
-
     await chat.addMessages([
       {
         Component: props => <ButtonStack {...props} chat={chat} />,
@@ -129,11 +131,9 @@ export default class WatsonAgent extends Component {
         },
       },
     ]);
-
     chat.switchAgent(props => (
       <WatsonAgent {...props} initialMessages={['Kan jag hjälpa dig med något annat?']} />
     ));
-
     chat.switchInput({
       autoFocus: false,
       type: 'text',
@@ -149,28 +149,23 @@ export default class WatsonAgent extends Component {
     if (typeof value !== 'string') {
       return {};
     }
-
     const match = /{([a-z0-9\s.,_\'"-\[\]:{}]+)}/g.exec(value);
     let meta = match && typeof match[1] !== 'undefined' ? match[1] : undefined;
-
     try {
       meta = JSON.parse(meta);
     } catch (error) {
       return {};
     }
-
     return meta;
   }
 
   handleHumanChatMessage = async message => {
     const { chat } = this.props;
     try {
-      const { WATSON_WORKSPACEID } = env;
-
-      if (!WATSON_WORKSPACEID) {
+      const { REACT_APP_WATSON_WORKSPACEID } = process.env;
+      if (!REACT_APP_WATSON_WORKSPACEID) {
         throw new Error('Missing Watson workspace ID');
       }
-
       /**
        * TODO: FOR DEV PURPOSE ONLY, REMOVE ME LATER
        */
@@ -190,17 +185,15 @@ export default class WatsonAgent extends Component {
         });
       }
 
-      const response = await sendChatMsg(WATSON_WORKSPACEID, message, context);
-
+      const response = await sendChatMsg(REACT_APP_WATSON_WORKSPACEID, message, context);
       // Default input
-      let textInput = [
+      const textInput = [
         {
           type: 'text',
           placeholder: 'Skriv något...',
           autoFocus: false,
         },
       ];
-
       if (
         !response.data ||
         !response.data.attributes ||
@@ -209,12 +202,9 @@ export default class WatsonAgent extends Component {
       ) {
         throw new Error('Something went wrong with Watson response');
       }
-
       const { output, context: newContext } = response.data.attributes;
-
       // Set new context
       context = newContext;
-
       await output.generic.reduce(async (previousPromise, current) => {
         await previousPromise;
         switch (current.response_type) {
@@ -230,27 +220,22 @@ export default class WatsonAgent extends Component {
                 modifiers: ['automated'],
               },
             });
-
           case 'option':
             const options = current.options.map(option => {
               const meta = this.captureMetaData(option.value.input.text);
-
               const { action } = meta;
               // Add callback method to form action
               if (action) {
                 action.callback =
                   action.type === 'form' ? props => this.onFormEnd(props) : () => {};
               }
-
               return {
                 value: option.label,
                 ...meta,
                 action,
               };
             });
-
             const optionType = options[0].type;
-
             if (optionType === 'chat') {
               return chat.addMessages({
                 Component: props => <ButtonStack {...props} chat={chat} />,
@@ -259,27 +244,22 @@ export default class WatsonAgent extends Component {
                 },
               });
             }
-
             // Disable default input
             textInput = false;
-
             return chat.switchInput([
               {
                 type: 'radio',
                 options,
               },
             ]);
-
           case 'pause':
             await chat.toggleTyping();
             await new Promise(resolve => setTimeout(resolve, current.time));
             return chat.toggleTyping();
-
           default:
             return Promise.resolve();
         }
       }, Promise.resolve());
-
       // Set default input
       if (textInput) {
         await chat.switchInput(textInput);
