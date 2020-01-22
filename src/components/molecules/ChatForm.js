@@ -51,9 +51,9 @@ const ChatForm = props => {
 
         if (child.type === Input) {
           return React.createElement(UnStyledInput, {
-            onChangeText: changeHandler,
+            onChange: changeHandler,
             value: inputValue,
-            onSubmitEditing: submitHandler,
+            onSubmit: submitHandler,
             ...child.props,
           });
         }
@@ -75,8 +75,8 @@ const ChatForm = props => {
           {children || (
             <UnStyledInput
               value={inputValue}
-              onChangeText={changeHandler}
-              onSubmitEditing={submitHandler}
+              onChange={changeHandler}
+              onSubmit={submitHandler}
               placeholder="Skriv något... "
               keyboardType="default"
               focus={!!isFocused}
