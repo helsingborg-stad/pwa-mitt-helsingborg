@@ -8,7 +8,7 @@ import { excludePropetiesWithKey, includePropetiesWithKey } from '../../helpers/
 
 import withChatForm from '../organisms/withChatForm';
 
-// import ButtonStack from './ButtonStack';
+import ButtonStack from './ButtonStack';
 // import DateTimePickerForm from './DateTimePickerForm';
 import InputForm from './InputForm';
 
@@ -16,7 +16,7 @@ export default class ChatUserInput extends Component {
   avalibleComponents = {
     text: withChatForm(InputForm),
     number: withChatForm(InputForm),
-    // radio: ButtonStack,
+    radio: ButtonStack,
     select: {},
     // dateTime: withChatForm(DateTimePickerForm),
     custom: {},
