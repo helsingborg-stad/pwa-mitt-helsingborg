@@ -159,15 +159,11 @@ const withAuthentication = WrappedComponent =>
     /**
      * Check if BankID app is installed on this machine
      */
-    // _isBankidInstalled = async () => {
-    //   this.setState({
-    //     isBankidInstalled: canOpenBankIdApp(),
-    //   });
-    // };
-
-      if (isBankidInstalled && this._ismounted) {
-        this.setState({ isBankidInstalled: true });
-      }
+    _isBankidInstalled = async () => {
+      // const isBankidInstalled = await canOpenUrl('bankid:///');
+      // if (isBankidInstalled && this._ismounted) {
+      //   this.setState({ isBankidInstalled: true });
+      // }
     };
 
     render() {
