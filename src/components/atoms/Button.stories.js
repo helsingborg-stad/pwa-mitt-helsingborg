@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import StoryWrapper from '../molecules/StoryWrapper';
 import Button from './Button';
 import Text from './Text';
-// import Icon from './Icon';
+import Icon from './Icon';
 
 const CustomButton = styled(Button)`
   background-color: #afca05;
@@ -104,24 +104,24 @@ export const WithIcon = props => (
     <FlexContainer>
       <Flex>
         <Button color="purple" z={5} rounded>
-          {/* <Icon name="arrow-upward" pill /> */}
+          <Icon name="arrow-upward" pill />
         </Button>
       </Flex>
       <Flex>
         <Button color="purple" pill>
           <Text>Icon right</Text>
-          {/* <Icon name="arrow-upward" /> */}
+          <Icon name="arrow-upward" />
         </Button>
       </Flex>
       <Flex>
         <Button color="light" rounded>
-          {/* <Icon name="message" /> */}
+          <Icon name="message" />
           <Text>Icon Left</Text>
         </Button>
       </Flex>
       <Flex>
         <Button color="blue" pill>
-          {/* <Icon name="message" /> */}
+          <Icon name="message" />
           <Text>Skriv en fråga</Text>
         </Button>
       </Flex>
@@ -135,31 +135,31 @@ export const Shadows = props => (
       <Flex>
         <Button color="purple" z={4} rounded>
           <Text>z4</Text>
-          {/* <Icon name="arrow-upward" /> */}
+          <Icon name="arrow-upward" />
         </Button>
       </Flex>
       <Flex>
         <Button color="purple" z={3} rounded>
           <Text>z3</Text>
-          {/* <Icon name="arrow-upward" /> */}
+          <Icon name="arrow-upward" />
         </Button>
       </Flex>
       <Flex>
         <Button color="purple" z={2} rounded>
           <Text>z2</Text>
-          {/* <Icon name="arrow-upward" /> */}
+          <Icon name="arrow-upward" />
         </Button>
       </Flex>
       <Flex>
         <Button color="purple" z={1} rounded>
           <Text>z1</Text>
-          {/* <Icon name="arrow-upward" /> */}
+          <Icon name="arrow-upward" />
         </Button>
       </Flex>
       <Flex>
         <Button color="purple" z={0} rounded>
           <Text>z0</Text>
-          {/* <Icon name="arrow-upward" /> */}
+          <Icon name="arrow-upward" />
         </Button>
       </Flex>
     </FlexContainer>
