@@ -1,3 +1,5 @@
+import { isMobile, isAndroid, isIOS } from 'react-device-detect';
+
 /**
  * Test if URL can be opened
  * TODO: Convert to web
@@ -54,9 +56,18 @@ export const buildServiceUrl = (endpoint = '', params = {}) => {
  * @param {string} autoStartToken
  */
 export const buildBankIdClientUrl = autoStartToken => {
-  const params = `?autostarttoken=${autoStartToken}&redirect=${process.env.REACT_APP_SCHEME}://`;
-  const androidUrl = 'bankid:///';
-  const iosUrl = 'https://app.bankid.com/';
+  let params;
+  let bankIdAppUrl;
 
-  return `${iosUrl}${params}`;
+  console.log('window.location.href', window.location.href);
+
+  if (isIOS) {
+    params = `?autostarttoken=${autoStartToken}&redirect=${window.location.href}`;
+    bankIdAppUrl = 'https://app.bankid.com/';
+  } else {
+    params = `?autostarttoken=${autoStartToken}&redirect=null`;
+    bankIdAppUrl = 'bankid:///';
+  }
+
+  return encodeURI(`${bankIdAppUrl}${params}`);
 };

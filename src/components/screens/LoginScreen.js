@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-// import { Alert, Keyboard, Linking } from 'react-native';
 import styled from 'styled-components';
-import HbgLogo from '../../assets/slides/stadsvapen.png';
 import { sanitizePin, validatePin } from '../../helpers/ValidationHelper';
-// import Button from '../atoms/Button';
-// import Heading from '../atoms/Heading';
-// import Input from '../atoms/Input';
+import Button from '../atoms/Button';
+import Heading from '../atoms/Heading/Heading';
+import Input from '../atoms/Input';
 import Text from '../atoms/Text';
 import ScreenWrapper from '../molecules/ScreenWrapper';
 import withAuthentication from '../organisms/withAuthentication';
+import AuthLoading from '../molecules/AuthLoading';
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -52,7 +51,7 @@ class LoginScreen extends Component {
     }
 
     if (!validatePin(personalNumberInput)) {
-      // Alert.alert('Felaktigt personnummer. Ange format ÅÅÅÅMMDDXXXX.');
+      alert('Felaktigt personnummer. Ange format ÅÅÅÅMMDDXXXX.');
       return;
     }
 
@@ -89,8 +88,7 @@ class LoginScreen extends Component {
     if (isLoading) {
       return (
         <LoginScreenWrapper>
-          {/* <AuthLoading cancelLogin={cancelLogin} isBankidInstalled={isBankidInstalled} /> */}
-          <p>Loading...</p>
+          <AuthLoading cancelLogin={cancelLogin} />
         </LoginScreenWrapper>
       );
     }
@@ -99,18 +97,17 @@ class LoginScreen extends Component {
       <LoginScreenWrapper>
         <LoginKeyboardAvoidingView behavior="padding" enabled>
           <LoginHeader>
-            {hideLogo ? null : (
-              // <Logo source={HbgLogo} resizeMode={'contain'} />
-              <p>(Logo here)</p>
-            )}
+            {/* TODO: Hack to import image because import crashes  */}
+            <Logo src={require('../../assets/slides/stadsvapen.png')} alt="Logo" />
           </LoginHeader>
           <LoginBody>
             <LoginForm>
               <LoginFormHeader>
                 <h2>Logga in</h2>
               </LoginFormHeader>
+
               <LoginFormField>
-                <input
+                <Input
                   placeholder="ÅÅÅÅMMDDXXXX"
                   value={personalNumberInput}
                   onChange={this.changeHandler}
@@ -119,12 +116,12 @@ class LoginScreen extends Component {
               </LoginFormField>
 
               <LoginFormField>
-                <button color="purpleLight" onClick={this.submitHandler}>
+                <Button block color="purpleLight" onClick={this.submitHandler}>
                   <Text>Logga in med mobilt BankID</Text>
-                </button>
+                </Button>
               </LoginFormField>
 
-              <div>
+              <LoginFormFooter>
                 <Link
                   as="a"
                   href="https://support.bankid.com/sv/bankid/mobilt-bankid"
@@ -132,7 +129,7 @@ class LoginScreen extends Component {
                 >
                   Läs mer om hur du skaffar mobilt BankID
                 </Link>
-              </div>
+              </LoginFormFooter>
             </LoginForm>
           </LoginBody>
         </LoginKeyboardAvoidingView>
@@ -150,17 +147,17 @@ const LoginScreenWrapper = styled(ScreenWrapper)`
   background-color: #f5f5f5;
 `;
 
+const LoginFormFooter = styled.div`
+  text-align: center;
+`;
+
 const Link = styled.button`
   text-decoration: underline;
   font-size: 16px;
   text-align: center;
   margin-top: 16px;
   margin-bottom: 8px;
-`;
-
-const Label = styled(Text)`
-  margin-bottom: 8px;
-  font-size: 16px;
+  text-align: center;
 `;
 
 const LoginKeyboardAvoidingView = styled.div`
@@ -186,6 +183,7 @@ const LoginForm = styled.div`
 const LoginFormField = styled.div`
   margin-bottom: 16px;
 `;
+
 const LoginFormHeader = styled.div`
   margin-bottom: 32px;
 `;
