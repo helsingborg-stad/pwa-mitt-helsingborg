@@ -1,9 +1,9 @@
 import React from 'react';
 import { RenderRoutes } from './RouteHelpers';
-
+import LoginScreen from '../components/screens/LoginScreen';
 // TODO: REPLACE DATA WITH REAL ROUTES
 const ROUTES = [
-  { path: '/', key: 'ROOT', exact: true, component: () => <h1>Index</h1> },
+  { path: '/', key: 'ROOT', exact: true, component: LoginScreen },
   {
     path: '/app',
     key: 'APP',
