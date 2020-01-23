@@ -1,6 +1,7 @@
 import React from 'react';
 import { RenderRoutes } from './RouteHelpers';
 import LoginScreen from '../components/screens/Login';
+import ChatScreen from '../components/screens/ChatScreen';
 // TODO: Use Chat Screen Component instead of h1
 const ROUTES = [
   {
@@ -14,7 +15,7 @@ const ROUTES = [
     key: 'Chat',
     private: true,
     redirectTo: '',
-    component: () => <h1>Chat Screen</h1>,
+    component: ChatScreen,
   },
 ];
 
