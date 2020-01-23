@@ -213,55 +213,55 @@ const forms = [
           ],
         },
       },
-      //   {
-      //     id: 'weddingDate',
-      //     name: 'Vilket datum vill ni gifta er?',
-      //     type: 'date',
-      //     details: {
-      //       group: 'wedding',
-      //       label: 'Datum för vigsel',
-      //       icon: 'event',
-      //       show: true,
-      //     },
-      //     selectorProps: {
-      //       locale: 'sv',
-      //       // TODO: Lift out date object
-      //       minimumDate: new Date(),
-      //     },
-      //     explainer: [
-      //       {
-      //         key: 0,
-      //         heading: 'Tid',
-      //         content: `Ni kan bli vigda i Rådhuset följande tider:
-      //                 &nbsp;
-      //                 &nbsp;
-      //                 **Vardagar:** 16:00 och 16:30.
-      //                 &nbsp;
-      //                 **Lördagar:** 14:00, 14:30, 15:00 och 15.30.
-      //                 &nbsp;
-      //                 **Dag före röd dag:** 11:30.
-      //                 &nbsp;
-      //                 &nbsp;
-      //                 Under **storhelger är Rådhuset stängt**, men ni kan välja att istället boka vigsel på annan plats.
-      //                 `,
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     id: 'weddingTime',
-      //     name: 'Vilken tid?',
-      //     type: 'time',
-      //     details: {
-      //       group: 'wedding',
-      //       label: 'Tid för vigsel',
-      //       icon: 'access-time',
-      //       show: true,
-      //     },
-      //     selectorProps: {
-      //       minuteInterval: 30,
-      //       locale: 'sv',
-      //     },
-      //   },
+      {
+        id: 'weddingDate',
+        name: 'Vilket datum vill ni gifta er?',
+        type: 'text',
+        details: {
+          group: 'wedding',
+          label: 'Datum för vigsel',
+          icon: 'event',
+          show: true,
+        },
+        selectorProps: {
+          locale: 'sv',
+          // TODO: Lift out date object
+          minimumDate: new Date(),
+        },
+        explainer: [
+          {
+            key: 0,
+            heading: 'Tid',
+            content: `Ni kan bli vigda i Rådhuset följande tider:
+                      &nbsp;
+                      &nbsp;
+                      **Vardagar:** 16:00 och 16:30.
+                      &nbsp;
+                      **Lördagar:** 14:00, 14:30, 15:00 och 15.30.
+                      &nbsp;
+                      **Dag före röd dag:** 11:30.
+                      &nbsp;
+                      &nbsp;
+                      Under **storhelger är Rådhuset stängt**, men ni kan välja att istället boka vigsel på annan plats.
+                      `,
+          },
+        ],
+      },
+      {
+        id: 'weddingTime',
+        name: 'Vilken tid?',
+        type: 'text',
+        details: {
+          group: 'wedding',
+          label: 'Tid för vigsel',
+          icon: 'access-time',
+          show: true,
+        },
+        selectorProps: {
+          minuteInterval: 30,
+          locale: 'sv',
+        },
+      },
       {
         id: 'weddingLocationCustomInfo',
         name:
