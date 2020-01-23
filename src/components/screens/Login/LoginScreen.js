@@ -1,13 +1,64 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { sanitizePin, validatePin } from '../../helpers/ValidationHelper';
-import Button from '../atoms/Button';
-import Heading from '../atoms/Heading/Heading';
-import Input from '../atoms/Input';
-import Text from '../atoms/Text';
-import ScreenWrapper from '../molecules/ScreenWrapper';
-import withAuthentication from '../organisms/withAuthentication';
-import AuthLoading from '../molecules/AuthLoading';
+import { sanitizePin, validatePin } from '../../../helpers/ValidationHelper';
+import HbgLogo from '../../../assets/slides/stadsvapen.png';
+import Heading from '../../atoms/Heading';
+import Button from '../../atoms/Button';
+import Input from '../../atoms/Input';
+import Text from '../../atoms/Text';
+import ScreenWrapper from '../../molecules/ScreenWrapper';
+import withAuthentication from '../../organisms/withAuthentication';
+import AuthLoading from '../../molecules/AuthLoading';
+
+const Logo = styled.img`
+  height: 200px;
+  width: auto;
+`;
+
+const LoginScreenWrapper = styled(ScreenWrapper)`
+  background-color: #f5f5f5;
+`;
+
+const LoginFormFooter = styled.div`
+  text-align: center;
+`;
+
+const Link = styled.button`
+  text-decoration: underline;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  text-align: center;
+`;
+
+const LoginKeyboardAvoidingView = styled.div`
+  flex: 1;
+  align-items: stretch;
+`;
+
+const LoginHeader = styled.div`
+  text-align: center;
+  flex: 1;
+  justify-content: center;
+`;
+
+const LoginBody = styled.div`
+  flex: 1;
+  justify-content: flex-end;
+`;
+
+const LoginForm = styled.div`
+  flex-grow: 0;
+`;
+
+const LoginFormField = styled.div`
+  margin-bottom: 16px;
+`;
+
+const LoginFormHeader = styled.div`
+  margin-bottom: 32px;
+`;
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -62,12 +113,11 @@ class LoginScreen extends Component {
    * Authenticate user and navigate on success
    */
   authenticateUser = async personalNumber => {
+    const { history } = this.props;
     try {
       const { loginUser } = this.props.authentication;
       await loginUser(personalNumber);
-      // TODO: Fix navigationafter login
-      // this.props.navigation.navigate('Chat');
-      alert('Login was successful');
+      history.push('/chat');
     } catch (e) {
       if (e.message !== 'cancelled') {
         console.info('Error in LoginScreen::authenticateUser', e.message);
@@ -92,18 +142,17 @@ class LoginScreen extends Component {
         </LoginScreenWrapper>
       );
     }
-
     return (
       <LoginScreenWrapper>
         <LoginKeyboardAvoidingView behavior="padding" enabled>
           <LoginHeader>
             {/* TODO: Hack to import image because import crashes  */}
-            <Logo src={require('../../assets/slides/stadsvapen.png')} alt="Logo" />
+            <Logo src={HbgLogo} alt="Logo" />
           </LoginHeader>
           <LoginBody>
             <LoginForm>
               <LoginFormHeader>
-                <h2>Logga in</h2>
+                <Heading>Logga in</Heading>
               </LoginFormHeader>
 
               <LoginFormField>
@@ -137,55 +186,5 @@ class LoginScreen extends Component {
     );
   }
 }
-
-const Logo = styled.img`
-  height: 200px;
-  width: auto;
-`;
-
-const LoginScreenWrapper = styled(ScreenWrapper)`
-  background-color: #f5f5f5;
-`;
-
-const LoginFormFooter = styled.div`
-  text-align: center;
-`;
-
-const Link = styled.button`
-  text-decoration: underline;
-  font-size: 16px;
-  text-align: center;
-  margin-top: 16px;
-  margin-bottom: 8px;
-  text-align: center;
-`;
-
-const LoginKeyboardAvoidingView = styled.div`
-  flex: 1;
-  align-items: stretch;
-`;
-
-const LoginHeader = styled.div`
-  text-align: center;
-  flex: 1;
-  justify-content: center;
-`;
-
-const LoginBody = styled.div`
-  flex: 1;
-  justify-content: flex-end;
-`;
-
-const LoginForm = styled.div`
-  flex-grow: 0;
-`;
-
-const LoginFormField = styled.div`
-  margin-bottom: 16px;
-`;
-
-const LoginFormHeader = styled.div`
-  margin-bottom: 32px;
-`;
 
 export default withAuthentication(LoginScreen);
