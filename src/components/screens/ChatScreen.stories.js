@@ -4,10 +4,10 @@ import ChatScreen from './ChatScreen';
 
 export default {
   component: ChatScreen,
-  title: 'ChatScreen',
+  title: 'Screens',
 };
 
-export const Default = () => (
+export const Chat = () => (
   <StoryWrapper>
     <ChatScreen />
   </StoryWrapper>
