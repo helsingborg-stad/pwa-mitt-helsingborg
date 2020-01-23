@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import 'normalize.css';
 import 'typeface-roboto';
 import './index.css';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <BrowserRouter>
+  <MemoryRouter>
     <App />
-  </BrowserRouter>,
+  </MemoryRouter>,
   document.getElementById('root')
 );
 
