@@ -8,7 +8,7 @@ import React from 'react';
 import styled from 'styled-components';
 // import { withNavigation } from 'react-navigation';
 
-// import FormAgent from '../organisms/FormAgent/FormAgent';
+import FormAgent from '../organisms/FormAgent/FormAgent';
 import Button from '../atoms/Button';
 import Icon from '../atoms/Icon';
 import Text from '../atoms/Text';
@@ -49,13 +49,13 @@ const ButtonStack = props => {
       switch (actionType) {
         case 'form':
           // Trigger form service
-          //   props.chat.switchAgent(props => (
-          //     <FormAgent
-          //       {...props}
-          //       formId={actionValue}
-          //       callback={actionCallback ? props => actionCallback(props) : undefined}
-          //     />
-          //   ));
+          props.chat.switchAgent(props => (
+            <FormAgent
+              {...props}
+              formId={actionValue}
+              callback={actionCallback ? props => actionCallback(props) : undefined}
+            />
+          ));
           break;
         case 'navigate':
           // Navigate to given route

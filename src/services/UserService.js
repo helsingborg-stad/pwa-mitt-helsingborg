@@ -68,7 +68,11 @@ export const authorize = personalNumber =>
     if (isMobile) {
       const bankIdClientUrl = buildBankIdClientUrl(auto_start_token);
       console.log('bankIdClientUrl', bankIdClientUrl);
-      window.location = bankIdClientUrl;
+      const anchor = document.createElement('a');
+      anchor.href = bankIdClientUrl;
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
     }
 
     // Poll /collect/ endpoint every 2nd second until auth either success or fails

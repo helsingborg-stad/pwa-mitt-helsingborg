@@ -1,27 +1,21 @@
 import React from 'react';
 import { RenderRoutes } from './RouteHelpers';
-import LoginScreen from '../components/screens/LoginScreen';
-// TODO: REPLACE DATA WITH REAL ROUTES
+import LoginScreen from '../components/screens/Login';
+import ChatScreen from '../components/screens/ChatScreen';
+// TODO: Use Chat Screen Component instead of h1
 const ROUTES = [
-  { path: '/', key: 'ROOT', exact: true, component: LoginScreen },
   {
-    path: '/app',
-    key: 'APP',
-    component: RenderRoutes,
-    routes: [
-      {
-        path: '/app',
-        key: 'APP_ROOT',
-        exact: true,
-        component: () => <h1>App Index</h1>,
-      },
-      {
-        path: '/app/page',
-        key: 'APP_PAGE',
-        exact: true,
-        component: () => <h1>App Page</h1>,
-      },
-    ],
+    path: '/',
+    key: 'ROOT',
+    exact: true,
+    component: LoginScreen,
+  },
+  {
+    path: '/chat',
+    key: 'Chat',
+    private: true,
+    redirectTo: '',
+    component: ChatScreen,
   },
 ];
 

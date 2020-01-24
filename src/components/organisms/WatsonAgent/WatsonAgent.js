@@ -67,6 +67,10 @@ export default class WatsonAgent extends Component {
               {
                 value: 'Jag vill boka borgerlig vigsel',
                 icon: 'favorite',
+                action: {
+                  type: 'form',
+                  value: 1,
+                },
               },
               {
                 value: 'Jag har frågor om borgerlig vigsel',
