@@ -109,7 +109,7 @@ const ButtonBase = styled.button`
 
   ${({ buttonSize }) => buttonSize === 'small' && CSS.buttonSmall}
 
-  ${({ z }) => CSS.z[z]}
+  ${props => CSS.z[props.z]}
   shadow-color: ${({ theme, buttonTheme }) => theme.button[buttonTheme].shadow};
 `;
 
