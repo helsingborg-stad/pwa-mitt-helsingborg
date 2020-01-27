@@ -4,9 +4,13 @@ import React from 'react';
 import styled from 'styled-components';
 import ScreenWrapper from './ScreenWrapper';
 
+import 'normalize.css';
+import 'typeface-roboto';
+import '../../index.css';
+
 const StoryWrapper = props => (
   <EnhancedSafeAreaView>
-    <ModifiedScreenWrapper style={props.style}>
+    <ModifiedScreenWrapper classname={props.classname}>
       {props.kind ? <StoryHeading>{`${props.kind} / ${props.name}`}</StoryHeading> : null}
       {props.children}
     </ModifiedScreenWrapper>
