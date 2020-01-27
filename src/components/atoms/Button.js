@@ -87,6 +87,7 @@ ButtonNew.defaultProps = {
 
 /** Button styles */
 const ButtonBase = styled.button`
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -95,6 +96,7 @@ const ButtonBase = styled.button`
   min-height: 56px;
 
   border-radius: 12.5px;
+  border-color: ${({ theme, buttonTheme }) => theme.button[buttonTheme].background};
 
   padding: ${({ icon }) => (!icon ? '12px 20px' : '16px 16px')};
   min-width: ${({ icon }) => (!icon ? '124px' : 'auto')};
@@ -138,6 +140,7 @@ CSS.buttonBlock = css`
 
 /** Button child component overrides */
 const ButtonText = styled(Text)`
+  margin: 0;
   font-size: ${({ buttonSize }) => (buttonSize === 'small' ? '14px' : '16px')};
   color: ${({ theme, buttonTheme }) => theme.button[buttonTheme].text};
   ${({ buttonSize }) => buttonSize === 'small' && 'font-weight: bold;'};
