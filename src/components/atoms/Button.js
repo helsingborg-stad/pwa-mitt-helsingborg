@@ -5,13 +5,16 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { PropTypes } from 'prop-types';
 import z from '../../styles/shadow';
 
 import Text from './Text';
 import Icon from './Icon';
+import colors from '../../styles/colors';
 
 const ButtonNew = ({
   children,
+  className,
   value,
   onClick,
   style,
@@ -69,6 +72,7 @@ const ButtonNew = ({
   return (
     <ButtonWrapper>
       <ButtonBase
+        className={className}
         block={block}
         onClick={onClick}
         buttonTheme={color}
@@ -84,6 +88,16 @@ const ButtonNew = ({
       </ButtonBase>
     </ButtonWrapper>
   );
+};
+
+ButtonNew.defaultProps = {
+  color: PropTypes.oneOf([Object.keys(colors.button)]),
+  rounded: PropTypes.bool,
+  pill: PropTypes.bool,
+  icon: PropTypes.bool,
+  sharp: PropTypes.bool,
+  z: 1,
+  size: 'medium',
 };
 
 ButtonNew.defaultProps = {
