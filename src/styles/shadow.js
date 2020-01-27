@@ -1,50 +1,29 @@
 import { css } from 'styled-components';
 
-let z = {};
+const z = {};
 
 z[4] = css`
-    shadow-color: #000;
-    shadow-offset: -2px 12px;
-    shadow-opacity: 0.3;
-    shadow-radius: 12;
-
-    elevation: 4;
+  box-shadow: 0px 26px 32px rgba(98, 98, 98, 0.12), 0px 10px 16px rgba(98, 98, 98, 0.12),
+    0px 6px 8px rgba(98, 98, 98, 0.12), 0px 3px 2px rgba(98, 98, 98, 0.12),
+    0px 0px 2px rgba(98, 98, 98, 0.18);
 `;
-
 z[3] = css`
-    shadow-color: #000;
-    shadow-offset: 0 8px;
-    shadow-opacity: 0.3;
-    shadow-radius: 8;
-
-    elevation: 3;
+  box-shadow: 0px 10px 16px rgba(98, 98, 98, 0.12), 0px 6px 4px rgba(98, 98, 98, 0.12),
+    0px 3px 2px rgba(98, 98, 98, 0.12), 0px 0px 2px rgba(98, 98, 98, 0.18);
 `;
 
 z[2] = css`
-    shadow-color: #000;
-    shadow-offset: 0px 6px;
-    shadow-opacity: 0.3;
-    shadow-radius: 6;
-
-    elevation: 2;
+  box-shadow: 0px 6px 8px rgba(98, 98, 98, 0.18), 0px 2px 2px rgba(98, 98, 98, 0.18),
+    0px 0px 2px rgba(98, 98, 98, 0.18);
 `;
 
 z[1] = css`
-    shadow-color: #000;
-    shadow-offset: -0px 2px;
-    shadow-opacity: 0.3;
-    shadow-radius: 2;
-
-    elevation: 1;
+  box-shadow: 0px 6px 8px rgba(98, 98, 98, 0.18), 0px 2px 2px rgba(98, 98, 98, 0.18),
+    0px 0px 2px rgba(98, 98, 98, 0.18);
 `;
 
 z[0] = css`
-    shadow-color: #000;
-    shadow-opacity: 0;
-    shadow-radius: 0;
-    shadow-offset: 0px 0px;
-
-    elevation: 0;
+  box-shadow: 0px 1px 2px rgba(98, 98, 98, 0.18), 0px 0px 2px rgba(98, 98, 98, 0.18);
 `;
 
 export default z;
