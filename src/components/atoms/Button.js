@@ -10,16 +10,27 @@ import z from '../../styles/shadow';
 import Text from './Text';
 import Icon from './Icon';
 
-const ButtonNew = props => {
-  const { value, onClick, style, color, block, rounded, pill, sharp, icon, z, size } = props;
-
-  const childrenTotal = React.Children.count(props.children);
+const ButtonNew = ({
+  children,
+  value,
+  onClick,
+  style,
+  color,
+  block,
+  rounded,
+  pill,
+  sharp,
+  icon,
+  z: elevation,
+  size,
+}) => {
+  const childrenTotal = React.Children.count(children);
 
   let iconComponentsTotal = 0;
   let textComponentsTotal = 0;
 
   /** Override child components */
-  const children = React.Children.map(props.children, (child, index) => {
+  const childrenToRender = React.Children.map(children, (child, index) => {
     // TODO: implement Icon component
     /** Icon */
     if (child.type === Icon) {
@@ -66,10 +77,10 @@ const ButtonNew = props => {
         pill={pill}
         style={style}
         icon={iconComponentsTotal === 1 && childrenTotal === 1 ? true : icon}
-        z={z}
+        z={elevation}
         shrarp={sharp}
       >
-        {children || (value ? <ButtonText>{value}</ButtonText> : null)}
+        {childrenToRender || (value ? <ButtonText>{value}</ButtonText> : null)}
       </ButtonBase>
     </ButtonWrapper>
   );
