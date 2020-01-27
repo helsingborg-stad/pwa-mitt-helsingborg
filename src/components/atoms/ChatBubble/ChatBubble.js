@@ -3,6 +3,8 @@ import styled, { css, withTheme } from 'styled-components';
 import PropTypes from 'prop-types';
 import Text from '../Text';
 import Heading from '../Heading';
+import Button from '../Button';
+import Icon from '../Icon';
 import shadow from '../../../styles/shadow';
 
 const CSS = {};
@@ -40,32 +42,53 @@ const BubbleHeading = styled(Heading)`
 const BubbleText = styled(Text)`
   color: ${props => props.theme.chatBubble[props.colorTheme].text};
   font-size: 16px;
+  margin: 0;
 `;
 
 const ContentWrapper = styled.div`
+  display: flex;
   flex-direction: row;
   width: 100%;
 `;
 
+const BubbleContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-self: center;
+`;
+
 const Aside = styled.div`
+  align-self: flex-start;
   flex-basis: 42px;
   border-left-width: 1px;
   border-left-color: ${props => props.theme.border.default};
   align-items: flex-end;
   margin-left: 16px;
+  padding: 0;
 `;
 
 // TODO: Port Button Component.
 
-// const IconButton = styled(Button)`
-//   padding: 0;
-//   padding-top: 0;
-//   padding-bottom: 0;
-//   min-height: auto;
-// `;
+const IconButton = styled(Button)`
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: auto;
+`;
 
 const ChatBubble = props => {
-  const { content, modifiers, style, iconRight, onClickIconRight, theme, z, ...other } = props;
+  const {
+    className,
+    content,
+    modifiers,
+    style,
+    iconRight,
+    onClickIconRight,
+    theme,
+    z,
+    ...other
+  } = props;
 
   const avalibleColorModifiers = ['automated', 'human', 'user'];
   let colorTheme = modifiers
@@ -97,27 +120,27 @@ const ChatBubble = props => {
   });
 
   return (
-    <Bubble alignment={alignment} colorTheme={colorTheme} style={style} z={z}>
+    <Bubble className={className} alignment={alignment} colorTheme={colorTheme} style={style} z={z}>
       <ContentWrapper>
-        <div>
+        <BubbleContent>
           {children ||
             (content ? <BubbleText colorTheme={colorTheme}>{content}</BubbleText> : null)}
-        </div>
-        {/*
-          TODO: Implement Atom Icon Component
-          {iconRight && onClickIconRight ? (
+        </BubbleContent>
+
+        {iconRight && onClickIconRight ? (
           <Aside>
-            <IconButton onClick={onClickIconRight} z={0}>
+            <IconButton onClick={onClickIconRight} color="white" z={0}>
               <Icon color={theme.chatBubble[colorTheme].asideIcon} name={iconRight} />
             </IconButton>
           </Aside>
-        ) : null} */}
+        ) : null}
       </ContentWrapper>
     </Bubble>
   );
 };
 
 ChatBubble.propTypes = {
+  className: PropTypes.string,
   modifiers: PropTypes.arrayOf(PropTypes.oneOf(['automated', 'human', 'user'])),
   content: PropTypes.string,
   onClickIconRight: PropTypes.func,
@@ -127,6 +150,7 @@ ChatBubble.propTypes = {
 };
 
 ChatBubble.defaultProps = {
+  className: '',
   modifiers: ['user'],
   iconRight: 'help-outline',
   z: 1,
