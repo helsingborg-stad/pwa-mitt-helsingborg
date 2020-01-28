@@ -147,6 +147,7 @@ ChatBubble.propTypes = {
   iconRight: PropTypes.string,
   z: PropTypes.number,
   style: PropTypes.shape({}),
+  theme: PropTypes.shape({ chatBubble: PropTypes.object }),
 };
 
 ChatBubble.defaultProps = {
@@ -154,6 +155,25 @@ ChatBubble.defaultProps = {
   modifiers: ['user'],
   iconRight: 'help-outline',
   z: 1,
+  theme: {
+    chatBubble: {
+      user: {
+        background: '#A84C98',
+        text: '#fff',
+        asideIcon: '#fff',
+      },
+      human: {
+        background: '#fff',
+        text: '#707070',
+        asideIcon: '#3D3D3D',
+      },
+      automated: {
+        background: '#fff',
+        text: '#707070',
+        asideIcon: '#3D3D3D',
+      },
+    },
+  },
 };
 
 export default withTheme(ChatBubble);
