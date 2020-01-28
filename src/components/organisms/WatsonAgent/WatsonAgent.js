@@ -19,6 +19,7 @@ import StorageService, { COMPLETED_FORMS_KEY, USER_KEY } from '../../../services
 import MarkdownConstructor from '../../../helpers/MarkdownConstructor';
 
 let context;
+let sessionId;
 
 export default class WatsonAgent extends Component {
   state = {
@@ -166,8 +167,8 @@ export default class WatsonAgent extends Component {
   handleHumanChatMessage = async message => {
     const { chat } = this.props;
     try {
-      const { REACT_APP_WATSON_WORKSPACEID } = process.env;
-      if (!REACT_APP_WATSON_WORKSPACEID) {
+      const { REACT_APP_WATSON_ASSISTANT_ID } = process.env;
+      if (!REACT_APP_WATSON_ASSISTANT_ID) {
         throw new Error('Missing Watson workspace ID');
       }
       /**
@@ -189,9 +190,14 @@ export default class WatsonAgent extends Component {
         });
       }
 
-      const response = await sendChatMsg(REACT_APP_WATSON_WORKSPACEID, message, context);
+      const response = await sendChatMsg(
+        REACT_APP_WATSON_ASSISTANT_ID,
+        message,
+        context,
+        sessionId
+      );
       // Default input
-      const textInput = [
+      let textInput = [
         {
           type: 'text',
           placeholder: 'Skriv något...',
@@ -206,9 +212,10 @@ export default class WatsonAgent extends Component {
       ) {
         throw new Error('Something went wrong with Watson response');
       }
-      const { output, context: newContext } = response.data.attributes;
+      const { output, context: newContext, session_id } = response.data.attributes;
       // Set new context
       context = newContext;
+      sessionId = session_id;
       await output.generic.reduce(async (previousPromise, current) => {
         await previousPromise;
         switch (current.response_type) {
