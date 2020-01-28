@@ -169,7 +169,7 @@ export default class WatsonAgent extends Component {
     try {
       const { REACT_APP_WATSON_ASSISTANT_ID } = process.env;
       if (!REACT_APP_WATSON_ASSISTANT_ID) {
-        throw new Error('Missing Watson workspace ID');
+        throw new Error('Missing Watson assistant ID');
       }
       /**
        * TODO: FOR DEV PURPOSE ONLY, REMOVE ME LATER
