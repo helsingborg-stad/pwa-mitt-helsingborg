@@ -38,6 +38,18 @@ class ChatMessages extends Component {
   // Required to scroll FlatList
   flatListRef = React.createRef();
 
+  scrollToBottom = () => {
+    this.flatListRef.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
   /**
    * Adds custom actions to component props
    * @param {obj} componentProps
@@ -66,7 +78,17 @@ class ChatMessages extends Component {
 
   render() {
     const { messages, forwardProps, chat } = this.props;
-    return <ChatMessagesFlatList>{messages.map(this.renderItem)}</ChatMessagesFlatList>;
+    return (
+      <ChatMessagesFlatList>
+        {messages.map(this.renderItem)}{' '}
+        <div
+          style={{ float: 'left', clear: 'both' }}
+          ref={el => {
+            this.flatListRef = el;
+          }}
+        ></div>
+      </ChatMessagesFlatList>
+    );
   }
 }
 
