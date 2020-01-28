@@ -11,10 +11,6 @@ import Text from '../atoms/Text';
 const ChatFormWrapper = styled.div``;
 const ChatFormFooter = styled.div``;
 const ChatFormBody = styled.div`
-  margin-top: 12px;
-  margin-bottom: 6px;
-  margin-left: 16px;
-  margin-right: 16px;
   flex-direction: row;
 `;
 const ChatFormButton = styled(Button)`
@@ -30,6 +26,7 @@ const ChatFormButtonIcon = styled(Icon)`
 const UnStyledInput = styled.input`
   flex: 1;
   padding: 8px;
+  border: 0;
 `;
 
 const InputStyledView = styled.div`
@@ -37,6 +34,7 @@ const InputStyledView = styled.div`
   padding: 8px;
   flex-direction: row;
   flex: 1;
+  display: flex;
 `;
 
 const ChatForm = props => {
