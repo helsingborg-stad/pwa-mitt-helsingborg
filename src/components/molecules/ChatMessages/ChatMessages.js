@@ -13,8 +13,8 @@ const OFFSET_TOP = 0;
 const OFFSET_BOTTOM = 24;
 
 const ChatMessagesFlatList = styled.div`
-  flex-basis: 100%;
-  margin-top: 24px;
+  padding: 24px 0px;
+  position: relative;
 `;
 
 const TypeIndicator = props => (
