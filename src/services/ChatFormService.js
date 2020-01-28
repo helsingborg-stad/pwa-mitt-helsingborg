@@ -30,9 +30,10 @@ export const getAllFormTemplates = () => {
 };
 
 export const sendChatMsg = async (
-  workspaceId,
+  assistantId,
   textInput,
-  context,
+  context = undefined,
+  sessionId = undefined,
   intents = undefined,
   entities = undefined
 ) => {
@@ -40,9 +41,13 @@ export const sendChatMsg = async (
 
   return new Promise(async (resolve, reject) => {
     const data = {
-      workspaceId,
+      assistantId,
       textInput,
     };
+
+    if (sessionId) {
+      data.sessionId = sessionId;
+    }
 
     if (context) {
       data.context = context;
