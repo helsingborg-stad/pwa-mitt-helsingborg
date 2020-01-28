@@ -39,7 +39,9 @@ class ChatMessages extends Component {
   flatListRef = React.createRef();
 
   scrollToBottom = () => {
-    this.flatListRef.scrollIntoView({ behavior: 'smooth' });
+    if (this.flatListRef && this.flatListRef.scrollIntoView) {
+      this.flatListRef.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   componentDidMount() {
