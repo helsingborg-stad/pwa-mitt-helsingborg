@@ -10,16 +10,27 @@ import z from '../../styles/shadow';
 import Text from './Text';
 import Icon from './Icon';
 
-const ButtonNew = props => {
-  const { value, onClick, style, color, block, rounded, pill, sharp, icon, z, size } = props;
-
-  const childrenTotal = React.Children.count(props.children);
+const ButtonNew = ({
+  children,
+  value,
+  onClick,
+  style,
+  color,
+  block,
+  rounded,
+  pill,
+  sharp,
+  icon,
+  z: elevation,
+  size,
+}) => {
+  const childrenTotal = React.Children.count(children);
 
   let iconComponentsTotal = 0;
   let textComponentsTotal = 0;
 
   /** Override child components */
-  const children = React.Children.map(props.children, (child, index) => {
+  const childrenToRender = React.Children.map(children, (child, index) => {
     // TODO: implement Icon component
     /** Icon */
     if (child.type === Icon) {
@@ -66,10 +77,10 @@ const ButtonNew = props => {
         pill={pill}
         style={style}
         icon={iconComponentsTotal === 1 && childrenTotal === 1 ? true : icon}
-        z={z}
+        z={elevation}
         shrarp={sharp}
       >
-        {children || (value ? <ButtonText>{value}</ButtonText> : null)}
+        {childrenToRender || (value ? <ButtonText>{value}</ButtonText> : null)}
       </ButtonBase>
     </ButtonWrapper>
   );
@@ -87,6 +98,7 @@ ButtonNew.defaultProps = {
 
 /** Button styles */
 const ButtonBase = styled.button`
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -95,6 +107,7 @@ const ButtonBase = styled.button`
   min-height: 56px;
 
   border-radius: 12.5px;
+  border-color: ${({ theme, buttonTheme }) => theme.button[buttonTheme].background};
 
   padding: ${({ icon }) => (!icon ? '12px 20px' : '16px 16px')};
   min-width: ${({ icon }) => (!icon ? '124px' : 'auto')};
@@ -107,7 +120,7 @@ const ButtonBase = styled.button`
 
   ${({ buttonSize }) => buttonSize === 'small' && CSS.buttonSmall}
 
-  ${({ z }) => CSS.z[z]}
+  ${props => CSS.z[props.z]}
   shadow-color: ${({ theme, buttonTheme }) => theme.button[buttonTheme].shadow};
 `;
 
@@ -138,6 +151,7 @@ CSS.buttonBlock = css`
 
 /** Button child component overrides */
 const ButtonText = styled(Text)`
+  margin: 0;
   font-size: ${({ buttonSize }) => (buttonSize === 'small' ? '14px' : '16px')};
   color: ${({ theme, buttonTheme }) => theme.button[buttonTheme].text};
   ${({ buttonSize }) => buttonSize === 'small' && 'font-weight: bold;'};

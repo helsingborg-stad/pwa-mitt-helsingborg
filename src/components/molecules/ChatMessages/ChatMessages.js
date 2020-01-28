@@ -13,8 +13,8 @@ const OFFSET_TOP = 0;
 const OFFSET_BOTTOM = 24;
 
 const ChatMessagesFlatList = styled.div`
-  flex-basis: 100%;
-  margin-top: 24px;
+  padding: 24px 0px;
+  position: relative;
 `;
 
 const TypeIndicator = props => (
@@ -37,6 +37,20 @@ class ChatMessages extends Component {
 
   // Required to scroll FlatList
   flatListRef = React.createRef();
+
+  scrollToBottom = () => {
+    if (this.flatListRef && this.flatListRef.scrollIntoView) {
+      this.flatListRef.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
 
   /**
    * Adds custom actions to component props
@@ -66,7 +80,17 @@ class ChatMessages extends Component {
 
   render() {
     const { messages, forwardProps, chat } = this.props;
-    return <ChatMessagesFlatList>{messages.map(this.renderItem)}</ChatMessagesFlatList>;
+    return (
+      <ChatMessagesFlatList>
+        {messages.map(this.renderItem)}{' '}
+        <div
+          style={{ float: 'left', clear: 'both' }}
+          ref={el => {
+            this.flatListRef = el;
+          }}
+        ></div>
+      </ChatMessagesFlatList>
+    );
   }
 }
 

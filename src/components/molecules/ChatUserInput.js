@@ -153,6 +153,4 @@ const ChatUserInputWrapper = styled.div`
   overflow: visible;
   border-top-width: 1px;
   border-color: ${props => props.theme.border.default};
-  margin-top 16px;
-  padding-bottom: 6px;
 `;
