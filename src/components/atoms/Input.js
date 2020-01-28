@@ -11,6 +11,11 @@ const input = css`
   font-size: 16px;
   padding: 14px;
   width: 100%;
+  transition: all 0.2s ease-in;
+  &:focus {
+    outline: none;
+    border-color: ${({ theme }) => theme.input.borderFocus};
+  }
 `;
 
 const Input = styled.input`
@@ -28,6 +33,7 @@ Input.defaultProps = {
     input: {
       background: '#ffffff',
       border: '#e5e5e5',
+      borderFocus: '#000',
     },
   },
 };
