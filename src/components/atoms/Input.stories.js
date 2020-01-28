@@ -38,6 +38,6 @@ export default {
 
 export const WithOutForm = () => (
   <StoryWrapper>
-    <Input />
+    <Input placeholder="Type something" />
   </StoryWrapper>
 );
