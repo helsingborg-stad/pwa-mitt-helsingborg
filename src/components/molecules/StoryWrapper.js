@@ -10,7 +10,7 @@ import '../../index.css';
 
 const StoryWrapper = props => (
   <EnhancedSafeAreaView>
-    <ModifiedScreenWrapper classname={props.classname}>
+    <ModifiedScreenWrapper className={props.className}>
       {props.kind ? <StoryHeading>{`${props.kind} / ${props.name}`}</StoryHeading> : null}
       {props.children}
     </ModifiedScreenWrapper>
@@ -23,7 +23,7 @@ const StoryHeading = styled.h2`
 `;
 
 const EnhancedSafeAreaView = styled.div`
-  flex: 1;
+  height: 100%;
   margin-bottom: 18px;
 `;
 

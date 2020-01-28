@@ -5,13 +5,13 @@ import styled, { ThemeProvider } from 'styled-components';
 import theme from '../../styles/theme';
 
 const Container = styled.div`
-  flex: 1;
-  padding: 16px;
+  position: relative;
+  height: 100%;
 `;
 
 const ScreenWrapper = props => (
   <ThemeProvider theme={theme}>
-    <Container classname={props.classname}>{props.children}</Container>
+    <Container className={props.className}>{props.children}</Container>
   </ThemeProvider>
 );
 
