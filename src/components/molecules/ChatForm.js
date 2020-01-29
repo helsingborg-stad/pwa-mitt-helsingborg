@@ -3,10 +3,7 @@
 import React from 'react';
 // import { Keyboard, TextInput, View, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import styled from 'styled-components';
-import Input, { input as inputStyles } from '../atoms/Input';
-import Button from '../atoms/Button';
-import Icon from '../atoms/Icon';
-import Text from '../atoms/Text';
+import { Button, Icon, Text, Input } from '../atoms';
 
 const ChatFormWrapper = styled.div``;
 const ChatFormFooter = styled.div``;
@@ -34,7 +31,7 @@ const UnStyledInput = styled.input`
 `;
 
 const InputStyledView = styled.div`
-  ${inputStyles}
+  ${Input.css}
   padding: 8px;
   flex-direction: row;
   flex: 1;
