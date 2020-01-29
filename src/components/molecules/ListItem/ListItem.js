@@ -142,6 +142,7 @@ const ListItem = props => {
 export default withTheme(ListItem);
 
 ListItem.propTypes = {
+  className: PropTypes.string,
   color: PropTypes.oneOf(['blue', 'purple', 'red', 'green']),
   highlighted: PropTypes.bool,
   iconName: PropTypes.string,
@@ -157,6 +158,7 @@ ListItem.propTypes = {
 };
 
 ListItem.defaultProps = {
+  className: '',
   color: 'default',
   highlighted: false,
   iconName: undefined,
