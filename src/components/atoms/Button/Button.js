@@ -123,6 +123,7 @@ const ButtonBase = styled.button`
 
   border-radius: 12.5px;
   border-color: ${({ theme, buttonTheme }) => theme.button[buttonTheme].background};
+  border-style: solid;
 
   padding: ${({ icon }) => (!icon ? '12px 20px' : '16px 16px')};
   min-width: ${({ icon }) => (!icon ? '124px' : 'auto')};
