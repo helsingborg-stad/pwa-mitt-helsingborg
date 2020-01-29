@@ -25,8 +25,22 @@ const UnStyledInput = styled.input`
   padding: 8px;
   border: 0;
 
-  :focus-within {
-    outline: 0;
+  &:focus {
+    outline: none;
+  }
+  -webkit-appearance: none;
+
+  ::-webkit-input-placeholder {
+    color: ${({ theme }) => theme.input.placeholder};
+  }
+  ::-moz-placeholder {
+    color: ${({ theme }) => theme.input.placeholder};
+  }
+  :-ms-input-placeholder {
+    color: ${({ theme }) => theme.input.placeholder};
+  }
+  :-moz-placeholder {
+    color: ${({ theme }) => theme.input.placeholder};
   }
 `;
 
