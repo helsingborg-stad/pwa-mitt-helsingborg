@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled, { withTheme } from 'styled-components';
 import Button from '../atoms/Button';
 import Text from '../atoms/Text';
 import Modal from './Modal';
@@ -8,6 +9,10 @@ export default {
   component: Modal,
   title: 'Modal',
 };
+
+const Flex = styled.div`
+  padding: 8px;
+`;
 
 class ModalExample extends Component {
   constructor(props) {
@@ -37,7 +42,7 @@ class ModalExample extends Component {
     const { visible, heading, content } = modal;
 
     return (
-      <div>
+      <Flex>
         <Modal
           color="purple"
           visible={visible}
@@ -57,7 +62,7 @@ class ModalExample extends Component {
         >
           <Text>Show modal</Text>
         </Button>
-      </div>
+      </Flex>
     );
   }
 }
