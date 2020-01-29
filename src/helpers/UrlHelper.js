@@ -59,12 +59,12 @@ export const buildBankIdClientUrl = autoStartToken => {
   let params;
   let bankIdAppUrl;
 
-  console.log('window.location.href', window.location.href);
-
   if (isIOS) {
-    // TODO: fix manual labor!!
-    params = `?autostarttoken=${autoStartToken}&redirect=safari:///`;
-    // bankIdAppUrl = 'https://app.bankid.com/';
+    // Adds a random anchor hash to avoid page reload
+    params = `?autostarttoken=${autoStartToken}&redirect=${window.location.href}#${Math.floor(
+      Math.random() * 10000000
+    )}`;
+    // = 'https://app.bankid.com/';
     bankIdAppUrl = 'bankid:///';
   } else {
     params = `?autostarttoken=${autoStartToken}&redirect=null`;
