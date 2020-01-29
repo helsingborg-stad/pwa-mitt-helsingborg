@@ -27,6 +27,10 @@ const UnStyledInput = styled.input`
   flex: 1;
   padding: 8px;
   border: 0;
+
+  :focus-within {
+    outline: 0;
+  }
 `;
 
 const InputStyledView = styled.div`
