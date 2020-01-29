@@ -186,14 +186,16 @@ class Chat extends Component {
             <ChatBody>
               <ChatMessages messages={messages} chat={{ ...instanceMethods, ...this.state }} />
             </ChatBody>
-            <ChatFooter>
-              {inputComponents && inputComponents.length > 0 ? (
+
+            {inputComponents && inputComponents.length > 0 ? (
+              <ChatFooter>
                 <ChatUserInput
                   inputArray={inputComponents}
                   chat={{ ...instanceMethods, ...this.state }}
                 />
-              ) : null}
-            </ChatFooter>
+              </ChatFooter>
+            ) : null}
+
             {/* <Modal {...modal} changeModal={visible => this.changeModal(visible)} /> */}
           </ChatWrapper>
         )}
