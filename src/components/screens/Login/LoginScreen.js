@@ -118,6 +118,11 @@ class LoginScreen extends Component {
     try {
       const { loginUser } = this.props.authentication;
       await loginUser(personalNumber);
+
+      // TODO: Make better fix and move somewhere else
+      // Remove anchor from url
+      window.location.hash = '';
+
       history.push('/chat');
     } catch (e) {
       if (e.message !== 'cancelled') {
