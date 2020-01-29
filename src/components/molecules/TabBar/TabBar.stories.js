@@ -13,7 +13,7 @@ const tabItems = [
 
 export default {
   component: TabBarNavigation,
-  title: 'TabBar',
+  title: 'TabBarNavigation',
 };
 
 export const Default = () => (

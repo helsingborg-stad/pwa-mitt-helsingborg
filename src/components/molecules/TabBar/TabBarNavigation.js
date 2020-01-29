@@ -42,7 +42,7 @@ const TabItem = styled.div`
   }
 `;
 
-const TabItemText = styled.div`
+const TabItemText = styled.p`
   user-select: none;
 `;
 
