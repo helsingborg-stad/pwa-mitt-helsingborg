@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { FadeLoader } from 'react-spinners';
 import { isMobile } from 'react-device-detect';
 import styled from 'styled-components';
-import Button from '../atoms/Button';
-import Text from '../atoms/Text';
+import { Button, Text } from '../atoms';
 
 const AuthLoading = ({ cancelLogin }) => (
   <AuthLoadingWrapper>

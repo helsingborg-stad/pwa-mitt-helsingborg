@@ -1,10 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import styled from 'styled-components';
-import StoryWrapper from '../molecules/StoryWrapper';
+import StoryWrapper from '../../molecules/StoryWrapper';
 import Button from './Button';
-import Text from './Text';
-import Icon from './Icon';
+import { Text, Icon } from '..';
 
 const CustomButton = styled(Button)`
   background-color: #afca05;

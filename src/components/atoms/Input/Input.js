@@ -38,5 +38,6 @@ Input.defaultProps = {
   },
 };
 
+Input.css = input;
+
 export default Input;
-export { input };

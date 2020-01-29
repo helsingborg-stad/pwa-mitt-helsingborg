@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import validator from 'validator';
 import EventHandler, { EVENT_USER_MESSAGE } from '../../../helpers/EventHandler';
 import forms from '../../../assets/forms.js';
-import ChatBubble from '../../atoms/ChatBubble';
-import ChatDivider from '../../atoms/ChatDivider';
+import { ChatBubble, ChatDivider } from '../../atoms';
 import StorageService, { USER_KEY } from '../../../services/StorageService';
 import MarkdownConstructor from '../../../helpers/MarkdownConstructor';
 

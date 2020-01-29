@@ -9,10 +9,7 @@ import styled from 'styled-components';
 // import { withNavigation } from 'react-navigation';
 
 import FormAgent from '../organisms/FormAgent/FormAgent';
-import Button from '../atoms/Button';
-import Icon from '../atoms/Icon';
-import Text from '../atoms/Text';
-import ChatBubble from '../atoms/ChatBubble';
+import { Button, Icon, Text, ChatBubble } from '../atoms';
 
 const ActionButton = props => (
   <ModifiedButton onClick={props.clickAction} color="light" rounded block>
