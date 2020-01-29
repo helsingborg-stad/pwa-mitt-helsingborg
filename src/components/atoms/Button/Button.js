@@ -6,11 +6,11 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import { PropTypes } from 'prop-types';
-import z from '../../styles/shadow';
+import z from '../../../styles/shadow';
 
-import Text from './Text';
-import Icon from './Icon';
-import colors from '../../styles/colors';
+import Text from '../Text';
+import Icon from '../Icon';
+import colors from '../../../styles/colors';
 
 const ButtonNew = ({
   children,

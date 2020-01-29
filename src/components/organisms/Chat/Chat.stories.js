@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Chat from './Chat';
-import StoryWrapper from '../molecules/StoryWrapper';
-import EventHandler, { EVENT_USER_MESSAGE } from '../../helpers/EventHandler';
-import ChatBubble from '../atoms/ChatBubble';
+import StoryWrapper from '../../molecules/StoryWrapper';
+import EventHandler, { EVENT_USER_MESSAGE } from '../../../helpers/EventHandler';
+import { ChatBubble } from '../../atoms';
 
 export default {
   title: 'Chat',
