@@ -8,4 +8,5 @@ export { default as ChatSubmitButton } from './ChatSubmitButton';
 export { default as ChatWrapper } from './ChatWrapper';
 export { default as Heading } from './Heading';
 export { default as Icon } from './Icon';
+export { default as Input } from './Input';
 export { default as Text } from './Text';
