@@ -13,7 +13,7 @@ const TabBarNavigation = props => {
         {tabItems.map(item => (
           <TabItem onClick={item.onClick}>
             <Icon name={item.tabIcon} size={32} />
-            <div>{item.tabText}</div>
+            <TabItemText>{item.tabText}</TabItemText>
           </TabItem>
         ))}
       </Tab>
@@ -32,7 +32,6 @@ const Tab = styled.div`
   justify-content: space-between;
 `;
 
-// TODO: Disable text selection highlighting.
 const TabItem = styled.div`
   text-align: center;
   padding: 14px 16px;
@@ -41,9 +40,10 @@ const TabItem = styled.div`
     background-color: #ddd;
     color: black;
   }
-  div {
-    user-select: none;
-  }
+`;
+
+const TabItemText = styled.div`
+  user-select: none;
 `;
 
 TabBarNavigation.propTypes = {
