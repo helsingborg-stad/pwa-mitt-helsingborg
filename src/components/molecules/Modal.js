@@ -13,12 +13,21 @@ const ModalContainer = styled(ReactModal)`
   margin-top: 32px;
   border-top-left-radius: 17.5px;
   border-top-right-radius: 17.5px;
+  height: 100%;
+  background-color: ${props => props.theme.background.lightest};
+`;
+
+const CloseButton = styled(Button)`
+  border: none;
+  background-color: white;
+  float: right;
 `;
 
 const Header = styled.div`
+  display: flex;
   flex-direction: row;
   border: 1px solid ${props => props.theme.background.lighter};
-  border-bottom-width: 2;
+  border-bottom-width: 2px;
   border-top-left-radius: 17.5px;
   border-top-right-radius: 17.5px;
   background-color: white;
@@ -44,11 +53,9 @@ const Title = styled(Heading)`
 `;
 
 const Content = styled.div`
+  height: 100%;
   background-color: ${props => props.theme.background.lightest};
-`;
-
-const ModalView = styled.div`
-  padding: 32px 16px 32px 16px;
+  padding: 8px 16px 8px 16px;
 `;
 
 const Modal = ({ visible, heading, content, changeModal, color }) => (
@@ -68,20 +75,19 @@ const Modal = ({ visible, heading, content, changeModal, color }) => (
           </Title>
         </FlexInner>
         <FlexOuter>
-          <Button
+          <CloseButton
+            z="0"
+            size="small"
             onClick={() => {
               changeModal(!visible);
             }}
-            underlayColor="white"
           >
             <Text>Klar</Text>
-          </Button>
+          </CloseButton>
         </FlexOuter>
       </Header>
       <Content>
-        <ModalView>
-          <Text>{content}</Text>
-        </ModalView>
+        <Text>{content}</Text>
       </Content>
     </Flex>
   </ModalContainer>
