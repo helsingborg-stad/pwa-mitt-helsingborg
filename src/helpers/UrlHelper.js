@@ -60,11 +60,14 @@ export const buildBankIdClientUrl = autoStartToken => {
   let bankIdAppUrl;
 
   if (isIOS) {
-    // Adds a random anchor hash to avoid page reload
-    params = `?autostarttoken=${autoStartToken}&redirect=${window.location.href}#${Math.floor(
-      Math.random() * 10000000
-    )}`;
-    // = 'https://app.bankid.com/';
+    /**
+     * Adds a random anchor to avoid page reload after redirect on ios
+     * TODO: Make a better solution to trigger BankID app and redirect back to this app after login
+     */
+    const redirectUrl = encodeURI(
+      `${window.location.href}#${Math.floor(Math.random() * 10000000)}`
+    );
+    params = `?autostarttoken=${autoStartToken}&redirect=${redirectUrl}`;
     bankIdAppUrl = 'bankid:///';
   } else {
     params = `?autostarttoken=${autoStartToken}&redirect=null`;
