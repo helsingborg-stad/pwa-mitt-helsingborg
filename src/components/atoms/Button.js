@@ -79,6 +79,7 @@ const ButtonNew = ({
         buttonSize={size}
         rounded={rounded}
         pill={pill}
+        className={className}
         style={style}
         icon={iconComponentsTotal === 1 && childrenTotal === 1 ? true : icon}
         z={elevation}
