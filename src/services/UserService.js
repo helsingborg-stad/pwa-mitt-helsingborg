@@ -13,25 +13,19 @@ export const resetCancel = () => {
   cancelled = false;
 };
 
-// /**
-//  * Launch BankID app
-//  * @param {string} bankIdClientUrl
-//  */
-// const launchBankIdApp = async autoStartToken => {
-//   const bankIdClientUrl = buildBankIdClientUrl(autoStartToken);
-//   console.log('bankIdClientUrl', bankIdClientUrl);
-//   window.location = bankIdClientUrl;
-// };
+/**
+ * Launch BankID app
+ * @param {string} bankIdClientUrl
+ */
+const launchBankIdApp = async autoStartToken => {
+  const bankIdClientUrl = buildBankIdClientUrl(autoStartToken);
 
-// TODO: Fix Launch bankid app and test if app is installed
-// /**
-//  * Open requested URL
-//  * @param {string} url
-//  */
-// const openURL = url =>
-//   Linking.openURL(url)
-//     .then(() => true)
-//     .catch(() => false);
+  const anchor = document.createElement('a');
+  anchor.href = bankIdClientUrl;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+};
 
 /**
  * Make an auth request to BankID API and poll until done
@@ -66,13 +60,7 @@ export const authorize = personalNumber =>
 
     // Launch BankID App
     if (isMobile) {
-      const bankIdClientUrl = buildBankIdClientUrl(auto_start_token);
-      console.log('bankIdClientUrl', bankIdClientUrl);
-      const anchor = document.createElement('a');
-      anchor.href = bankIdClientUrl;
-      document.body.appendChild(anchor);
-      anchor.click();
-      anchor.remove();
+      launchBankIdApp(auto_start_token);
     }
 
     // Poll /collect/ endpoint every 2nd second until auth either success or fails
