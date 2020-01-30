@@ -25,6 +25,8 @@ const UnStyledInput = styled.input`
   padding: 8px;
   border: 0;
 
+  line-height: 1.5;
+
   &:focus {
     outline: none;
   }

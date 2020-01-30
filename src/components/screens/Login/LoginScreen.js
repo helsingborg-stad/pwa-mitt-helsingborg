@@ -164,6 +164,7 @@ class LoginScreen extends Component {
                   value={personalNumberInput}
                   onChange={this.changeHandler}
                   maxLength={12}
+                  center
                 />
               </LoginFormField>
 

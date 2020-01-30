@@ -8,6 +8,8 @@ const input = css`
   border: solid 1px ${({ theme }) => theme.input.border};
   border-radius: 17px;
 
+  line-height: 1.5;
+
   ${({ center }) => center && 'text-align: center;'}
   font-size: 14px;
   padding: 14px;
