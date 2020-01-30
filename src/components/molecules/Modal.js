@@ -7,10 +7,8 @@ import Heading from '../atoms/Heading';
 import Text from '../atoms/Text';
 
 const ModalContainer = styled(ReactModal)`
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  margin-top: 32px;
+  outline: none;
+  margin-top: 24px;
   border-top-left-radius: 17.5px;
   border-top-right-radius: 17.5px;
   height: 100%;
@@ -39,7 +37,10 @@ const Flex = styled.div`
 `;
 
 const FlexInner = styled.div`
+  display: flex;
   flex: 3;
+  align-items: center;
+  justify-content: center;
 `;
 
 const FlexOuter = styled.div`
@@ -48,7 +49,7 @@ const FlexOuter = styled.div`
 `;
 
 const Title = styled(Heading)`
-  text-align: center;
+  margin: 0;
   color: ${props => props.theme.heading[props.color][1]};
 `;
 
@@ -57,6 +58,9 @@ const Content = styled.div`
   background-color: ${props => props.theme.background.lightest};
   padding: 8px 16px 8px 16px;
 `;
+
+// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
+ReactModal.setAppElement('#root');
 
 const Modal = ({ visible, heading, content, changeModal, color }) => (
   <ModalContainer

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 import Button from '../atoms/Button';
 import Text from '../atoms/Text';
 import Modal from './Modal';
@@ -58,7 +58,8 @@ class ModalExample extends Component {
               !visible,
               'Modal one',
               'Donec ullamcorper nulla non metus auctor fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.'
-            )}
+            )
+          }
         >
           <Text>Show modal</Text>
         </Button>
