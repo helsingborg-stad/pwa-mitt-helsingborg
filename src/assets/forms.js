@@ -391,8 +391,9 @@ const forms = [
           'I Rådhusets vigselsal får det vara 20 personer samtidigt. Ni kan därför som mest ha 17 gäster till er vigsel, inklusive barn och era vittnen.',
           'Hur många gäster kommer till er vigsel?',
         ],
-        type: 'number',
+        type: 'range',
         placeholder: 'Antal',
+        max: 17,
         details: {
           group: 'wedding',
           label: 'Antal gäster',
