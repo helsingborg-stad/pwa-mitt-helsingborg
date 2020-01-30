@@ -50,19 +50,27 @@ export default class ChatUserInput extends Component {
         data = {
           Component: this.avalibleComponents.text,
           componentProps: {
-            type: 'number',
+            type: 'text',
             blurOnSubmit: false,
             autoFocus: true,
-            ...includePropetiesWithKey(input, [
-              'placeholder',
-              'autoFocus',
-              'maxLength',
-              'submitText',
-              'withForm',
-            ]),
-          },
+            keyboardType: 'numeric',
+            ...includePropetiesWithKey(input, ['placeholder', 'autoFocus', 'maxLength', 'submitText', 'withForm']),
+          }
         };
         break;
+
+        case 'range':
+          data = {
+            Component: this.avalibleComponents.text,
+            componentProps: {
+              type: 'number',
+              blurOnSubmit: false,
+              autoFocus: true,
+              keyboardType: 'numeric',
+              ...includePropetiesWithKey(input, ['placeholder', 'autoFocus', 'maxLength', 'submitText', 'withForm', 'min', 'max']),
+          }
+          };
+          break;
 
       case 'radio':
         data = {
