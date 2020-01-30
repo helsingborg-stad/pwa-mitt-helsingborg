@@ -22,8 +22,6 @@ const ButtonStackWrapper = styled.div``;
 
 const ModifiedButton = styled(Button)`
   justify-content: flex-start;
-  margin-left: 16px;
-  margin-right: 16px;
   margin-top: 6px;
   margin-bottom: 6px;
 `;
@@ -90,7 +88,7 @@ const ButtonStack = props => {
     return <ActionButton {...buttonProps} key={`${item}-${index}`} />;
   };
 
-  return <ButtonStackWrapper>{items.map(renderItem)}</ButtonStackWrapper>;
+  return <ButtonStackWrapper className={props.className}>{items.map(renderItem)}</ButtonStackWrapper>;
 };
 
 // export default withNavigation(ButtonStack);

@@ -16,9 +16,15 @@ import { ChatBubble, ChatDivider } from '../../atoms';
 import ButtonStack from '../../molecules/ButtonStack';
 import StorageService, { COMPLETED_FORMS_KEY, USER_KEY } from '../../../services/StorageService';
 import MarkdownConstructor from '../../../helpers/MarkdownConstructor';
+import styled from 'styled-components';
 
 let context;
 let sessionId;
+
+const ButtonStackWithMargin = styled(ButtonStack)`
+  margin-left: 16px;
+  margin-right: 16px;
+`;
 
 export default class WatsonAgent extends Component {
   state = {
@@ -61,7 +67,7 @@ export default class WatsonAgent extends Component {
           },
         });
         chat.addMessages({
-          Component: props => <ButtonStack {...props} chat={chat} />,
+          Component: props => <ButtonStackWithMargin {...props} chat={chat} />,
           componentProps: {
             items: [
               {
@@ -117,7 +123,7 @@ export default class WatsonAgent extends Component {
     }
     await chat.addMessages([
       {
-        Component: props => <ButtonStack {...props} chat={chat} />,
+        Component: props => <ButtonStackWithMargin {...props} chat={chat} />,
         componentProps: {
           items: [
             {
@@ -248,7 +254,7 @@ export default class WatsonAgent extends Component {
             const optionType = options[0].type;
             if (optionType === 'chat') {
               return chat.addMessages({
-                Component: props => <ButtonStack {...props} chat={chat} />,
+                Component: props => <ButtonStackWithMargin {...props} chat={chat} />,
                 componentProps: {
                   items: options,
                 },
