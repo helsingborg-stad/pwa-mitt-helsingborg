@@ -5,6 +5,7 @@ import styled, { withTheme } from 'styled-components';
 import Button from '../atoms/Button';
 import Heading from '../atoms/Heading';
 import Text from '../atoms/Text';
+import MarkdownConstructor from '../../helpers/MarkdownConstructor';
 
 const ModalContainer = styled(ReactModal)`
   outline: none;
@@ -91,7 +92,7 @@ const Modal = ({ visible, heading, content, changeModal, color }) => (
         </FlexOuter>
       </Header>
       <Content>
-        <Text>{content}</Text>
+        <MarkdownConstructor rawText={content} />
       </Content>
     </Flex>
   </ModalContainer>
