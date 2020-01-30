@@ -7,6 +7,8 @@ const ChatBody = styled.div`
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   z-index: 0;
+
+  touch-action: auto;
 `;
 
 export default ChatBody;

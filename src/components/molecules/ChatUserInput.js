@@ -153,4 +153,5 @@ const ChatUserInputWrapper = styled.div`
   overflow: visible;
   border-top-width: 1px;
   border-color: ${props => props.theme.border.default};
+  touch-action: auto;
 `;
