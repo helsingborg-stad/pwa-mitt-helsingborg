@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import ChatMessages from '../../molecules/ChatMessages';
-// import Modal from '../molecules/Modal';
+import Modal from '../../molecules/Modal';
 
 import { ChatBody, ChatWrapper, ChatFooter } from '../../atoms';
 
@@ -196,7 +196,7 @@ class Chat extends Component {
               </ChatFooter>
             ) : null}
 
-            {/* <Modal {...modal} changeModal={visible => this.changeModal(visible)} /> */}
+            <Modal {...modal} changeModal={visible => this.changeModal(visible)} />
           </ChatWrapper>
         )}
       </StoreContext.Consumer>
