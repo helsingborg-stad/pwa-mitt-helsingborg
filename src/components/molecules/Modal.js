@@ -29,7 +29,7 @@ const Header = styled.div`
   border-top-left-radius: 17.5px;
   border-top-right-radius: 17.5px;
   background-color: white;
-  padding: 16px 16px 12px 16px;
+  padding: 12px 12px 8px 12px;
 `;
 
 const Flex = styled.div`
