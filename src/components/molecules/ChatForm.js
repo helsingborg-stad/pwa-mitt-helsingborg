@@ -35,7 +35,6 @@ const InputStyledView = styled.div`
 `;
 
 const ChatForm = props => {
-  const { style, renderFooter, submitHandler, changeHandler, inputValue, isFocused } = props;
   const {
     style,
     renderFooter,
