@@ -160,6 +160,7 @@ class LoginScreen extends Component {
 
               <LoginFormField>
                 <Input
+                  type="number"
                   placeholder="ÅÅÅÅMMDDXXXX"
                   value={personalNumberInput}
                   onChange={this.changeHandler}
