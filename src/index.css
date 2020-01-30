@@ -12,6 +12,9 @@ body,
   height: 100%;
   width: 100%;
   overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 * {
@@ -21,4 +24,18 @@ body,
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+p {
+  line-height: 1.4;
+  color: #565656;
+  font-weight: 500;
+}
+
+p:first-child {
+  margin-top: 0;
+}
+
+p:last-child {
+  margin-bottom: 0;
 }
