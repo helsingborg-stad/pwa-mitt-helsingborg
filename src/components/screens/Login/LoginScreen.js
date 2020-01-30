@@ -15,6 +15,7 @@ const Logo = styled.img`
 const LoginScreenWrapper = styled(ScreenWrapper)`
   background-color: #f5f5f5;
   padding: 16px;
+  position: relative;
 `;
 
 const LoginFormFooter = styled.div`
@@ -31,14 +32,19 @@ const Link = styled.button`
 `;
 
 const LoginKeyboardAvoidingView = styled.div`
+  display: flex;
+  flex-direction: column;
   flex: 1;
   align-items: stretch;
+  height: 100%;
 `;
 
 const LoginHeader = styled.div`
   text-align: center;
   flex: 1;
   justify-content: center;
+  align-items: center;
+  display: flex;
 `;
 
 const LoginBody = styled.div`
