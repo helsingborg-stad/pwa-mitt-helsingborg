@@ -6,6 +6,7 @@ const ChatFooter = styled.div`
   padding-bottom: 12px;
   padding-left: 16px;
   padding-right: 16px;
+  touch-action: none;
 `;
 
 export default ChatFooter;
