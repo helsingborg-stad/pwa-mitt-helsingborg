@@ -1,3 +1,5 @@
+/* eslint-disable prefer-const */
+/* eslint-disable react/jsx-props-no-spreading */
 // import { TextInput } from 'react-native';
 import React from 'react';
 import styled, { css } from 'styled-components';
@@ -35,13 +37,51 @@ const input = css`
   }
 `;
 
-const Input = styled.input`
+const StyledInput = styled.input`
   ${input}
 `;
+
+const Input = props => {
+  console.log('TCL: props', props);
+  const { maxLength, onChange, keyboardType } = props;
+  const mutatedProps = { ...props };
+
+  const patterns = {
+    numeric: '[0-9]*',
+  };
+
+  // Set pattern (for keyboard UI)
+  if (keyboardType && Object.keys(patterns).includes(keyboardType)) {
+    mutatedProps.pattern = patterns[keyboardType];
+  }
+
+  const localOnChange = e => {
+    // event mainupulation
+    const event = e;
+
+    // maxLength manipulation
+    if (maxLength && event.target.value && event.target.value.length > maxLength) {
+      event.target.value = event.target.value.substring(0, maxLength);
+    }
+
+    // trigger default onChange
+    if (onChange && typeof onChange === 'function') {
+      onChange(event);
+    }
+  };
+
+  // Override onChange
+  mutatedProps.onChange = localOnChange;
+
+  return <StyledInput {...mutatedProps} />;
+};
 
 Input.propTypes = {
   type: PropTypes.string,
   theme: PropTypes.object,
+  onChange: PropTypes.func,
+  maxLength: PropTypes.number,
+  keyboardType: PropTypes.string,
 };
 
 Input.defaultProps = {
