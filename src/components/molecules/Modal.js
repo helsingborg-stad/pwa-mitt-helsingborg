@@ -61,7 +61,7 @@ const Content = styled.div`
 `;
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-ReactModal.setAppElement('#root');
+ReactModal.setAppElement(document.getElementById('root'));
 
 const Modal = ({ visible, heading, content, changeModal, color }) => (
   <ModalContainer
