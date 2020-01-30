@@ -3,6 +3,9 @@ body {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.4;
+  color: #565656;
+  font-weight: 500;
 }
 
 html,
@@ -28,16 +31,29 @@ code {
     monospace;
 }
 
-p {
-  line-height: 1.4;
-  color: #565656;
-  font-weight: 500;
+p,
+ul {
+  margin: 0;
 }
 
-p:first-child {
-  margin-top: 0;
-}
-
-p:last-child {
+p:last-child,
+ul:last-child {
   margin-bottom: 0;
+}
+
+p,
+ul {
+  margin-bottom: 12px;
+}
+
+ul {
+  padding-left: 24px;
+}
+
+li + li {
+  margin-top: 4px;
+}
+
+a {
+  color: #3d3d3d;
 }
