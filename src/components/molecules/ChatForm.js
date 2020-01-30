@@ -20,30 +20,10 @@ const ChatFormButtonIcon = styled(Icon)`
   color: ${props => props.theme.icon.light};
 `;
 
-const UnStyledInput = styled.input`
+const UnStyledInput = styled(Input)`
   flex: 1;
   padding: 8px;
   border: 0;
-
-  line-height: 1.5;
-
-  &:focus {
-    outline: none;
-  }
-  -webkit-appearance: none;
-
-  ::-webkit-input-placeholder {
-    color: ${({ theme }) => theme.input.placeholder};
-  }
-  ::-moz-placeholder {
-    color: ${({ theme }) => theme.input.placeholder};
-  }
-  :-ms-input-placeholder {
-    color: ${({ theme }) => theme.input.placeholder};
-  }
-  :-moz-placeholder {
-    color: ${({ theme }) => theme.input.placeholder};
-  }
 `;
 
 const InputStyledView = styled.div`
@@ -56,6 +36,15 @@ const InputStyledView = styled.div`
 
 const ChatForm = props => {
   const { style, renderFooter, submitHandler, changeHandler, inputValue, isFocused } = props;
+  const {
+    style,
+    renderFooter,
+    submitHandler,
+    changeHandler,
+    inputValue,
+    isFocused,
+    keyboardType,
+  } = props;
   const formProps = { submitHandler, changeHandler, inputValue };
 
   const children = props.children
@@ -69,6 +58,7 @@ const ChatForm = props => {
             onChange: changeHandler,
             value: inputValue,
             onSubmit: submitHandler,
+            keyboardType,
             ...child.props,
           });
         }
@@ -93,7 +83,7 @@ const ChatForm = props => {
               onChange={changeHandler}
               onSubmit={submitHandler}
               placeholder="Skriv något... "
-              keyboardType="default"
+              keyboardType={keyboardType || 'default'}
               focus={!!isFocused}
             />
           )}
