@@ -13,6 +13,8 @@ const OFFSET_BOTTOM = 24;
 const ChatMessagesFlatList = styled.div`
   padding: 24px 0px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 `;
 
 const TypeIndicator = props => (
@@ -80,13 +82,14 @@ class ChatMessages extends Component {
     const { messages, forwardProps, chat } = this.props;
     return (
       <ChatMessagesFlatList>
-        {messages.map(this.renderItem)}{' '}
+        {messages.map(this.renderItem)}
         <div
           style={{ float: 'left', clear: 'both' }}
           ref={el => {
             this.flatListRef = el;
           }}
         ></div>
+        {chat.isTyping ? <TypeIndicator /> : null}
       </ChatMessagesFlatList>
     );
   }
