@@ -48,11 +48,11 @@ export default class ChatUserInput extends Component {
 
       case 'number':
         data = {
-          Component: this.avalibleComponents.number,
+          Component: this.avalibleComponents.text,
           componentProps: {
+            type: 'number',
             blurOnSubmit: false,
             autoFocus: true,
-            keyboardType: 'numeric',
             ...includePropetiesWithKey(input, [
               'placeholder',
               'autoFocus',
@@ -79,30 +79,54 @@ export default class ChatUserInput extends Component {
 
       case 'datetime':
         data = {
-          Component: this.avalibleComponents.dateTime,
+          Component: this.avalibleComponents.text,
           componentProps: {
-            mode: 'datetime',
-            ...includePropetiesWithKey(input, ['placeholder', 'selectorProps']),
+            type: 'time',
+            blurOnSubmit: false,
+            autoFocus: true,
+            ...includePropetiesWithKey(input, [
+              'placeholder',
+              'autoFocus',
+              'maxLength',
+              'submitText',
+              'withForm',
+            ]),
           },
         };
         break;
 
       case 'date':
         data = {
-          Component: this.avalibleComponents.dateTime,
+          Component: this.avalibleComponents.text,
           componentProps: {
-            mode: 'date',
-            ...includePropetiesWithKey(input, ['placeholder', 'selectorProps']),
+            type: 'date',
+            blurOnSubmit: false,
+            autoFocus: true,
+            ...includePropetiesWithKey(input, [
+              'placeholder',
+              'autoFocus',
+              'maxLength',
+              'submitText',
+              'withForm',
+            ]),
           },
         };
         break;
 
       case 'time':
         data = {
-          Component: this.avalibleComponents.dateTime,
+          Component: this.avalibleComponents.text,
           componentProps: {
-            mode: 'time',
-            ...includePropetiesWithKey(input, ['placeholder', 'selectorProps']),
+            type: 'time',
+            blurOnSubmit: false,
+            autoFocus: true,
+            ...includePropetiesWithKey(input, [
+              'placeholder',
+              'autoFocus',
+              'maxLength',
+              'submitText',
+              'withForm',
+            ]),
           },
         };
         break;

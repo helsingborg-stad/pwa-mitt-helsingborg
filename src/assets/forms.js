@@ -216,7 +216,8 @@ const forms = [
       {
         id: 'weddingDate',
         name: 'Vilket datum vill ni gifta er?',
-        type: 'text',
+        type: 'date',
+        placeholder: 'Ange datum',
         details: {
           group: 'wedding',
           label: 'Datum för vigsel',
@@ -250,7 +251,8 @@ const forms = [
       {
         id: 'weddingTime',
         name: 'Vilken tid?',
-        type: 'text',
+        type: 'time',
+        placeholder: 'Ange tid',
         details: {
           group: 'wedding',
           label: 'Tid för vigsel',
