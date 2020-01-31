@@ -23,7 +23,7 @@ z[1] = css`
 `;
 
 z[0] = css`
-  box-shadow: 0px 1px 2px rgba(98, 98, 98, 0.18), 0px 0px 2px rgba(98, 98, 98, 0.18);
+  box-shadow: none;
 `;
 
 export default z;

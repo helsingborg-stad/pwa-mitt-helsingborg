@@ -5,9 +5,7 @@ import React, { Component } from 'react';
 // import { Text, View, FlatList } from 'react-native';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
-import ChatBubble from '../../atoms/ChatBubble';
-
-import Text from '../../atoms/Text';
+import { ChatBubble, Text } from '../../atoms';
 
 const OFFSET_TOP = 0;
 const OFFSET_BOTTOM = 24;
@@ -15,6 +13,8 @@ const OFFSET_BOTTOM = 24;
 const ChatMessagesFlatList = styled.div`
   padding: 24px 0px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 `;
 
 const TypeIndicator = props => (
@@ -82,13 +82,14 @@ class ChatMessages extends Component {
     const { messages, forwardProps, chat } = this.props;
     return (
       <ChatMessagesFlatList>
-        {messages.map(this.renderItem)}{' '}
+        {messages.map(this.renderItem)}
         <div
           style={{ float: 'left', clear: 'both' }}
           ref={el => {
             this.flatListRef = el;
           }}
         ></div>
+        {chat.isTyping ? <TypeIndicator /> : null}
       </ChatMessagesFlatList>
     );
   }

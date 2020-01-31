@@ -216,7 +216,8 @@ const forms = [
       {
         id: 'weddingDate',
         name: 'Vilket datum vill ni gifta er?',
-        type: 'text',
+        type: 'date',
+        placeholder: 'Ange datum',
         details: {
           group: 'wedding',
           label: 'Datum för vigsel',
@@ -250,7 +251,8 @@ const forms = [
       {
         id: 'weddingTime',
         name: 'Vilken tid?',
-        type: 'text',
+        type: 'time',
+        placeholder: 'Ange tid',
         details: {
           group: 'wedding',
           label: 'Tid för vigsel',
@@ -389,8 +391,9 @@ const forms = [
           'I Rådhusets vigselsal får det vara 20 personer samtidigt. Ni kan därför som mest ha 17 gäster till er vigsel, inklusive barn och era vittnen.',
           'Hur många gäster kommer till er vigsel?',
         ],
-        type: 'number',
+        type: 'range',
         placeholder: 'Antal',
+        max: 17,
         details: {
           group: 'wedding',
           label: 'Antal gäster',

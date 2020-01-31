@@ -12,14 +12,19 @@ import React, { Component } from 'react';
 // import { Alert } from 'react-native';
 import EventHandler, { EVENT_USER_MESSAGE } from '../../../helpers/EventHandler';
 import { sendChatMsg } from '../../../services/ChatFormService';
-import ChatBubble from '../../atoms/ChatBubble';
-import ChatDivider from '../../atoms/ChatDivider';
+import { ChatBubble, ChatDivider } from '../../atoms';
 import ButtonStack from '../../molecules/ButtonStack';
 import StorageService, { COMPLETED_FORMS_KEY, USER_KEY } from '../../../services/StorageService';
 import MarkdownConstructor from '../../../helpers/MarkdownConstructor';
+import styled from 'styled-components';
 
 let context;
 let sessionId;
+
+const ButtonStackWithMargin = styled(ButtonStack)`
+  margin-left: 16px;
+  margin-right: 16px;
+`;
 
 export default class WatsonAgent extends Component {
   state = {
@@ -62,7 +67,7 @@ export default class WatsonAgent extends Component {
           },
         });
         chat.addMessages({
-          Component: props => <ButtonStack {...props} chat={chat} />,
+          Component: props => <ButtonStackWithMargin {...props} chat={chat} />,
           componentProps: {
             items: [
               {
@@ -118,7 +123,7 @@ export default class WatsonAgent extends Component {
     }
     await chat.addMessages([
       {
-        Component: props => <ButtonStack {...props} chat={chat} />,
+        Component: props => <ButtonStackWithMargin {...props} chat={chat} />,
         componentProps: {
           items: [
             {
@@ -169,7 +174,7 @@ export default class WatsonAgent extends Component {
     try {
       const { REACT_APP_WATSON_ASSISTANT_ID } = process.env;
       if (!REACT_APP_WATSON_ASSISTANT_ID) {
-        throw new Error('Missing Watson workspace ID');
+        throw new Error('Missing Watson assistant ID');
       }
       /**
        * TODO: FOR DEV PURPOSE ONLY, REMOVE ME LATER
@@ -249,7 +254,7 @@ export default class WatsonAgent extends Component {
             const optionType = options[0].type;
             if (optionType === 'chat') {
               return chat.addMessages({
-                Component: props => <ButtonStack {...props} chat={chat} />,
+                Component: props => <ButtonStackWithMargin {...props} chat={chat} />,
                 componentProps: {
                   items: options,
                 },

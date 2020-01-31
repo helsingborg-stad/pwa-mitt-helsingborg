@@ -3,10 +3,7 @@
 import React from 'react';
 // import { Keyboard, TextInput, View, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import styled from 'styled-components';
-import Input, { input as inputStyles } from '../atoms/Input';
-import Button from '../atoms/Button';
-import Icon from '../atoms/Icon';
-import Text from '../atoms/Text';
+import { Button, Icon, Text, Input } from '../atoms';
 
 const ChatFormWrapper = styled.div``;
 const ChatFormFooter = styled.div``;
@@ -23,14 +20,14 @@ const ChatFormButtonIcon = styled(Icon)`
   color: ${props => props.theme.icon.light};
 `;
 
-const UnStyledInput = styled.input`
+const UnStyledInput = styled(Input)`
   flex: 1;
   padding: 8px;
   border: 0;
 `;
 
 const InputStyledView = styled.div`
-  ${inputStyles}
+  ${Input.css}
   padding: 8px;
   flex-direction: row;
   flex: 1;
@@ -38,7 +35,15 @@ const InputStyledView = styled.div`
 `;
 
 const ChatForm = props => {
-  const { style, renderFooter, submitHandler, changeHandler, inputValue, isFocused } = props;
+  const {
+    style,
+    renderFooter,
+    submitHandler,
+    changeHandler,
+    inputValue,
+    isFocused,
+    keyboardType,
+  } = props;
   const formProps = { submitHandler, changeHandler, inputValue };
 
   const children = props.children
@@ -52,6 +57,7 @@ const ChatForm = props => {
             onChange: changeHandler,
             value: inputValue,
             onSubmit: submitHandler,
+            keyboardType,
             ...child.props,
           });
         }
@@ -76,7 +82,7 @@ const ChatForm = props => {
               onChange={changeHandler}
               onSubmit={submitHandler}
               placeholder="Skriv något... "
-              keyboardType="default"
+              keyboardType={keyboardType || 'default'}
               focus={!!isFocused}
             />
           )}
