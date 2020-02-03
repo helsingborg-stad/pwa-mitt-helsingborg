@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { NavItems, CompletedTasks, ActiveTasks } from '../../../assets/dashboard';
 import forms from '../../../assets/forms';
-// import GroupedList from "../../molecules/GroupedList";
+import GroupedList from '../../molecules/GroupedList';
 import StorageService, { COMPLETED_FORMS_KEY, USER_KEY } from '../../../services/StorageService';
 
 import Header from '../../molecules/Header';
@@ -119,7 +119,9 @@ class TaskScreen extends Component {
             )}
           </List>
 
-          <List>{/* <GroupedList heading="Avslutade" items={CompletedTasks} /> */}</List>
+          <List>
+            <GroupedList heading="Avslutade" items={CompletedTasks} />
+          </List>
         </Container>
       </TaskScreenWrapper>
     );
