@@ -3,7 +3,7 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 
-const PrivateRoute = ({ route, ...rest }) => {
+export const PrivateRoute = ({ route, ...rest }) => {
   // TODO: Implement check towards localstorage token.
   const isLoggedin = true;
   return (
@@ -14,12 +14,13 @@ const PrivateRoute = ({ route, ...rest }) => {
           <route.component {...props} routes={route.routes} />
         ) : (
           <Redirect to={{ pathname: `/${route.redirectTo}` }} />
-        )}
+        )
+      }
     />
   );
 };
 
-const PublicRoute = ({ route, ...rest }) => (
+export const PublicRoute = ({ route, ...rest }) => (
   <Route {...rest} render={props => <route.component {...props} routes={route.routes} />} />
 );
 
@@ -27,7 +28,7 @@ const PublicRoute = ({ route, ...rest }) => (
  * Render a route with potential sub routes
  * https://reacttraining.com/react-router/web/example/route-config
  */
-function RouteWithSubRoutes(route) {
+export function RouteWithSubRoutes(route) {
   const { path, exact, private: privateRoute } = route;
   const RouteComponent = privateRoute ? PrivateRoute : PublicRoute;
 
@@ -42,8 +43,6 @@ export const RenderRoutes = ({ routes, ...rest }) => (
     {routes.map((route, i) => (
       <RouteWithSubRoutes key={route.key} {...route} {...rest} />
     ))}
-    {/* TODO: Add 404 Page for non matching routes */}
-    <Route component={() => <h1>Not Found!</h1>} />
   </Switch>
 );
 
