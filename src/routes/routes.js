@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import LoginScreen from '../components/screens/Login';
 import ChatScreen from '../components/screens/ChatScreen';
 import ScreenTabWrapper from '../components/screens/ScreenTabWrapper';
+import TaskScreen from '../components/screens/Task/TaskScreen';
 
 const ROUTES = [
   {
@@ -38,7 +39,7 @@ const ROUTES = [
         key: 'TASKS',
         private: true,
         redirectTo: '',
-        component: () => <Link to="/tasks/1">Task 1</Link>,
+        component: TaskScreen,
         tab: {
           icon: 'home',
           text: 'Ärenden',

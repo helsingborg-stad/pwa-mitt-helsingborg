@@ -69,8 +69,8 @@ class TaskScreen extends Component {
   };
 
   renderTaskItem = item => {
+    const { history } = this.props;
     const { user } = this.state;
-    // const { navigation } = this.props;
 
     const form = forms.find(form => form.id === item.formId);
     if (!form) {
@@ -85,13 +85,7 @@ class TaskScreen extends Component {
         text={form.name}
         iconName={form.icon || null}
         imageSrc={form.imageIcon || null}
-        // onClick={() =>
-        //   // navigation.navigate('TaskDetails', {
-        //   //   answers: item.data,
-        //   //   form,
-        //   //   user,
-        //   // })
-        // }
+        onClick={() => history.push(`/tasks/${item.id}`)}
       />
     );
   };
