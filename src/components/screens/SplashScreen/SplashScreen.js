@@ -16,21 +16,23 @@ import ImageEasy from '../../../assets/slides/illu_001.png';
 import ImageAccessible from '../../../assets/slides/illu_002.png';
 import ImagePersonal from '../../../assets/slides/illu_003.png';
 
-const FlexContainer = styled.div`
+const Container = styled.div`
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: 100%;
+  background: #f5f5f5;
 `;
 
 const Swiper = styled(SwipeableViews)`
-  flex-grow: 1;
-  border: 1px solid aqua;
-  background: #f5f5f5;
+  // border: 2px solid DodgerBlue;
+  height: 100%;
 `;
 
 const SwipeButton = styled(Button)`
   background: transparent;
   border: none;
+  padding-right: 0px;
 `;
 
 const LoginButton = styled(Button)`
@@ -40,20 +42,18 @@ const LoginButton = styled(Button)`
 `;
 
 const Slide = styled.div`
-  border: 3px solid orange;
+  // border: 2px solid orange;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
 `;
 
 const TopBar = styled.div`
-  border: 1px solid magenta;
-
-  display: flex;
-  height: 70px;
-  align-items: center;
-  justify-content: flex-end;
+  // border: 1px solid magenta;
+  display: grid;
+  justify-content: end;
+  align-content: center;
 `;
 
 const Link = styled(Button)`
@@ -65,69 +65,75 @@ const Link = styled(Button)`
 `;
 
 const ImageContainer = styled.div`
-  border: 1px solid aqua;
-
-  display: flex;
+  // border: 1px solid aqua;
+  padding: 12px 0;
+  display: grid;
   justify-content: center;
+  align-items: center;
 `;
 
 const SlideContent = styled.div`
-  border: 1px solid green;
-
-  justify-self: center;
-  padding: 24px;
+  // border: 1px solid green;
+  padding: 16px 32px;
 `;
 
 const Logo = styled.img`
   width: 100%;
-  max-width: 120px;
+  max-width: 110px;
   height: auto;
 `;
 
 const SlideImage = styled.img`
   width: 100%;
-  max-width: 250px;
+  max-width: 200px;
   height: auto;
 `;
 
 const Navigation = styled.div`
-  height: 90px;
   background: #f5f5f5;
-`;
+  padding: 8px 24px;
 
-const NavigationFlex = styled.div`
-  padding: 0 24px 0 24px;
-  height: 100%;
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 120px auto;
+  align-content: center;
   justify-content: space-between;
 `;
 
 const DotsContainer = styled.div`
-  display: flex;
+  display: grid;
   justify-content: space-between;
-  min-width: 130px;
+  align-content: center;
+  grid-template-columns: repeat(4, auto);
 `;
 
 const Dot = styled.div`
   border: 2px solid #610839;
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
 `;
 
 const ActiveDot = styled.div`
   background: #610839;
   border: 2px solid #610839;
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
 `;
 
 const LoginButtonContainer = styled.div`
-  display: flex;
-  align-items: center;
+  padding-top: 12px;
+  padding-bottom: 16px;
+  display: grid;
   justify-content: center;
+`;
+
+const SlideHeading = styled(Heading)`
+  padding-bottom: 12px;
+`;
+
+const SlideText = styled(Text)`
+  font-size: 16px;
 `;
 
 /**
@@ -159,7 +165,7 @@ export default function SplashScreen(props) {
           Mitt <br />
           Helsingborg
         </Heading>
-        <Text>Välkommen!</Text>
+        <Heading type="h3">Välkommen! </Heading>
       </SlideContent>
     </Slide>
   );
@@ -175,11 +181,11 @@ export default function SplashScreen(props) {
         <SlideImage src={ImageEasy} alt="Easy" />
       </ImageContainer>
       <SlideContent>
-        <Heading type="h2">Enkelt</Heading>
-        <Text>
+        <SlideHeading type="h3">Enkelt</SlideHeading>
+        <SlideText>
           Mitt Helsingborg är appen där du enkelt får tillgång till tjänster och information från
           kommunen.
-        </Text>
+        </SlideText>
       </SlideContent>
     </Slide>
   );
@@ -195,11 +201,11 @@ export default function SplashScreen(props) {
         <SlideImage src={ImageAccessible} alt="Accessible" />
       </ImageContainer>
       <SlideContent>
-        <Heading type="h2">Nära</Heading>
-        <Text>
+        <SlideHeading type="h3">Nära</SlideHeading>
+        <SlideText>
           Du kan följa och hantera dina ärenden, få personlig service eller bli tipsad om saker som
           händer nära dig.
-        </Text>
+        </SlideText>
       </SlideContent>
     </Slide>
   );
@@ -211,18 +217,18 @@ export default function SplashScreen(props) {
         <SlideImage src={ImagePersonal} alt="Personal" />
       </ImageContainer>
       <SlideContent>
-        <Heading type="h2">Personligt</Heading>
-        <Text>
+        <SlideHeading type="h3">Personligt</SlideHeading>
+        <SlideText>
           Inloggad ger mer. Som inloggad får du en personlig upplevelse anpassad för dig. <br />
           <br />
           Allt samlat i mobilen.
-        </Text>
+        </SlideText>
+        <LoginButtonContainer>
+          <LoginButton color="purple" z={3} onClick={() => disableSplash()}>
+            <Text>Logga in med Mobilt BankID</Text>
+          </LoginButton>
+        </LoginButtonContainer>
       </SlideContent>
-      <LoginButtonContainer>
-        <LoginButton color="purple" z={4} onClick={() => disableSplash()}>
-          <Text>Logga in med Mobilt BankID</Text>
-        </LoginButton>
-      </LoginButtonContainer>
     </Slide>
   );
 
@@ -239,8 +245,13 @@ export default function SplashScreen(props) {
 
   return (
     <ScreenWrapper>
-      <FlexContainer>
-        <Swiper enableMouseEvents index={swipeIndex} onChangeIndex={i => setSwipeIndex(i)}>
+      <Container>
+        <Swiper
+          resistance
+          enableMouseEvents
+          index={swipeIndex}
+          onChangeIndex={i => setSwipeIndex(i)}
+        >
           <SlideWelcome />
           <SlideEasy />
           <SlideAccessible />
@@ -248,16 +259,14 @@ export default function SplashScreen(props) {
         </Swiper>
         {swipeIndex < 3 && (
           <Navigation value={swipeIndex}>
-            <NavigationFlex>
-              <DotsContainer>{renderDots()}</DotsContainer>
-              <SwipeButton z={0} onClick={() => setSwipeIndex(swipeIndex + 1)}>
-                <Text>{swipeIndex === 0 ? 'Kom igång' : 'Nästa'}</Text>
-                <Icon size={16} name="chevron-right" color="purple" />
-              </SwipeButton>
-            </NavigationFlex>
+            <DotsContainer>{renderDots()}</DotsContainer>
+            <SwipeButton z={0} onClick={() => setSwipeIndex(swipeIndex + 1)}>
+              <Text>{swipeIndex === 0 ? 'Kom igång' : 'Nästa'}</Text>
+              <Icon size={16} name="chevron-right" color="purple" />
+            </SwipeButton>
           </Navigation>
         )}
-      </FlexContainer>
+      </Container>
     </ScreenWrapper>
   );
 }
