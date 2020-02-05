@@ -23,8 +23,9 @@ const FlexContainer = styled.div`
 `;
 
 const Swiper = styled(SwipeableViews)`
-  background: #f5f5f5;
   flex-grow: 1;
+  border: 1px solid aqua;
+  background: #f5f5f5;
 `;
 
 const SwipeButton = styled(Button)`
@@ -39,16 +40,20 @@ const LoginButton = styled(Button)`
 `;
 
 const Slide = styled.div`
+  border: 3px solid orange;
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 `;
 
 const TopBar = styled.div`
+  border: 1px solid magenta;
+
   display: flex;
   height: 70px;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
 `;
 
 const Link = styled(Button)`
@@ -60,23 +65,29 @@ const Link = styled(Button)`
 `;
 
 const ImageContainer = styled.div`
+  border: 1px solid aqua;
+
   display: flex;
   justify-content: center;
 `;
 
 const SlideContent = styled.div`
+  border: 1px solid green;
+
   justify-self: center;
   padding: 24px;
 `;
 
 const Logo = styled.img`
-  max-width: 120px;
   width: 100%;
+  max-width: 120px;
+  height: auto;
 `;
 
 const SlideImage = styled.img`
-  max-width: 250px;
   width: 100%;
+  max-width: 250px;
+  height: auto;
 `;
 
 const Navigation = styled.div`
