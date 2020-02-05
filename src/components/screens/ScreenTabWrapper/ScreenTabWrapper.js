@@ -5,11 +5,7 @@ import { RenderRoutes } from '../../../routes';
 import TabBarNavigation from '../../molecules/TabBarNavigation';
 
 const ScreenTabWrapperTabBarRoutes = styled.div`
-  height: 86%;
-`;
-
-const ScreenTabWrapperTabBar = styled(TabBarNavigation)`
-  height: 14%;
+  flex: 1;
 `;
 
 const ScreenTabWrapper = ({ routes, className, history, location, ...rest }) => {
@@ -25,7 +21,7 @@ const ScreenTabWrapper = ({ routes, className, history, location, ...rest }) => 
       <ScreenTabWrapperTabBarRoutes className={className}>
         <RenderRoutes routes={routes} />
       </ScreenTabWrapperTabBarRoutes>
-      <ScreenTabWrapperTabBar className={className} tabItems={tabItems} />
+      <TabBarNavigation className={className} tabItems={tabItems} />
     </>
   );
 };
