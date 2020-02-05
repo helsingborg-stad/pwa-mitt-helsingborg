@@ -47,19 +47,19 @@ class ViewController: UIViewController, WKUIDelegate {
     @objc func keyboardWillShow(notification: NSNotification)
     {
         // Not working, wanted behaviour: shrink height based on keyboard height
-        if let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
-            webView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
-        }
-        print("keyboardWillShow")
+//        if let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
+//            webView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+//        }
+//        print("keyboardWillShow")
     }
 
     @objc func keyboardWillHide(notification: NSNotification)
     {
-        UIView.animate(withDuration: 0.2, animations: {
-            // For some reason adding inset in keyboardWillShow is animated by itself but removing is not, that's why we have to use animateWithDuration here
-            self.webView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        })
-        print("keyboardWillHide")
+//        UIView.animate(withDuration: 0.2, animations: {
+//            // For some reason adding inset in keyboardWillShow is animated by itself but removing is not, that's why we have to use animateWithDuration here
+//            self.webView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+//        })
+//        print("keyboardWillHide")
     }
 
     fileprivate func setupWebView() {
