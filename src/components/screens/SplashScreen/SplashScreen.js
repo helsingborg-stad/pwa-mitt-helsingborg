@@ -155,7 +155,6 @@ export default function SplashScreen(props) {
       if (showSplashScreen === false) {
         disableSplash();
       }
-      console.log('showSplashScreen', showSplashScreen);
     } catch (error) {
       console.log('Get splash value error: ', error);
     }
