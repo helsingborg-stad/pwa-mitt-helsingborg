@@ -126,7 +126,7 @@ class LoginScreen extends Component {
       // Remove anchor from url
       window.location.hash = '';
 
-      history.push('/chat');
+      history.push('/main/chat');
     } catch (e) {
       if (e.message !== 'cancelled') {
         console.info('Error in LoginScreen::authenticateUser', e.message);
