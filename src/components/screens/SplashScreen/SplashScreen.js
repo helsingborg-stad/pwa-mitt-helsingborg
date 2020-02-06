@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
-// import AsyncStorage from '@react-native-community/async-storage';
-
-import styled from 'styled-components';
+import React, { useEffect, useState } from 'react';
 import SwipeableViews from 'react-swipeable-views';
-import ScreenWrapper from '../../molecules/ScreenWrapper';
-// import { SHOW_SPLASH_SCREEN } from '../../services/StorageService';
-
-import Heading from '../../atoms/Heading';
-import Button from '../../atoms/Button';
-import Text from '../../atoms/Text';
-import Icon from '../../atoms/Icon';
-
-import HbgLogo from '../../../assets/slides/stadsvapen.png';
+import styled from 'styled-components';
 import ImageEasy from '../../../assets/slides/illu_001.png';
 import ImageAccessible from '../../../assets/slides/illu_002.png';
 import ImagePersonal from '../../../assets/slides/illu_003.png';
+import HbgLogo from '../../../assets/slides/stadsvapen.png';
+import StorageService, { SHOW_SPLASH_SCREEN } from '../../../services/StorageService';
+import Button from '../../atoms/Button';
+import Heading from '../../atoms/Heading';
+import Icon from '../../atoms/Icon';
+import Text from '../../atoms/Text';
+import ScreenWrapper from '../../molecules/ScreenWrapper';
 
 const Container = styled.div`
   height: 100%;
@@ -25,7 +21,6 @@ const Container = styled.div`
 `;
 
 const Swiper = styled(SwipeableViews)`
-  // border: 2px solid DodgerBlue;
   height: 100%;
 `;
 
@@ -42,7 +37,6 @@ const LoginButton = styled(Button)`
 `;
 
 const Slide = styled.div`
-  // border: 2px solid orange;
   height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -50,7 +44,6 @@ const Slide = styled.div`
 `;
 
 const TopBar = styled.div`
-  // border: 1px solid magenta;
   display: grid;
   justify-content: end;
   align-content: center;
@@ -65,7 +58,6 @@ const Link = styled(Button)`
 `;
 
 const ImageContainer = styled.div`
-  // border: 1px solid aqua;
   padding: 12px 0;
   display: grid;
   justify-content: center;
@@ -73,7 +65,6 @@ const ImageContainer = styled.div`
 `;
 
 const SlideContent = styled.div`
-  // border: 1px solid green;
   padding: 16px 32px;
 `;
 
@@ -90,9 +81,7 @@ const SlideImage = styled.img`
 `;
 
 const Navigation = styled.div`
-  background: #f5f5f5;
   padding: 8px 24px;
-
   display: grid;
   grid-template-columns: 120px auto;
   align-content: center;
@@ -147,8 +136,32 @@ export default function SplashScreen(props) {
    */
   const disableSplash = () => {
     const { history } = props;
+
+    try {
+      StorageService.saveData(SHOW_SPLASH_SCREEN, false);
+    } catch (error) {
+      console.log('Disable splash error: ', error);
+    }
+
     history.push('/login');
   };
+
+  /**
+   * Navigate to Login if splash screen disabled.
+   */
+  const showSplash = async () => {
+    try {
+      const showSplashScreen = await StorageService.getData(SHOW_SPLASH_SCREEN);
+      if (showSplashScreen === false) {
+        disableSplash();
+      }
+      console.log('showSplashScreen', showSplashScreen);
+    } catch (error) {
+      console.log('Get splash value error: ', error);
+    }
+  };
+
+  useEffect(() => {}, [showSplash()]);
 
   const SlideWelcome = () => (
     <Slide>
@@ -220,7 +233,6 @@ export default function SplashScreen(props) {
         <SlideHeading type="h3">Personligt</SlideHeading>
         <SlideText>
           Inloggad ger mer. Som inloggad får du en personlig upplevelse anpassad för dig. <br />
-          <br />
           Allt samlat i mobilen.
         </SlideText>
         <LoginButtonContainer>
