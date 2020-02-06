@@ -127,6 +127,8 @@ const SlideText = styled(Text)`
 
 /**
  * Splash screen that shall be displayed during first app initiation or after an app update.
+ * TODO: Cannot run this component in Storybook because 'react-swipeable-views'
+ * uses deprecated life cycle methods.
  */
 export default function SplashScreen(props) {
   const [swipeIndex, setSwipeIndex] = useState(0);
