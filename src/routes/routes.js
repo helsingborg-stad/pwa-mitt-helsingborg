@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import LoginScreen from '../components/screens/Login';
 import ChatScreen from '../components/screens/ChatScreen';
 import ScreenTabWrapper from '../components/screens/ScreenTabWrapper';
+import Resource from '../components/organisms/Resource/Resource';
+import TaskDetailScreen from '../components/screens/TaskDetail/TaskDetailScreen';
+import { COMPLETED_FORMS_KEY } from '../services/StorageService';
 
 const ROUTES = [
   {
@@ -14,7 +17,13 @@ const ROUTES = [
   {
     path: '/tasks/:id',
     key: 'TASK',
-    component: () => <Link to="/main/tasks">Task Screen</Link>,
+    component: props => (
+      <Resource
+        {...props}
+        storageKeys={[COMPLETED_FORMS_KEY]}
+        render={props => <TaskDetailScreen {...props} />}
+      />
+    ),
   },
   {
     path: '/main',
@@ -38,7 +47,7 @@ const ROUTES = [
         key: 'TASKS',
         private: true,
         redirectTo: '',
-        component: () => <Link to="/tasks/1">Task 1</Link>,
+        component: () => <Link to="/tasks/1580312521949">Task 1</Link>,
         tab: {
           icon: 'home',
           text: 'Ärenden',
