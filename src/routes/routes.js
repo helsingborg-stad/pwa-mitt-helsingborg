@@ -5,6 +5,7 @@ import ChatScreen from '../components/screens/ChatScreen';
 import ScreenTabWrapper from '../components/screens/ScreenTabWrapper';
 import Resource from '../components/organisms/Resource/Resource';
 import TaskDetailScreen from '../components/screens/TaskDetail/TaskDetailScreen';
+import TaskScreen from '../components/screens/Task/TaskScreen';
 import { COMPLETED_FORMS_KEY } from '../services/StorageService';
 
 const ROUTES = [
@@ -47,7 +48,7 @@ const ROUTES = [
         key: 'TASKS',
         private: true,
         redirectTo: '',
-        component: () => <Link to="/tasks/1580312521949">Task 1</Link>,
+        component: TaskScreen,
         tab: {
           icon: 'home',
           text: 'Ärenden',
