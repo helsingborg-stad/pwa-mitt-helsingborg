@@ -13,7 +13,7 @@ export const PrivateRoute = ({ route, ...rest }) => {
         isLoggedin ? (
           <route.component {...props} routes={route.routes} />
         ) : (
-          <Redirect to={{ pathname: `/${route.redirectTo}` }} />
+          <Redirect to={{ pathname: `${route.redirectTo}` }} />
         )
       }
     />
