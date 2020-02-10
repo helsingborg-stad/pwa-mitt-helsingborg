@@ -5,6 +5,7 @@ import { NavItems, CompletedTasks, ActiveTasks } from '../../../assets/dashboard
 import forms from '../../../assets/forms';
 import GroupedList from '../../molecules/GroupedList';
 import StorageService, { COMPLETED_FORMS_KEY, USER_KEY } from '../../../services/StorageService';
+import TasksContext from '../../../context/tasks-context';
 
 import Header from '../../molecules/Header';
 import ScreenWrapper from '../../molecules/ScreenWrapper';
@@ -91,7 +92,9 @@ class TaskScreen extends Component {
   };
 
   render() {
+    const { tasks } = this.context;
     const { user, activeTasks } = this.state;
+    console.log(tasks);
 
     return (
       <TaskScreenWrapper>
@@ -106,8 +109,8 @@ class TaskScreen extends Component {
         <Container>
           <List>
             <ListHeading type="h3">Aktiva</ListHeading>
-            {activeTasks.length > 0 ? (
-              activeTasks.map(this.renderTaskItem)
+            {tasks.length > 0 ? (
+              tasks.map(this.renderTaskItem)
             ) : (
               <Text style={{ marginLeft: 4 }}>Inga aktiva ärenden..</Text>
             )}
@@ -121,5 +124,7 @@ class TaskScreen extends Component {
     );
   }
 }
+
+TaskScreen.contextType = TasksContext;
 
 export default TaskScreen;
