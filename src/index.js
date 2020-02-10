@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router-dom';
 import smoothscroll from 'smoothscroll-polyfill';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import TasksContext, { TasksProvider } from './context/tasks-context';
+import { TasksProvider } from './context/tasks-context';
 
 smoothscroll.polyfill();
 
