@@ -15,6 +15,8 @@ const ROUTES = [
   {
     path: '/tasks/:id',
     key: 'TASK',
+    redirectTo: '/',
+    private: true,
     component: () => <Link to="/main/tasks">Task Screen</Link>,
   },
   {
@@ -27,7 +29,7 @@ const ROUTES = [
         path: '/main/chat',
         key: 'CHAT',
         private: true,
-        redirectTo: '',
+        redirectTo: '/',
         component: ChatScreen,
         tab: {
           icon: 'message',
@@ -38,7 +40,7 @@ const ROUTES = [
         path: '/main/tasks',
         key: 'TASKS',
         private: true,
-        redirectTo: '',
+        redirectTo: '/',
         component: TaskScreen,
         tab: {
           icon: 'home',
@@ -49,7 +51,7 @@ const ROUTES = [
         path: '/main/profile',
         key: 'PROFILE',
         private: true,
-        redirectTo: '',
+        redirectTo: '/',
         component: () => <h1>Profile Screen</h1>,
         tab: {
           icon: 'contacts',
