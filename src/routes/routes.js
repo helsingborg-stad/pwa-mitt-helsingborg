@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LoginScreen from '../components/screens/Login';
 import ChatScreen from '../components/screens/ChatScreen';
+import SplashScreen from '../components/screens/SplashScreen';
 import ScreenTabWrapper from '../components/screens/ScreenTabWrapper';
 import TaskScreen from '../components/screens/Task/TaskScreen';
 
@@ -9,6 +10,12 @@ const ROUTES = [
   {
     path: '/',
     key: 'ROOT',
+    exact: true,
+    component: SplashScreen,
+  },
+  {
+    path: '/login',
+    key: 'Login',
     exact: true,
     component: LoginScreen,
   },
