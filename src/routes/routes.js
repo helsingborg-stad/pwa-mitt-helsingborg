@@ -5,6 +5,7 @@ import ChatScreen from '../components/screens/ChatScreen';
 import SplashScreen from '../components/screens/SplashScreen';
 import ScreenTabWrapper from '../components/screens/ScreenTabWrapper';
 import TaskScreen from '../components/screens/Task/TaskScreen';
+import ProfileScreen from '../components/screens/ProfileScreen';
 
 const ROUTES = [
   {
@@ -57,7 +58,7 @@ const ROUTES = [
         key: 'PROFILE',
         private: true,
         redirectTo: '',
-        component: () => <h1>Profile Screen</h1>,
+        component: ProfileScreen,
         tab: {
           icon: 'contacts',
           text: 'Dina sidor',
