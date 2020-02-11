@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import Auth from '../../helpers/AuthHelper';
+import { logIn, logOut } from '../../helpers/AuthHelper';
 import StorageService, { USER_KEY } from '../../services/StorageService';
 import {
   authorize,
@@ -70,7 +70,10 @@ const withAuthentication = WrappedComponent =>
 
         try {
           const { user, accessToken } = authResponse.data;
-          await Auth.logIn(user, accessToken);
+          const loggedIn = logIn({ user, token: accessToken });
+          if (!loggedIn) {
+            throw new Error('Login failed');
+          }
         } catch (error) {
           throw new Error('Login failed');
         }
@@ -100,7 +103,7 @@ const withAuthentication = WrappedComponent =>
         console.log(error);
       } finally {
         // Clears access token and reset state
-        Auth.logOut();
+        logOut();
         this.setState({
           isLoading: false,
         });
@@ -125,7 +128,7 @@ const withAuthentication = WrappedComponent =>
         const { user } = response.data;
 
         try {
-          await Auth.logIn(user, FAKE_TOKEN);
+          logIn({ user, token: FAKE_TOKEN });
         } catch (e) {
           // BY PASS REJECTION
           // throw "Login failed";
