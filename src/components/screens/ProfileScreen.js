@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ScreenWrapper from '../molecules/ScreenWrapper';
 import { Heading, Button, Text } from '../atoms';
-import Auth from '../../helpers/AuthHelper';
-import StorageService from '../../services/StorageService';
+import { logOut } from '../../helpers/AuthHelper';
+import UserContext from '../../context/user-context';
 
 const Container = styled.div`
   padding: 16px;
@@ -15,12 +15,15 @@ const LogoutButton = styled(Button)`
 `;
 
 const ProfileScreen = props => {
+  const { setIsAuthenticated } = useContext(UserContext);
+
   /**
    * Log out user
    */
-  const logOut = () => {
+  const logOutUser = () => {
     const { history } = props;
-    Auth.logOut();
+    logOut();
+    setIsAuthenticated(false);
     history.push('/login');
   };
 
@@ -29,7 +32,8 @@ const ProfileScreen = props => {
    */
   const clearData = () => {
     const { history } = props;
-    StorageService.clearData();
+    window.localStorage.clear();
+    setIsAuthenticated(false);
     history.push('/');
   };
 
@@ -37,7 +41,7 @@ const ProfileScreen = props => {
     <ScreenWrapper>
       <Container>
         <Heading>Profil</Heading>
-        <LogoutButton block color="purple" onClick={() => logOut()}>
+        <LogoutButton block color="purple" onClick={() => logOutUser()}>
           <Text>Logga ut</Text>
         </LogoutButton>
         {process.env.REACT_APP_APP_ENV === 'development' && (
