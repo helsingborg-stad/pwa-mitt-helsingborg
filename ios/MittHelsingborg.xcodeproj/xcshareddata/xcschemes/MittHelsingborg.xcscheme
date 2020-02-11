@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F66D3BB823E328E7006AA7B8"
-               BuildableName = "Mitt HBG.app"
-               BlueprintName = "Mitt HBG"
-               ReferencedContainer = "container:Mitt HBG.xcodeproj">
+               BlueprintIdentifier = "F6E6B6F723C71F2C00F77B6B"
+               BuildableName = "Mitt Helsingborg.app"
+               BlueprintName = "MittHelsingborg"
+               ReferencedContainer = "container:MittHelsingborg.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,19 +44,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F66D3BB823E328E7006AA7B8"
-            BuildableName = "Mitt HBG.app"
-            BlueprintName = "Mitt HBG"
-            ReferencedContainer = "container:Mitt HBG.xcodeproj">
+            BlueprintIdentifier = "F6E6B6F723C71F2C00F77B6B"
+            BuildableName = "Mitt Helsingborg.app"
+            BlueprintName = "MittHelsingborg"
+            ReferencedContainer = "container:MittHelsingborg.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "OS_ACTIVITY_MODE"
-            value = "disable"
-            isEnabled = "NO">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -68,10 +61,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F66D3BB823E328E7006AA7B8"
-            BuildableName = "Mitt HBG.app"
-            BlueprintName = "Mitt HBG"
-            ReferencedContainer = "container:Mitt HBG.xcodeproj">
+            BlueprintIdentifier = "F6E6B6F723C71F2C00F77B6B"
+            BuildableName = "Mitt Helsingborg.app"
+            BlueprintName = "MittHelsingborg"
+            ReferencedContainer = "container:MittHelsingborg.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

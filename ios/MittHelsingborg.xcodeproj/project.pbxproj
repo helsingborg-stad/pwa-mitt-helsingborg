@@ -7,27 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F66D3BBD23E328E7006AA7B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66D3BBC23E328E7006AA7B8 /* AppDelegate.swift */; };
-		F66D3BBF23E328E7006AA7B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66D3BBE23E328E7006AA7B8 /* SceneDelegate.swift */; };
-		F66D3BC123E328E7006AA7B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66D3BC023E328E7006AA7B8 /* ViewController.swift */; };
-		F66D3BC423E328E7006AA7B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F66D3BC223E328E7006AA7B8 /* Main.storyboard */; };
-		F66D3BC623E328E8006AA7B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F66D3BC523E328E8006AA7B8 /* Assets.xcassets */; };
-		F66D3BC923E328E8006AA7B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F66D3BC723E328E8006AA7B8 /* LaunchScreen.storyboard */; };
+		F6E6B6FC23C71F2C00F77B6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E6B6FB23C71F2C00F77B6B /* AppDelegate.swift */; };
+		F6E6B6FE23C71F2C00F77B6B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E6B6FD23C71F2C00F77B6B /* SceneDelegate.swift */; };
+		F6E6B70023C71F2C00F77B6B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E6B6FF23C71F2C00F77B6B /* ContentView.swift */; };
+		F6E6B70223C71F2D00F77B6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6E6B70123C71F2D00F77B6B /* Assets.xcassets */; };
+		F6E6B70523C71F2D00F77B6B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6E6B70423C71F2D00F77B6B /* Preview Assets.xcassets */; };
+		F6E6B70823C71F2D00F77B6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6E6B70623C71F2D00F77B6B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F66D3BB923E328E7006AA7B8 /* Mitt HBG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mitt HBG.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F66D3BBC23E328E7006AA7B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F66D3BBE23E328E7006AA7B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F66D3BC023E328E7006AA7B8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F66D3BC323E328E7006AA7B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F66D3BC523E328E8006AA7B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F66D3BC823E328E8006AA7B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F66D3BCA23E328E8006AA7B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6E6B6F823C71F2C00F77B6B /* Mitt Helsingborg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mitt Helsingborg.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6E6B6FB23C71F2C00F77B6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F6E6B6FD23C71F2C00F77B6B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F6E6B6FF23C71F2C00F77B6B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F6E6B70123C71F2D00F77B6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F6E6B70423C71F2D00F77B6B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F6E6B70723C71F2D00F77B6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F6E6B70923C71F2D00F77B6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F66D3BB623E328E7006AA7B8 /* Frameworks */ = {
+		F6E6B6F523C71F2C00F77B6B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,72 +37,80 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F66D3BB023E328E7006AA7B8 = {
+		F6E6B6EF23C71F2C00F77B6B = {
 			isa = PBXGroup;
 			children = (
-				F66D3BBB23E328E7006AA7B8 /* Mitt HBG */,
-				F66D3BBA23E328E7006AA7B8 /* Products */,
+				F6E6B6FA23C71F2C00F77B6B /* MittHelsingborg */,
+				F6E6B6F923C71F2C00F77B6B /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		F66D3BBA23E328E7006AA7B8 /* Products */ = {
+		F6E6B6F923C71F2C00F77B6B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F66D3BB923E328E7006AA7B8 /* Mitt HBG.app */,
+				F6E6B6F823C71F2C00F77B6B /* Mitt Helsingborg.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F66D3BBB23E328E7006AA7B8 /* Mitt HBG */ = {
+		F6E6B6FA23C71F2C00F77B6B /* MittHelsingborg */ = {
 			isa = PBXGroup;
 			children = (
-				F66D3BBC23E328E7006AA7B8 /* AppDelegate.swift */,
-				F66D3BBE23E328E7006AA7B8 /* SceneDelegate.swift */,
-				F66D3BC023E328E7006AA7B8 /* ViewController.swift */,
-				F66D3BC223E328E7006AA7B8 /* Main.storyboard */,
-				F66D3BC523E328E8006AA7B8 /* Assets.xcassets */,
-				F66D3BC723E328E8006AA7B8 /* LaunchScreen.storyboard */,
-				F66D3BCA23E328E8006AA7B8 /* Info.plist */,
+				F6E6B6FB23C71F2C00F77B6B /* AppDelegate.swift */,
+				F6E6B6FD23C71F2C00F77B6B /* SceneDelegate.swift */,
+				F6E6B6FF23C71F2C00F77B6B /* ContentView.swift */,
+				F6E6B70123C71F2D00F77B6B /* Assets.xcassets */,
+				F6E6B70623C71F2D00F77B6B /* LaunchScreen.storyboard */,
+				F6E6B70923C71F2D00F77B6B /* Info.plist */,
+				F6E6B70323C71F2D00F77B6B /* Preview Content */,
 			);
-			path = "Mitt HBG";
+			path = MittHelsingborg;
+			sourceTree = "<group>";
+		};
+		F6E6B70323C71F2D00F77B6B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F6E6B70423C71F2D00F77B6B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F66D3BB823E328E7006AA7B8 /* Mitt HBG */ = {
+		F6E6B6F723C71F2C00F77B6B /* MittHelsingborg */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F66D3BCD23E328E8006AA7B8 /* Build configuration list for PBXNativeTarget "Mitt HBG" */;
+			buildConfigurationList = F6E6B70C23C71F2D00F77B6B /* Build configuration list for PBXNativeTarget "MittHelsingborg" */;
 			buildPhases = (
-				F66D3BB523E328E7006AA7B8 /* Sources */,
-				F66D3BB623E328E7006AA7B8 /* Frameworks */,
-				F66D3BB723E328E7006AA7B8 /* Resources */,
+				F6E6B6F423C71F2C00F77B6B /* Sources */,
+				F6E6B6F523C71F2C00F77B6B /* Frameworks */,
+				F6E6B6F623C71F2C00F77B6B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Mitt HBG";
-			productName = "Mitt HBG";
-			productReference = F66D3BB923E328E7006AA7B8 /* Mitt HBG.app */;
+			name = MittHelsingborg;
+			productName = WebPagesSwiftUI;
+			productReference = F6E6B6F823C71F2C00F77B6B /* Mitt Helsingborg.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		F66D3BB123E328E7006AA7B8 /* Project object */ = {
+		F6E6B6F023C71F2C00F77B6B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Ehsan Zilaei";
 				TargetAttributes = {
-					F66D3BB823E328E7006AA7B8 = {
-						CreatedOnToolsVersion = 11.3.1;
+					F6E6B6F723C71F2C00F77B6B = {
+						CreatedOnToolsVersion = 11.3;
 					};
 				};
 			};
-			buildConfigurationList = F66D3BB423E328E7006AA7B8 /* Build configuration list for PBXProject "Mitt HBG" */;
+			buildConfigurationList = F6E6B6F323C71F2C00F77B6B /* Build configuration list for PBXProject "MittHelsingborg" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,55 +118,47 @@
 				en,
 				Base,
 			);
-			mainGroup = F66D3BB023E328E7006AA7B8;
-			productRefGroup = F66D3BBA23E328E7006AA7B8 /* Products */;
+			mainGroup = F6E6B6EF23C71F2C00F77B6B;
+			productRefGroup = F6E6B6F923C71F2C00F77B6B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F66D3BB823E328E7006AA7B8 /* Mitt HBG */,
+				F6E6B6F723C71F2C00F77B6B /* MittHelsingborg */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F66D3BB723E328E7006AA7B8 /* Resources */ = {
+		F6E6B6F623C71F2C00F77B6B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F66D3BC923E328E8006AA7B8 /* LaunchScreen.storyboard in Resources */,
-				F66D3BC623E328E8006AA7B8 /* Assets.xcassets in Resources */,
-				F66D3BC423E328E7006AA7B8 /* Main.storyboard in Resources */,
+				F6E6B70823C71F2D00F77B6B /* LaunchScreen.storyboard in Resources */,
+				F6E6B70523C71F2D00F77B6B /* Preview Assets.xcassets in Resources */,
+				F6E6B70223C71F2D00F77B6B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F66D3BB523E328E7006AA7B8 /* Sources */ = {
+		F6E6B6F423C71F2C00F77B6B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F66D3BC123E328E7006AA7B8 /* ViewController.swift in Sources */,
-				F66D3BBD23E328E7006AA7B8 /* AppDelegate.swift in Sources */,
-				F66D3BBF23E328E7006AA7B8 /* SceneDelegate.swift in Sources */,
+				F6E6B6FC23C71F2C00F77B6B /* AppDelegate.swift in Sources */,
+				F6E6B6FE23C71F2C00F77B6B /* SceneDelegate.swift in Sources */,
+				F6E6B70023C71F2C00F77B6B /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F66D3BC223E328E7006AA7B8 /* Main.storyboard */ = {
+		F6E6B70623C71F2D00F77B6B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F66D3BC323E328E7006AA7B8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F66D3BC723E328E8006AA7B8 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F66D3BC823E328E8006AA7B8 /* Base */,
+				F6E6B70723C71F2D00F77B6B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -166,7 +166,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		F66D3BCB23E328E8006AA7B8 /* Debug */ = {
+		F6E6B70A23C71F2D00F77B6B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -226,7 +226,7 @@
 			};
 			name = Debug;
 		};
-		F66D3BCC23E328E8006AA7B8 /* Release */ = {
+		F6E6B70B23C71F2D00F77B6B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -280,66 +280,68 @@
 			};
 			name = Release;
 		};
-		F66D3BCE23E328E8006AA7B8 /* Debug */ = {
+		F6E6B70D23C71F2D00F77B6B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MittHelsingborg/Preview Content\"";
 				DEVELOPMENT_TEAM = MHBEW6TVG2;
-				INFOPLIST_FILE = "Mitt HBG/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MittHelsingborg/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "hbg.works.Mitt-HBG";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = works.hbg.MittHelsingborg;
+				PRODUCT_NAME = "Mitt Helsingborg";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
-		F66D3BCF23E328E8006AA7B8 /* Release */ = {
+		F6E6B70E23C71F2D00F77B6B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MittHelsingborg/Preview Content\"";
 				DEVELOPMENT_TEAM = MHBEW6TVG2;
-				INFOPLIST_FILE = "Mitt HBG/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MittHelsingborg/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "hbg.works.Mitt-HBG";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = works.hbg.MittHelsingborg;
+				PRODUCT_NAME = "Mitt Helsingborg";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F66D3BB423E328E7006AA7B8 /* Build configuration list for PBXProject "Mitt HBG" */ = {
+		F6E6B6F323C71F2C00F77B6B /* Build configuration list for PBXProject "MittHelsingborg" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F66D3BCB23E328E8006AA7B8 /* Debug */,
-				F66D3BCC23E328E8006AA7B8 /* Release */,
+				F6E6B70A23C71F2D00F77B6B /* Debug */,
+				F6E6B70B23C71F2D00F77B6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F66D3BCD23E328E8006AA7B8 /* Build configuration list for PBXNativeTarget "Mitt HBG" */ = {
+		F6E6B70C23C71F2D00F77B6B /* Build configuration list for PBXNativeTarget "MittHelsingborg" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F66D3BCE23E328E8006AA7B8 /* Debug */,
-				F66D3BCF23E328E8006AA7B8 /* Release */,
+				F6E6B70D23C71F2D00F77B6B /* Debug */,
+				F6E6B70E23C71F2D00F77B6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = F66D3BB123E328E7006AA7B8 /* Project object */;
+	rootObject = F6E6B6F023C71F2C00F77B6B /* Project object */;
 }
