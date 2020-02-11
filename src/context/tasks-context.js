@@ -22,7 +22,9 @@ export class TasksProvider extends Component {
   getStoredTasks = async () => {
     const storedTasks = await StorageService.getData(COMPLETED_FORMS_KEY);
     try {
-      this.setState({ tasks: storedTasks });
+      if (storedTasks) {
+        this.setState({ tasks: storedTasks });
+      }
     } catch (error) {
       console.error('Could not load tasks form StorageService', error);
     }
