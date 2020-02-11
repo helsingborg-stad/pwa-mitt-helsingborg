@@ -94,7 +94,6 @@ class TaskScreen extends Component {
   render() {
     const { tasks } = this.context;
     const { user, activeTasks } = this.state;
-    console.log(tasks);
 
     return (
       <TaskScreenWrapper>
