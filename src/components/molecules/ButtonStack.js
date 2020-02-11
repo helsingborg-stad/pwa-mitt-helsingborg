@@ -9,10 +9,7 @@ import styled from 'styled-components';
 // import { withNavigation } from 'react-navigation';
 
 import FormAgent from '../organisms/FormAgent/FormAgent';
-import Button from '../atoms/Button';
-import Icon from '../atoms/Icon';
-import Text from '../atoms/Text';
-import ChatBubble from '../atoms/ChatBubble';
+import { Button, Icon, Text, ChatBubble } from '../atoms';
 
 const ActionButton = props => (
   <ModifiedButton onClick={props.clickAction} color="light" rounded block>
@@ -25,8 +22,6 @@ const ButtonStackWrapper = styled.div``;
 
 const ModifiedButton = styled(Button)`
   justify-content: flex-start;
-  margin-left: 16px;
-  margin-right: 16px;
   margin-top: 6px;
   margin-bottom: 6px;
 `;
@@ -93,7 +88,7 @@ const ButtonStack = props => {
     return <ActionButton {...buttonProps} key={`${item}-${index}`} />;
   };
 
-  return <ButtonStackWrapper>{items.map(renderItem)}</ButtonStackWrapper>;
+  return <ButtonStackWrapper className={props.className}>{items.map(renderItem)}</ButtonStackWrapper>;
 };
 
 // export default withNavigation(ButtonStack);

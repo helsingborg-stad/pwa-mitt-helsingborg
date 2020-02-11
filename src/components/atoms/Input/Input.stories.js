@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import StoryWrapper from '../molecules/StoryWrapper';
+import StoryWrapper from '../../molecules/StoryWrapper';
 import Input from './Input';
 // import withForm from '../organisms/withForm';
 
@@ -38,6 +38,6 @@ export default {
 
 export const WithOutForm = () => (
   <StoryWrapper>
-    <Input />
+    <Input placeholder="Type something" />
   </StoryWrapper>
 );

@@ -48,21 +48,29 @@ export default class ChatUserInput extends Component {
 
       case 'number':
         data = {
-          Component: this.avalibleComponents.number,
+          Component: this.avalibleComponents.text,
           componentProps: {
+            type: 'text',
             blurOnSubmit: false,
             autoFocus: true,
             keyboardType: 'numeric',
-            ...includePropetiesWithKey(input, [
-              'placeholder',
-              'autoFocus',
-              'maxLength',
-              'submitText',
-              'withForm',
-            ]),
-          },
+            ...includePropetiesWithKey(input, ['placeholder', 'autoFocus', 'maxLength', 'submitText', 'withForm']),
+          }
         };
         break;
+
+        case 'range':
+          data = {
+            Component: this.avalibleComponents.text,
+            componentProps: {
+              type: 'number',
+              blurOnSubmit: false,
+              autoFocus: true,
+              keyboardType: 'numeric',
+              ...includePropetiesWithKey(input, ['placeholder', 'autoFocus', 'maxLength', 'submitText', 'withForm', 'min', 'max']),
+          }
+          };
+          break;
 
       case 'radio':
         data = {
@@ -79,30 +87,54 @@ export default class ChatUserInput extends Component {
 
       case 'datetime':
         data = {
-          Component: this.avalibleComponents.dateTime,
+          Component: this.avalibleComponents.text,
           componentProps: {
-            mode: 'datetime',
-            ...includePropetiesWithKey(input, ['placeholder', 'selectorProps']),
+            type: 'time',
+            blurOnSubmit: false,
+            autoFocus: true,
+            ...includePropetiesWithKey(input, [
+              'placeholder',
+              'autoFocus',
+              'maxLength',
+              'submitText',
+              'withForm',
+            ]),
           },
         };
         break;
 
       case 'date':
         data = {
-          Component: this.avalibleComponents.dateTime,
+          Component: this.avalibleComponents.text,
           componentProps: {
-            mode: 'date',
-            ...includePropetiesWithKey(input, ['placeholder', 'selectorProps']),
+            type: 'date',
+            blurOnSubmit: false,
+            autoFocus: true,
+            ...includePropetiesWithKey(input, [
+              'placeholder',
+              'autoFocus',
+              'maxLength',
+              'submitText',
+              'withForm',
+            ]),
           },
         };
         break;
 
       case 'time':
         data = {
-          Component: this.avalibleComponents.dateTime,
+          Component: this.avalibleComponents.text,
           componentProps: {
-            mode: 'time',
-            ...includePropetiesWithKey(input, ['placeholder', 'selectorProps']),
+            type: 'time',
+            blurOnSubmit: false,
+            autoFocus: true,
+            ...includePropetiesWithKey(input, [
+              'placeholder',
+              'autoFocus',
+              'maxLength',
+              'submitText',
+              'withForm',
+            ]),
           },
         };
         break;
@@ -153,6 +185,5 @@ const ChatUserInputWrapper = styled.div`
   overflow: visible;
   border-top-width: 1px;
   border-color: ${props => props.theme.border.default};
-  margin-top 16px;
-  padding-bottom: 6px;
+  touch-action: auto;
 `;

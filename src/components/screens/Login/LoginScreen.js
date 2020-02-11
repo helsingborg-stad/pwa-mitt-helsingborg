@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { sanitizePin, validatePin } from '../../../helpers/ValidationHelper';
 import HbgLogo from '../../../assets/slides/stadsvapen.png';
-import Heading from '../../atoms/Heading';
-import Button from '../../atoms/Button';
-import Input from '../../atoms/Input';
-import Text from '../../atoms/Text';
+import { Heading, Button, Input, Text } from '../../atoms';
 import ScreenWrapper from '../../molecules/ScreenWrapper';
 import withAuthentication from '../../organisms/withAuthentication';
 import AuthLoading from '../../molecules/AuthLoading';
@@ -17,6 +14,8 @@ const Logo = styled.img`
 
 const LoginScreenWrapper = styled(ScreenWrapper)`
   background-color: #f5f5f5;
+  padding: 16px;
+  position: relative;
 `;
 
 const LoginFormFooter = styled.div`
@@ -33,14 +32,19 @@ const Link = styled.button`
 `;
 
 const LoginKeyboardAvoidingView = styled.div`
+  display: flex;
+  flex-direction: column;
   flex: 1;
   align-items: stretch;
+  height: 100%;
 `;
 
 const LoginHeader = styled.div`
   text-align: center;
   flex: 1;
   justify-content: center;
+  align-items: center;
+  display: flex;
 `;
 
 const LoginBody = styled.div`
@@ -117,6 +121,11 @@ class LoginScreen extends Component {
     try {
       const { loginUser } = this.props.authentication;
       await loginUser(personalNumber);
+
+      // TODO: Make better fix and move somewhere else
+      // Remove anchor from url
+      window.location.hash = '';
+
       history.push('/chat');
     } catch (e) {
       if (e.message !== 'cancelled') {
@@ -157,10 +166,13 @@ class LoginScreen extends Component {
 
               <LoginFormField>
                 <Input
+                  type="text"
+                  keyboardType="numeric"
                   placeholder="ÅÅÅÅMMDDXXXX"
                   value={personalNumberInput}
                   onChange={this.changeHandler}
                   maxLength={12}
+                  center
                 />
               </LoginFormField>
 

@@ -7,17 +7,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import ChatMessages from '../molecules/ChatMessages';
-// import Modal from '../molecules/Modal';
+import ChatMessages from '../../molecules/ChatMessages';
+import Modal from '../../molecules/Modal';
 
-import ChatBody from '../atoms/ChatBody';
-import ChatWrapper from '../atoms/ChatWrapper';
-import ChatFooter from '../atoms/ChatFooter';
+import { ChatBody, ChatWrapper, ChatFooter } from '../../atoms';
 
-import EventHandler, { EVENT_USER_MESSAGE } from '../../helpers/EventHandler';
+import EventHandler, { EVENT_USER_MESSAGE } from '../../../helpers/EventHandler';
 
-import ChatUserInput from '../molecules/ChatUserInput';
-import StoreContext from '../../helpers/StoreContext';
+import ChatUserInput from '../../molecules/ChatUserInput';
+import StoreContext from '../../../helpers/StoreContext';
 
 class Chat extends Component {
   static propTypes = {
@@ -188,15 +186,17 @@ class Chat extends Component {
             <ChatBody>
               <ChatMessages messages={messages} chat={{ ...instanceMethods, ...this.state }} />
             </ChatBody>
-            <ChatFooter>
-              {inputComponents && inputComponents.length > 0 ? (
+
+            {inputComponents && inputComponents.length > 0 ? (
+              <ChatFooter>
                 <ChatUserInput
                   inputArray={inputComponents}
                   chat={{ ...instanceMethods, ...this.state }}
                 />
-              ) : null}
-            </ChatFooter>
-            {/* <Modal {...modal} changeModal={visible => this.changeModal(visible)} /> */}
+              </ChatFooter>
+            ) : null}
+
+            <Modal {...modal} changeModal={visible => this.changeModal(visible)} />
           </ChatWrapper>
         )}
       </StoreContext.Consumer>
