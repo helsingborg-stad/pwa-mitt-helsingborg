@@ -1,6 +1,7 @@
 import React from 'react';
 import TaskScreen from './TaskScreen';
 import StoryWrapper from '../../molecules/StoryWrapper';
+import { TasksProvider } from '../../../context/tasks-context';
 
 export default {
   component: TaskScreen,
@@ -9,6 +10,8 @@ export default {
 
 export const defaultTaskScreen = () => (
   <StoryWrapper>
-    <TaskScreen />
+    <TasksProvider>
+      <TaskScreen />
+    </TasksProvider>
   </StoryWrapper>
 );
