@@ -1,21 +1,22 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useContext } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
+import UserContext from '../context/user-context';
 
 export const PrivateRoute = ({ route, ...rest }) => {
-  // TODO: Implement check towards localstorage token.
-  const isLoggedin = true;
+  const { isAuthenticated } = useContext(UserContext);
+
   return (
+    // TODO: Implement check towards localstorage token.
     <Route
       {...rest}
       render={props =>
-        isLoggedin ? (
+        isAuthenticated ? (
           <route.component {...props} routes={route.routes} />
         ) : (
           <Redirect to={{ pathname: `${route.redirectTo}` }} />
-        )
-      }
+        )}
     />
   );
 };
