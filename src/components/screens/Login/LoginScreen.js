@@ -6,6 +6,7 @@ import { Heading, Button, Input, Text } from '../../atoms';
 import ScreenWrapper from '../../molecules/ScreenWrapper';
 import withAuthentication from '../../organisms/withAuthentication';
 import AuthLoading from '../../molecules/AuthLoading';
+import UserContext from '../../../context/user-context';
 
 const Logo = styled.img`
   height: 200px;
@@ -118,6 +119,8 @@ class LoginScreen extends Component {
    */
   authenticateUser = async personalNumber => {
     const { history } = this.props;
+    const { setIsAuthenticated } = this.context;
+
     try {
       const { loginUser } = this.props.authentication;
       await loginUser(personalNumber);
@@ -125,6 +128,9 @@ class LoginScreen extends Component {
       // TODO: Make better fix and move somewhere else
       // Remove anchor from url
       window.location.hash = '';
+
+      // Updated global context authenticated to True
+      setIsAuthenticated(true);
 
       history.push('/main/chat');
     } catch (e) {
@@ -198,5 +204,7 @@ class LoginScreen extends Component {
     );
   }
 }
+
+LoginScreen.contextType = UserContext;
 
 export default withAuthentication(LoginScreen);

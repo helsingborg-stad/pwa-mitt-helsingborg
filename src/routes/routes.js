@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import LoginScreen from '../components/screens/Login';
 import ChatScreen from '../components/screens/ChatScreen';
 import SplashScreen from '../components/screens/SplashScreen';
@@ -13,6 +14,12 @@ const ROUTES = [
   {
     path: '/',
     key: 'ROOT',
+    exact: true,
+    component: () => <Redirect from="/" to="/main/chat" />,
+  },
+  {
+    path: '/splash',
+    key: 'SPLASH',
     exact: true,
     component: SplashScreen,
   },
@@ -37,13 +44,14 @@ const ROUTES = [
     path: '/main',
     key: 'MAIN',
     private: true,
+    redirectTo: '/splash',
     component: ScreenTabWrapper,
     routes: [
       {
         path: '/main/chat',
         key: 'CHAT',
         private: true,
-        redirectTo: '/',
+        redirectTo: '/splash',
         component: ChatScreen,
         tab: {
           icon: 'message',
@@ -54,7 +62,7 @@ const ROUTES = [
         path: '/main/tasks',
         key: 'TASKS',
         private: true,
-        redirectTo: '/',
+        redirectTo: '/splash',
         component: TaskScreen,
         tab: {
           icon: 'home',
@@ -65,7 +73,7 @@ const ROUTES = [
         path: '/main/profile',
         key: 'PROFILE',
         private: true,
-        redirectTo: '/',
+        redirectTo: '/splash',
         component: ProfileScreen,
         tab: {
           icon: 'contacts',
