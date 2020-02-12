@@ -92,7 +92,7 @@ const TaskDetailScreen = ({ className, resource, groups, match, history, ...rest
   const completedForms = storageData[COMPLETED_FORMS_KEY];
   const completedForm =
     completedForms && !completedForms.loading
-      ? completedForms.data.find(form => form.id === params.id)
+      ? completedForms.data.find(form => form.id === parseInt(params.id))
       : {};
   const formData = completedForm ? forms.find(form => form.id === completedForm.formId) : {};
   const questions = formData ? formData.questions : [];
