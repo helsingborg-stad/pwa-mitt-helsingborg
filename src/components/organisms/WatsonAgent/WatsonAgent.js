@@ -20,7 +20,7 @@ import {
   USER_KEY,
   removeData,
   getData,
-} from '../../../services/StorageServiceNew';
+} from '../../../services/StorageService';
 import MarkdownConstructor from '../../../helpers/MarkdownConstructor';
 import { TasksConsumer } from '../../../context/tasks-context';
 

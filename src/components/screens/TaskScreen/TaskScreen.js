@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { NavItems, CompletedTasks, ActiveTasks } from '../../../assets/dashboard';
 import forms from '../../../assets/forms';
 import GroupedList from '../../molecules/GroupedList';
-import { COMPLETED_FORMS_KEY, USER_KEY, getData } from '../../../services/StorageServiceNew';
+import { COMPLETED_FORMS_KEY, USER_KEY, getData } from '../../../services/StorageService';
 import TasksContext from '../../../context/tasks-context';
 
 import Header from '../../molecules/Header';

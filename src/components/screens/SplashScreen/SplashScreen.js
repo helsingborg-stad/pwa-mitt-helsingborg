@@ -5,7 +5,7 @@ import ImageEasy from '../../../assets/slides/illu_001.png';
 import ImageAccessible from '../../../assets/slides/illu_002.png';
 import ImagePersonal from '../../../assets/slides/illu_003.png';
 import HbgLogo from '../../../assets/slides/stadsvapen.png';
-import { SHOW_SPLASH_SCREEN, getData, saveData } from '../../../services/StorageServiceNew';
+import { SHOW_SPLASH_SCREEN, getData, saveData } from '../../../services/StorageService';
 import Button from '../../atoms/Button';
 import Heading from '../../atoms/Heading';
 import Icon from '../../atoms/Icon';

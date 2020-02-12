@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import ScreenWrapper from '../molecules/ScreenWrapper';
 import { Heading, Button, Text } from '../atoms';
 import { logOut } from '../../helpers/AuthHelper';
+import { clearData } from '../../services/StorageService';
 import UserContext from '../../context/user-context';
 
 const Container = styled.div`
@@ -30,9 +31,9 @@ const ProfileScreen = props => {
   /**
    * Empty local storage data and redirect to root route
    */
-  const clearData = () => {
+  const resetData = () => {
     const { history } = props;
-    window.localStorage.clear();
+    clearData();
     setIsAuthenticated(false);
     history.push('/');
   };
@@ -45,7 +46,7 @@ const ProfileScreen = props => {
           <Text>Logga ut</Text>
         </LogoutButton>
         {process.env.REACT_APP_APP_ENV === 'development' && (
-          <LogoutButton block onClick={() => clearData()}>
+          <LogoutButton block onClick={() => resetData()}>
             <Text>Radera data</Text>
           </LogoutButton>
         )}

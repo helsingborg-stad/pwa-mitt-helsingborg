@@ -3,7 +3,7 @@ import validator from 'validator';
 import EventHandler, { EVENT_USER_MESSAGE } from '../../../helpers/EventHandler';
 import forms from '../../../assets/forms.js';
 import { ChatBubble, ChatDivider } from '../../atoms';
-import { USER_KEY, getData } from '../../../services/StorageServiceNew';
+import { USER_KEY, getData } from '../../../services/StorageService';
 import MarkdownConstructor from '../../../helpers/MarkdownConstructor';
 
 // TODO: Find better place for storing this function and

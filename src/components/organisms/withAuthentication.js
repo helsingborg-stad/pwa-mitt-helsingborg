@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { logIn, logOut } from '../../helpers/AuthHelper';
-import { USER_KEY, getData } from '../../services/StorageServiceNew';
+import { USER_KEY, getData } from '../../services/StorageService';
 import {
   authorize,
   bypassBankid,
