@@ -3,7 +3,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import StoryWrapper from '../molecules/StoryWrapper';
+import StoryWrapper from '../../molecules/StoryWrapper';
 import withForm from './withForm';
 
 const InputWithForm = withForm(props => (

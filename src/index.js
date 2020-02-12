@@ -4,8 +4,11 @@ import 'normalize.css';
 import 'typeface-roboto';
 import './index.css';
 import { MemoryRouter } from 'react-router-dom';
+import smoothscroll from 'smoothscroll-polyfill';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+smoothscroll.polyfill();
 
 ReactDOM.render(
   <MemoryRouter>

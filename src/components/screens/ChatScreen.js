@@ -22,8 +22,7 @@ class ChatScreen extends Component {
     return (
       <ChatScreenWrapper>
         <Chat
-          // ChatAgent={props => <WatsonAgent {...props} initialMessages="remote" />}
-          ChatAgent={props => <WatsonAgent {...props} />}
+          ChatAgent={props => <WatsonAgent {...props} initialMessages="remote" />}
           inputComponents={{
             type: 'text',
             placeholder: 'Skriv något...',

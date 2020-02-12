@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import StoryWrapper from '../molecules/StoryWrapper';
+import StoryWrapper from '../../molecules/StoryWrapper';
 import Text from './Text';
 
 storiesOf('Text', module).add('default', () => (

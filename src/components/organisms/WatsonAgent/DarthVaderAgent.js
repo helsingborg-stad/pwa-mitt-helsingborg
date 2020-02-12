@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
 
-import ChatBubble from '../../atoms/ChatBubble';
+import { ChatBubble } from '../../atoms';
 import EventHandler, { EVENT_USER_MESSAGE } from '../../../helpers/EventHandler';
 import WatsonAgent from './WatsonAgent';
 
