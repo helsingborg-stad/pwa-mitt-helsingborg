@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { NavItems, CompletedTasks, ActiveTasks } from '../../../assets/dashboard';
 import forms from '../../../assets/forms';
 import GroupedList from '../../molecules/GroupedList';
-import StorageService, { COMPLETED_FORMS_KEY, USER_KEY } from '../../../services/StorageService';
+import { COMPLETED_FORMS_KEY, USER_KEY, getData } from '../../../services/StorageServiceNew';
 import TasksContext from '../../../context/tasks-context';
 
 import Header from '../../molecules/Header';
@@ -55,22 +55,16 @@ class TaskScreen extends Component {
 
   sortTasksByDate = list => list.sort((a, b) => new Date(b.created) - new Date(a.created));
 
-  getTasks = async () => {
-    try {
-      const tasks = await StorageService.getData(COMPLETED_FORMS_KEY);
-      this.setState({
-        activeTasks: Array.isArray(tasks) && tasks.length ? this.sortTasksByDate(tasks) : [],
-      });
-    } catch (error) {}
+  getTasks = () => {
+    const tasks = getData(COMPLETED_FORMS_KEY);
+    this.setState({
+      activeTasks: Array.isArray(tasks) && tasks.length ? this.sortTasksByDate(tasks) : [],
+    });
   };
 
-  getUser = async () => {
-    try {
-      const user = await StorageService.getData(USER_KEY);
-      this.setState({ user });
-    } catch (error) {
-      console.log('User not found', error);
-    }
+  getUser = () => {
+    const user = getData(USER_KEY);
+    this.setState({ user });
   };
 
   renderTaskItem = item => {
