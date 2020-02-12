@@ -79,6 +79,7 @@ const FieldInput = styled.input`
   padding-left: 5px;
   outline: none;
   border: none;
+  user-select: none;
 `;
 
 // eslint-disable-next-line react/prop-types
@@ -203,7 +204,8 @@ const TaskDetailScreen = ({ className, resource, groups, match, history, ...rest
                 label={question.details.label}
                 icon={question.details.icon}
                 input={{
-                  editable: false,
+                  disabled: true,
+                  readOnly: true,
                   value: answers[question.id],
                 }}
               />
