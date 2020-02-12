@@ -97,7 +97,6 @@ const TaskDetailScreen = ({ className, resource, groups, match, history, ...rest
   const formData = completedForm ? forms.find(form => form.id === completedForm.formId) : {};
   const questions = formData ? formData.questions : [];
   const answers = completedForm.data;
-
   if (!formData) {
     return null;
   }
@@ -170,15 +169,18 @@ const TaskDetailScreen = ({ className, resource, groups, match, history, ...rest
   // END OF HAX KOD
 
   // TODO: Ersätt filtredQuestions från hax koden längre upp.
-  if (filteredQuestions) {
-    filteredQuestions.forEach(question => {
-      const { details } = question;
-      if (details && details.show) {
-        const group = groups.find(g => g.name === question.details.group);
-        group.questions = group.questions ? [...group.questions, question] : [question];
-      }
-    });
-  }
+  const groupsWithAnswers =
+    filteredQuestions &&
+    groups.reduce((acc, group) => {
+      const groupQuestions = filteredQuestions.filter(
+        question =>
+          question.details && question.details.show && question.details.group === group.name
+      );
+
+      group.questions = groupQuestions;
+
+      return [...acc, group];
+    }, []);
 
   return (
     <TaskDetailScreenWrapper className={className}>
@@ -192,7 +194,7 @@ const TaskDetailScreen = ({ className, resource, groups, match, history, ...rest
         }}
       />
       <Container>
-        {groups.map(group => (
+        {groupsWithAnswers.map(group => (
           <List key={group.title}>
             <ListHeading type="h3">{group.title}</ListHeading>
             {group.questions.map(question => (
