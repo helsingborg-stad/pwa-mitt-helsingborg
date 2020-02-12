@@ -1,8 +1,8 @@
 import decode from 'jwt-decode';
-import { TOKEN_KEY, USER_KEY } from '../services/StorageService';
+import { TOKEN_KEY, USER_KEY, getData, saveData, removeData } from '../services/StorageServiceNew';
 
 /**
- * Check if token is expired
+ * Check if JWT token is expired
  */
 export const isTokenExpired = token => {
   try {
@@ -19,14 +19,15 @@ export const isTokenExpired = token => {
 
 /**
  * Login user. Saves user and token to storage
+ * TODO: Save token as cookie instead
+ * @param {*} param
  */
 export const logIn = ({ user, token }) => {
   if (isTokenExpired(token)) {
     return false;
   }
 
-  window.localStorage.setItem(USER_KEY, user);
-  window.localStorage.setItem(TOKEN_KEY, token);
+  saveData(TOKEN_KEY, token);
 
   return true;
 };
@@ -35,19 +36,14 @@ export const logIn = ({ user, token }) => {
  * Clear access token
  */
 export const logOut = () => {
-  window.localStorage.removeItem(TOKEN_KEY);
+  removeData(TOKEN_KEY);
 };
-
-/**
- * Retrieves the access token from local storage
- */
-export const getToken = () => window.localStorage.getItem(TOKEN_KEY);
 
 /**
  * Checks if there is a saved token and is still valid
  */
 export const authenticated = () => {
-  const token = getToken();
+  const token = getData(TOKEN_KEY);
 
   return !!token && !isTokenExpired(token);
 };
