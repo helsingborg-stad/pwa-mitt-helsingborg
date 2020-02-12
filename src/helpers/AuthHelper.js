@@ -27,6 +27,7 @@ export const logIn = ({ user, token }) => {
     return false;
   }
 
+  saveData(USER_KEY, user);
   saveData(TOKEN_KEY, token);
 
   return true;
