@@ -3,7 +3,7 @@ import validator from 'validator';
 import EventHandler, { EVENT_USER_MESSAGE } from '../../../helpers/EventHandler';
 import forms from '../../../assets/forms.js';
 import { ChatBubble, ChatDivider } from '../../atoms';
-import StorageService, { USER_KEY } from '../../../services/StorageService';
+import { USER_KEY, getData } from '../../../services/StorageServiceNew';
 import MarkdownConstructor from '../../../helpers/MarkdownConstructor';
 
 // TODO: Find better place for storing this function and
@@ -218,7 +218,7 @@ class FormAgent extends Component {
   };
 
   saveUserToState = async () => {
-    const user = await StorageService.getData(USER_KEY);
+    const user = getData(USER_KEY);
     if (user) {
       this.setState({ user });
     }

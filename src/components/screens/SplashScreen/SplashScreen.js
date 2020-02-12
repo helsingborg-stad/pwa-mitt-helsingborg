@@ -5,7 +5,7 @@ import ImageEasy from '../../../assets/slides/illu_001.png';
 import ImageAccessible from '../../../assets/slides/illu_002.png';
 import ImagePersonal from '../../../assets/slides/illu_003.png';
 import HbgLogo from '../../../assets/slides/stadsvapen.png';
-import StorageService, { SHOW_SPLASH_SCREEN } from '../../../services/StorageService';
+import { SHOW_SPLASH_SCREEN, getData, saveData } from '../../../services/StorageServiceNew';
 import Button from '../../atoms/Button';
 import Heading from '../../atoms/Heading';
 import Icon from '../../atoms/Icon';
@@ -138,12 +138,8 @@ export default function SplashScreen(props) {
    */
   const disableSplash = () => {
     const { history } = props;
-
-    try {
-      StorageService.saveData(SHOW_SPLASH_SCREEN, false);
-    } catch (error) {
-      console.log('Disable splash error: ', error);
-    }
+    // Disable splash value for future launches
+    saveData(SHOW_SPLASH_SCREEN, false);
 
     history.push('/login');
   };
@@ -152,13 +148,9 @@ export default function SplashScreen(props) {
    * Navigate to Login if splash screen disabled.
    */
   const showSplash = async () => {
-    try {
-      const showSplashScreen = await StorageService.getData(SHOW_SPLASH_SCREEN);
-      if (showSplashScreen === false) {
-        disableSplash();
-      }
-    } catch (error) {
-      console.log('Get splash value error: ', error);
+    const showSplashScreen = getData(SHOW_SPLASH_SCREEN);
+    if (showSplashScreen === false) {
+      disableSplash();
     }
   };
 
