@@ -6,6 +6,7 @@ import TabBarNavigation from '../../molecules/TabBarNavigation';
 
 const ScreenTabWrapperTabBarRoutes = styled.div`
   flex: 1;
+  overflow: hidden;
 `;
 
 const ScreenTabWrapper = ({ routes, className, history, location, ...rest }) => {
