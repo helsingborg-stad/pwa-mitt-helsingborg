@@ -1,5 +1,5 @@
 import decode from 'jwt-decode';
-import { TOKEN_KEY, USER_KEY, getData, saveData, removeData } from '../services/StorageServiceNew';
+import { TOKEN_KEY, USER_KEY, getData, saveData, removeData } from '../services/StorageService';
 
 /**
  * Check if JWT token is expired

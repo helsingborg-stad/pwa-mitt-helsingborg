@@ -4,7 +4,7 @@
 
 import axios from 'axios';
 import { post } from '../helpers/ApiRequest';
-import StorageService, { TOKEN_KEY } from './StorageService';
+import { TOKEN_KEY, getData } from './StorageService';
 
 export const constructGetFormTemplate = endpoint =>
   new Promise(async (resolve, reject) => {
@@ -73,7 +73,7 @@ export const sendChatMsg = async (
 
 const getService = async endpoint =>
   new Promise(async (resolve, reject) => {
-    const token = await StorageService.getData(TOKEN_KEY);
+    const token = getData(TOKEN_KEY);
 
     await axios({
       method: 'GET',
