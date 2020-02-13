@@ -138,12 +138,8 @@ export default function SplashScreen(props) {
    */
   const disableSplash = () => {
     const { history } = props;
-
-    try {
-      StorageService.saveData(SHOW_SPLASH_SCREEN, false);
-    } catch (error) {
-      console.log('Disable splash error: ', error);
-    }
+    // Disable splash value for future launches
+    StorageService.saveData(SHOW_SPLASH_SCREEN, false);
 
     history.push('/login');
   };
@@ -152,13 +148,9 @@ export default function SplashScreen(props) {
    * Navigate to Login if splash screen disabled.
    */
   const showSplash = async () => {
-    try {
-      const showSplashScreen = await StorageService.getData(SHOW_SPLASH_SCREEN);
-      if (showSplashScreen === false) {
-        disableSplash();
-      }
-    } catch (error) {
-      console.log('Get splash value error: ', error);
+    const showSplashScreen = StorageService.getData(SHOW_SPLASH_SCREEN);
+    if (showSplashScreen === false) {
+      disableSplash();
     }
   };
 

@@ -52,40 +52,38 @@ export default class WatsonAgent extends Component {
       // Show welcome message from Watson
       this.handleHumanChatMessage('');
     } else {
-      StorageService.getData(USER_KEY).then(({ name }) => {
-        chat.addMessages({
-          Component: ChatBubble,
-          componentProps: {
-            content: `Hej och välkommen till Mitt Helsingborg! Jag heter Sally. Jag kan hjälpa dig med att svara på frågor och guida dig runt i appen.`,
-            modifiers: ['automated'],
-          },
-        });
-        chat.addMessages({
-          Component: ChatBubble,
-          componentProps: {
-            content: 'Vad vill du göra?',
-            modifiers: ['automated'],
-          },
-        });
-        chat.addMessages({
-          Component: props => <ButtonStackWithMargin {...props} chat={chat} />,
-          componentProps: {
-            items: [
-              {
-                value: 'Jag vill boka borgerlig vigsel',
-                icon: 'favorite',
-                action: {
-                  type: 'form',
-                  value: 1,
-                },
+      chat.addMessages({
+        Component: ChatBubble,
+        componentProps: {
+          content: `Hej och välkommen till Mitt Helsingborg! Jag heter Sally. Jag kan hjälpa dig med att svara på frågor och guida dig runt i appen.`,
+          modifiers: ['automated'],
+        },
+      });
+      chat.addMessages({
+        Component: ChatBubble,
+        componentProps: {
+          content: 'Vad vill du göra?',
+          modifiers: ['automated'],
+        },
+      });
+      chat.addMessages({
+        Component: props => <ButtonStackWithMargin {...props} chat={chat} />,
+        componentProps: {
+          items: [
+            {
+              value: 'Jag vill boka borgerlig vigsel',
+              icon: 'favorite',
+              action: {
+                type: 'form',
+                value: 1,
               },
-              {
-                value: 'Jag har frågor om borgerlig vigsel',
-                icon: 'help-outline',
-              },
-            ],
-          },
-        });
+            },
+            {
+              value: 'Jag har frågor om borgerlig vigsel',
+              icon: 'help-outline',
+            },
+          ],
+        },
       });
     }
     EventHandler.subscribe(EVENT_USER_MESSAGE, message => this.handleHumanChatMessage(message));
@@ -103,7 +101,7 @@ export default class WatsonAgent extends Component {
    */
   onFormEnd = async ({ form, answers }) => {
     const { chat } = this.props;
-    const user = await StorageService.getData(USER_KEY);
+    const user = StorageService.getData(USER_KEY);
     const formData = {
       id: +new Date(),
       userId: user.personalNumber,
@@ -118,8 +116,8 @@ export default class WatsonAgent extends Component {
     this.context.addTask(formData);
 
     // try {
-    //   await StorageService.putData(COMPLETED_FORMS_KEY, formData).then(() => {
-    //     StorageService.getData(COMPLETED_FORMS_KEY).then(value => {
+    //   await StorageServiceNew.putData(COMPLETED_FORMS_KEY, formData).then(() => {
+    //     StorageServiceNew.getData(COMPLETED_FORMS_KEY).then(value => {
     //       this.updateActiveFormsBadge(value.length);
     //     });
     //   });
@@ -186,7 +184,7 @@ export default class WatsonAgent extends Component {
        * TODO: FOR DEV PURPOSE ONLY, REMOVE ME LATER
        */
       if (message === 'Radera data') {
-        await StorageService.removeData(COMPLETED_FORMS_KEY);
+        StorageService.removeData(COMPLETED_FORMS_KEY);
         this.updateActiveFormsBadge(0);
         return chat.addMessages({
           Component: props => (

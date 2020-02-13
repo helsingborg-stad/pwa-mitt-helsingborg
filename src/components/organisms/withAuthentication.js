@@ -148,7 +148,7 @@ const withAuthentication = WrappedComponent =>
      */
     _setUserAsync = async () => {
       try {
-        const user = await StorageService.getData(USER_KEY);
+        const user = StorageService.getData(USER_KEY);
         if (typeof user !== 'undefined' && user !== null) {
           this.setState({ user });
           // Login the user automatically

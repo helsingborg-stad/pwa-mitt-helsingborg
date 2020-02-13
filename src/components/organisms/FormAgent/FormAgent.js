@@ -218,7 +218,7 @@ class FormAgent extends Component {
   };
 
   saveUserToState = async () => {
-    const user = await StorageService.getData(USER_KEY);
+    const user = StorageService.getData(USER_KEY);
     if (user) {
       this.setState({ user });
     }

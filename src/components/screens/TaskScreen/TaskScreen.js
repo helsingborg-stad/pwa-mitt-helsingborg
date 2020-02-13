@@ -55,22 +55,16 @@ class TaskScreen extends Component {
 
   sortTasksByDate = list => list.sort((a, b) => new Date(b.created) - new Date(a.created));
 
-  getTasks = async () => {
-    try {
-      const tasks = await StorageService.getData(COMPLETED_FORMS_KEY);
-      this.setState({
-        activeTasks: Array.isArray(tasks) && tasks.length ? this.sortTasksByDate(tasks) : [],
-      });
-    } catch (error) {}
+  getTasks = () => {
+    const tasks = StorageService.getData(COMPLETED_FORMS_KEY);
+    this.setState({
+      activeTasks: Array.isArray(tasks) && tasks.length ? this.sortTasksByDate(tasks) : [],
+    });
   };
 
-  getUser = async () => {
-    try {
-      const user = await StorageService.getData(USER_KEY);
-      this.setState({ user });
-    } catch (error) {
-      console.log('User not found', error);
-    }
+  getUser = () => {
+    const user = StorageService.getData(USER_KEY);
+    this.setState({ user });
   };
 
   renderTaskItem = item => {

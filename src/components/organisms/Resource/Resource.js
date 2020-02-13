@@ -19,13 +19,13 @@ export default class Resource extends Component {
     });
   }
 
-  getDataFromStorage = async storageKey => {
+  getDataFromStorage = storageKey => {
     try {
       this.setState({
         storageData: { [storageKey]: { data: undefined, loading: true } },
       });
 
-      const storageData = await StorageService.getData(storageKey);
+      const storageData = StorageService.getData(storageKey);
 
       this.setState({
         storageData: { [storageKey]: { data: storageData, loading: false } },

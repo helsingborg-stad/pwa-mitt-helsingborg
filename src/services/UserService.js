@@ -192,8 +192,8 @@ export const sign = (personalNumber, userVisibleData) =>
  * @param {string} order
  */
 export const cancelBankidRequest = async request => {
-  const orderRef = await StorageService.getData(ORDER_KEY);
-  const token = await StorageService.getData(TEMP_TOKEN_KEY);
+  const orderRef = StorageService.getData(ORDER_KEY);
+  const token = StorageService.getData(TEMP_TOKEN_KEY);
   const headers = request === 'auth' ? { Authorization: `Bearer ${token}` } : undefined;
 
   // Stop polling auth/sign requests

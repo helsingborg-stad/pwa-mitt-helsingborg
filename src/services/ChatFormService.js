@@ -73,7 +73,7 @@ export const sendChatMsg = async (
 
 const getService = async endpoint =>
   new Promise(async (resolve, reject) => {
-    const token = await StorageService.getData(TOKEN_KEY);
+    const token = StorageService.getData(TOKEN_KEY);
 
     await axios({
       method: 'GET',

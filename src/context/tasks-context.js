@@ -19,19 +19,15 @@ export class TasksProvider extends Component {
     this.getStoredTasks();
   };
 
-  getStoredTasks = async () => {
-    const storedTasks = await StorageService.getData(COMPLETED_FORMS_KEY);
-    try {
-      if (storedTasks) {
-        this.setState({ tasks: storedTasks });
-      }
-    } catch (error) {
-      console.error('Could not load tasks form StorageService', error);
+  getStoredTasks = () => {
+    const storedTasks = StorageService.getData(COMPLETED_FORMS_KEY);
+    if (storedTasks) {
+      this.setState({ tasks: storedTasks });
     }
   };
 
   addTask = task => {
-    StorageService.putData(COMPLETED_FORMS_KEY, task);
+    StorageService.addDataToArray(COMPLETED_FORMS_KEY, task);
     this.setState(prevState => {
       const { tasks } = prevState;
       const currentTasks = tasks || [];

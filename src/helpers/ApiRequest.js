@@ -13,7 +13,7 @@ const request = (endpoint, method, data, headers) =>
   new Promise(async (resolve, reject) => {
     // Build complete api url
     const url = buildServiceUrl(endpoint);
-    const token = await StorageService.getData(TOKEN_KEY);
+    const token = StorageService.getData(TOKEN_KEY);
     const bearer = token ? `Bearer ${token}` : '';
 
     // Merge custom headers
