@@ -83,24 +83,17 @@ const FieldInput = styled.input`
 `;
 
 // eslint-disable-next-line react/prop-types
-const TaskDetailScreen = ({ className, resource, groups, match, history, ...rest }) => {
+const TaskDetailScreen = ({ className, groups, match, history, getTask, ...rest }) => {
   // eslint-disable-next-line react/prop-types
   const { params } = match;
-  const { storageData } = resource;
 
   // TODO: Break data processing out of component.
   // This component should only care about getting answers and form data.
-  const completedForms = storageData[COMPLETED_FORMS_KEY];
-  const completedForm =
-    completedForms && !completedForms.loading
-      ? completedForms.data.find(form => form.id === parseInt(params.id))
-      : {};
-  const formData = completedForm ? forms.find(form => form.id === completedForm.formId) : {};
-  const questions = formData ? formData.questions : [];
-  const answers = completedForm.data;
-  if (!formData) {
-    return null;
-  }
+  const taskData = getTask(parseInt(params.id));
+  const formData = forms.find(form => form.id === taskData.formId);
+
+  const { questions } = formData;
+  const { data: answers } = taskData;
 
   // TODO: ERSÄTT DENNA KOD PRONTO
   // PR 100!
@@ -220,16 +213,12 @@ const TaskDetailScreen = ({ className, resource, groups, match, history, ...rest
 TaskDetailScreen.propTypes = {
   className: PropTypes.string,
   answers: PropTypes.shape({}),
-  resource: PropTypes.shape({
-    storageData: PropTypes.shape({}),
-  }),
   groups: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 TaskDetailScreen.defaultProps = {
   className: '',
   answers: {},
-  resource: {},
   groups: [
     {
       name: 'partner',

@@ -4,11 +4,10 @@ import LoginScreen from '../components/screens/Login';
 import ChatScreen from '../components/screens/ChatScreen';
 import SplashScreen from '../components/screens/SplashScreen';
 import ScreenTabWrapper from '../components/screens/ScreenTabWrapper';
-import Resource from '../components/organisms/Resource/Resource';
 import TaskDetailScreen from '../components/screens/TaskDetailScreen';
 import TaskScreen from '../components/screens/TaskScreen';
 import ProfileScreen from '../components/screens/ProfileScreen';
-import { COMPLETED_FORMS_KEY } from '../services/StorageService';
+import { TasksConsumer } from '../context/tasks-context';
 
 const ROUTES = [
   {
@@ -33,11 +32,9 @@ const ROUTES = [
     path: '/tasks/:id',
     key: 'TASK',
     component: props => (
-      <Resource
-        {...props}
-        storageKeys={[COMPLETED_FORMS_KEY]}
-        render={props => <TaskDetailScreen {...props} />}
-      />
+      <TasksConsumer>
+        {({ getTask }) => <TaskDetailScreen getTask={getTask} {...props} />}
+      </TasksConsumer>
     ),
   },
   {

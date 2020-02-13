@@ -50,7 +50,7 @@ export class TasksProvider extends Component {
     const { tasks } = this.state;
     const { children } = this.props;
     return (
-      <TasksContext.Provider value={{ tasks, addTask: this.addTask }}>
+      <TasksContext.Provider value={{ tasks, getTask: this.getTask, addTask: this.addTask }}>
         {children}
       </TasksContext.Provider>
     );
