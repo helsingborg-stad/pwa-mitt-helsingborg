@@ -1,7 +1,7 @@
 import ip from 'ip';
 import { isMobile } from 'react-device-detect';
 import { buildBankIdClientUrl } from '../helpers/UrlHelper';
-import { TEMP_TOKEN_KEY, ORDER_KEY, saveData, getData } from './StorageService';
+import StorageService, { TEMP_TOKEN_KEY, ORDER_KEY } from './StorageService';
 import { remove, post } from '../helpers/ApiRequest';
 
 let cancelled = false;
@@ -55,8 +55,8 @@ export const authorize = personalNumber =>
     }
 
     // Save order reference + temporary access token to async storage
-    saveData(ORDER_KEY, order_ref);
-    saveData(TEMP_TOKEN_KEY, token);
+    StorageService.saveData(ORDER_KEY, order_ref);
+    StorageService.saveData(TEMP_TOKEN_KEY, token);
 
     // Launch BankID App
     if (isMobile) {
@@ -139,7 +139,7 @@ export const sign = (personalNumber, userVisibleData) =>
     }
 
     // Save order reference to async storage
-    saveData(ORDER_KEY, order_ref);
+    StorageService.saveData(ORDER_KEY, order_ref);
 
     // Launch BankID app if it's installed on this machine
     // if (canOpenBankIdApp()) {
@@ -192,8 +192,8 @@ export const sign = (personalNumber, userVisibleData) =>
  * @param {string} order
  */
 export const cancelBankidRequest = async request => {
-  const orderRef = getData(ORDER_KEY);
-  const token = getData(TEMP_TOKEN_KEY);
+  const orderRef = StorageService.getData(ORDER_KEY);
+  const token = StorageService.getData(TEMP_TOKEN_KEY);
   const headers = request === 'auth' ? { Authorization: `Bearer ${token}` } : undefined;
 
   // Stop polling auth/sign requests

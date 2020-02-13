@@ -1,5 +1,5 @@
 import decode from 'jwt-decode';
-import { TOKEN_KEY, USER_KEY, getData, saveData, removeData } from '../services/StorageService';
+import StorageService, { TOKEN_KEY, USER_KEY } from '../services/StorageService';
 
 /**
  * Check if JWT token is expired
@@ -27,8 +27,8 @@ export const logIn = ({ user, token }) => {
     return false;
   }
 
-  saveData(USER_KEY, user);
-  saveData(TOKEN_KEY, token);
+  StorageService.saveData(USER_KEY, user);
+  StorageService.saveData(TOKEN_KEY, token);
 
   return true;
 };
@@ -37,14 +37,14 @@ export const logIn = ({ user, token }) => {
  * Clear access token
  */
 export const logOut = () => {
-  removeData(TOKEN_KEY);
+  StorageService.removeData(TOKEN_KEY);
 };
 
 /**
  * Checks if there is a saved token and is still valid
  */
 export const authenticated = () => {
-  const token = getData(TOKEN_KEY);
+  const token = StorageService.getData(TOKEN_KEY);
 
   return !!token && !isTokenExpired(token);
 };

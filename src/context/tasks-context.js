@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import { COMPLETED_FORMS_KEY, getData, addDataToArray } from '../services/StorageService';
+import StorageService, { COMPLETED_FORMS_KEY } from '../services/StorageService';
 
 const TasksContext = React.createContext();
 
@@ -20,14 +20,14 @@ export class TasksProvider extends Component {
   };
 
   getStoredTasks = () => {
-    const storedTasks = getData(COMPLETED_FORMS_KEY);
+    const storedTasks = StorageService.getData(COMPLETED_FORMS_KEY);
     if (storedTasks) {
       this.setState({ tasks: storedTasks });
     }
   };
 
   addTask = task => {
-    addDataToArray(COMPLETED_FORMS_KEY, task);
+    StorageService.addDataToArray(COMPLETED_FORMS_KEY, task);
     this.setState(prevState => {
       const { tasks } = prevState;
       const currentTasks = tasks || [];

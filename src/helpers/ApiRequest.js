@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TOKEN_KEY, getData } from '../services/StorageService';
+import StorageService, { TOKEN_KEY } from '../services/StorageService';
 import { buildServiceUrl } from './UrlHelper';
 
 /**
@@ -13,7 +13,7 @@ const request = (endpoint, method, data, headers) =>
   new Promise(async (resolve, reject) => {
     // Build complete api url
     const url = buildServiceUrl(endpoint);
-    const token = getData(TOKEN_KEY);
+    const token = StorageService.getData(TOKEN_KEY);
     const bearer = token ? `Bearer ${token}` : '';
 
     // Merge custom headers

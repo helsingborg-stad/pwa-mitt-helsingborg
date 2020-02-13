@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ScreenWrapper from '../molecules/ScreenWrapper';
 import { Heading, Button, Text } from '../atoms';
 import { logOut } from '../../helpers/AuthHelper';
-import { clearData } from '../../services/StorageService';
+import StorageService from '../../services/StorageService';
 import UserContext from '../../context/user-context';
 
 const Container = styled.div`
@@ -33,7 +33,7 @@ const ProfileScreen = props => {
    */
   const resetData = () => {
     const { history } = props;
-    clearData();
+    StorageService.clearData();
     setIsAuthenticated(false);
     history.push('/');
   };

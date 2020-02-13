@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { logIn, logOut } from '../../helpers/AuthHelper';
-import { USER_KEY, getData } from '../../services/StorageService';
+import StorageService, { USER_KEY } from '../../services/StorageService';
 import {
   authorize,
   bypassBankid,
@@ -148,7 +148,7 @@ const withAuthentication = WrappedComponent =>
      */
     _setUserAsync = async () => {
       try {
-        const user = getData(USER_KEY);
+        const user = StorageService.getData(USER_KEY);
         if (typeof user !== 'undefined' && user !== null) {
           this.setState({ user });
           // Login the user automatically

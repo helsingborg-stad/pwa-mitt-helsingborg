@@ -15,12 +15,7 @@ import EventHandler, { EVENT_USER_MESSAGE } from '../../../helpers/EventHandler'
 import { sendChatMsg } from '../../../services/ChatFormService';
 import { ChatBubble, ChatDivider } from '../../atoms';
 import ButtonStack from '../../molecules/ButtonStack';
-import {
-  COMPLETED_FORMS_KEY,
-  USER_KEY,
-  removeData,
-  getData,
-} from '../../../services/StorageService';
+import StorageService, { COMPLETED_FORMS_KEY, USER_KEY } from '../../../services/StorageService';
 import MarkdownConstructor from '../../../helpers/MarkdownConstructor';
 import { TasksConsumer } from '../../../context/tasks-context';
 
@@ -106,7 +101,7 @@ export default class WatsonAgent extends Component {
    */
   onFormEnd = async ({ form, answers }) => {
     const { chat } = this.props;
-    const user = getData(USER_KEY);
+    const user = StorageService.getData(USER_KEY);
     const formData = {
       id: +new Date(),
       userId: user.personalNumber,
@@ -189,7 +184,7 @@ export default class WatsonAgent extends Component {
        * TODO: FOR DEV PURPOSE ONLY, REMOVE ME LATER
        */
       if (message === 'Radera data') {
-        removeData(COMPLETED_FORMS_KEY);
+        StorageService.removeData(COMPLETED_FORMS_KEY);
         this.updateActiveFormsBadge(0);
         return chat.addMessages({
           Component: props => (

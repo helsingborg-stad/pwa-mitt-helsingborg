@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { NavItems, CompletedTasks, ActiveTasks } from '../../../assets/dashboard';
 import forms from '../../../assets/forms';
 import GroupedList from '../../molecules/GroupedList';
-import { COMPLETED_FORMS_KEY, USER_KEY, getData } from '../../../services/StorageService';
+import StorageService, { COMPLETED_FORMS_KEY, USER_KEY } from '../../../services/StorageService';
 import TasksContext from '../../../context/tasks-context';
 
 import Header from '../../molecules/Header';
@@ -56,14 +56,14 @@ class TaskScreen extends Component {
   sortTasksByDate = list => list.sort((a, b) => new Date(b.created) - new Date(a.created));
 
   getTasks = () => {
-    const tasks = getData(COMPLETED_FORMS_KEY);
+    const tasks = StorageService.getData(COMPLETED_FORMS_KEY);
     this.setState({
       activeTasks: Array.isArray(tasks) && tasks.length ? this.sortTasksByDate(tasks) : [],
     });
   };
 
   getUser = () => {
-    const user = getData(USER_KEY);
+    const user = StorageService.getData(USER_KEY);
     this.setState({ user });
   };
 
