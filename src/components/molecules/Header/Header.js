@@ -16,6 +16,8 @@ const BackButton = styled(Button)`
 `;
 
 const HeaderContainer = styled.div`
+  position: fixed;
+  width: 100%;
   padding: 16px;
   justify-content: flex-end;
   background-color: white;

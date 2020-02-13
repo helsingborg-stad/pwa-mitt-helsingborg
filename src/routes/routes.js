@@ -4,8 +4,11 @@ import LoginScreen from '../components/screens/Login';
 import ChatScreen from '../components/screens/ChatScreen';
 import SplashScreen from '../components/screens/SplashScreen';
 import ScreenTabWrapper from '../components/screens/ScreenTabWrapper';
-import TaskScreen from '../components/screens/Task/TaskScreen';
+import Resource from '../components/organisms/Resource/Resource';
+import TaskDetailScreen from '../components/screens/TaskDetailScreen';
+import TaskScreen from '../components/screens/TaskScreen';
 import ProfileScreen from '../components/screens/ProfileScreen';
+import { COMPLETED_FORMS_KEY } from '../services/StorageService';
 
 const ROUTES = [
   {
@@ -29,9 +32,13 @@ const ROUTES = [
   {
     path: '/tasks/:id',
     key: 'TASK',
-    redirectTo: '/',
-    private: true,
-    component: () => <Link to="/main/tasks">Task Screen</Link>,
+    component: props => (
+      <Resource
+        {...props}
+        storageKeys={[COMPLETED_FORMS_KEY]}
+        render={props => <TaskDetailScreen {...props} />}
+      />
+    ),
   },
   {
     path: '/main',

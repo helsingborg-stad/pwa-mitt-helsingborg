@@ -19,11 +19,15 @@ const TaskScreenWrapper = styled(ScreenWrapper)`
   padding-top: 0;
   paddingbottom: 0;
   background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Container = styled.div`
   padding-left: 16px;
   padding-right: 16px;
+  padding-top: 180px;
+  overflow: auto;
 `;
 
 const List = styled.div`
