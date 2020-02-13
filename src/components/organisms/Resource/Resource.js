@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import StorageService from '../../../services/StorageService';
+import { getData } from '../../../services/StorageService';
 
 export default class Resource extends Component {
   constructor(props) {
@@ -19,13 +19,13 @@ export default class Resource extends Component {
     });
   }
 
-  getDataFromStorage = async storageKey => {
+  getDataFromStorage = storageKey => {
     try {
       this.setState({
         storageData: { [storageKey]: { data: undefined, loading: true } },
       });
 
-      const storageData = await StorageService.getData(storageKey);
+      const storageData = getData(storageKey);
 
       this.setState({
         storageData: { [storageKey]: { data: storageData, loading: false } },
