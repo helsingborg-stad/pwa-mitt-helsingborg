@@ -25,6 +25,7 @@ export const logIn = ({ user, token }) => {
     return false;
   }
 
+  window.localStorage.setItem(USER_KEY, user);
   window.localStorage.setItem(TOKEN_KEY, token);
 
   return true;
