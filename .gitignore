@@ -37,3 +37,17 @@ yarn-error.log*
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+
+### Android project
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+/captures
+.externalNativeBuild
+.cxx
